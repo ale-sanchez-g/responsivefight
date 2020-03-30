@@ -2,6 +2,7 @@
   "name": "responsivefight",
   "version": "1.0.0",
   "description": "responsive website for a game",
+  "main": "app.js",
   "scripts": {
     "start": "node app/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
