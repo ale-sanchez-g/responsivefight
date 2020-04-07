@@ -1,18 +1,20 @@
 include meta
 
-h1 Hello world
+.codeback
+    h1 COVID-19 THE GAME
 div
     p The world has be taken over by SuperVillain #COVID19 and we need our SuperHeroes to come to the rescue.
     p We need to combat this great thread, so I am looking to recruit a team of Super Heroes and build the CURE team.
     p I am in search of heroes like The HandWasher, Invisible Distance, SOAP, WFH, and any other great warriors against COVID19, until CURE arrives to the rescue.
-    img(src="/img/gamePrinciple.png" alt="covid19 game" width=550 height=300)
+    img(src="/img/gamePrinciple.png" alt="covid19 game" class="map-height img-responsive")
+
+div
+    a(href="#" onclick="document.location = 'covid.html'")
+        button Start
+    a(href="#" onclick="document.location = 'office.html'")
+        button Go to the office
 
 div
     .codeback
-    a(href="/covid.html")
-        h3 Start
-    a(href="/office.html")
-        h3 Battle Ground
-div
-    .codeback
-        iframe(src="https://covid19superheroes.herokuapp.com/heroes", frameborder="0")  
+        iframe(src="https://covid19superheroes.herokuapp.com/heroes", frameborder="0")
+        iframe(src="https://supervillain.herokuapp.com/villain", frameborder="0")    
