@@ -12,9 +12,7 @@
     before_script:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
-      - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-      - apt-get --only-upgrade install google-chrome-stable
-    
+
     build:
       pre_ci_boot:
         # https://github.com/cypress-io/cypress-docker-images
