@@ -12,9 +12,23 @@
     before_script:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
-      - apt-get install google-chrome-stable
+      - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      - apt-get --only-upgrade install google-chrome-stable
     
     build:
+      pre_ci_boot:
+        # https://github.com/cypress-io/cypress-docker-images
+        image_name: cypress/base
+        # use specific tag to avoid surprises
+        image_tag: 12.16.1
+        pull: true
+    
+      # Caching configuration to avoid reinstalling node modules and Cypress binary again and again
+      # http://docs.shippable.com/ci/caching/
+      cache: true
+      cache_dir_list:
+        - /root/.npm
+        - /root/.cache      
       ci:
         - npm install
         - npm start &
