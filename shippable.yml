@@ -12,6 +12,7 @@
     before_script:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
+      - apt-get install google-chrome-stable
     
     build:
       ci:
