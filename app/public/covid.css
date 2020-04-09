@@ -8,20 +8,32 @@ a {
 img {
   border-radius: 8px;
 }
-div.content {
-  padding-right: 100px;
-  padding-bottom: 50px;
-  padding-left: 100px;
+
+div.block {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 
-div.anime {
+div.doubleblock {
+  width: 1080px;
+  height: 320px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.anime {
   background-color: white;
   animation-name: animation;
-  animation-duration: 15s;
+  animation-duration: 1s;
+  animation-iteration-count: 100;
 }
 
 @keyframes animation {
-  from {background-color: black;}
+  from {background-color: brown;}
   to {background-color: white;}
 }
 
