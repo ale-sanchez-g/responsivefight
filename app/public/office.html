@@ -21,7 +21,7 @@
             <div class="thumbnail rounded mx-auto d-block">
                 <div class="col-lg">
                     <img src="">
-                    <img class="map-height img-responsive" src="/assets/3372240.jpg" alt="office" id="img-office">
+                    <img class="map-height img-responsive" src="assets/3372240.jpg" alt="office" id="img-office">
                   </div>
             </div>
         </div>        
@@ -57,7 +57,7 @@
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="thumbnail" style="background-color: #d54ff0;">
                 <div class="caption"> 
-                  <a href="#" id="office_answer_1" class="btn" style="position: relative;">Some Api fetched answer text.</a>
+                  <a href="#" id="office_answer_1" class="btn" style="position: relative;">Correct Api fetched answer text.</a>
                 </div>
               </a>
             </div>
@@ -65,7 +65,7 @@
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="thumbnail" style="background-color: #d54ff0;">
                 <div class="caption">
-                  <a href="#" id="office_answer_2" class="btn" stlye="position: relative;">Some Api fetched answer text.</a>
+                  <a href="#" id="office_answer_2" class="btn" stlye="position: relative;">Incorrect Api fetched answer text.</a>
                 </div>
               </a>
             </div>
@@ -73,12 +73,149 @@
         </div>
       </div>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="staticBackdropLabel">You have entered the office..</h5>
+      </div>
+      <div class="modal-body">
+        Where possible, to eliminate the risk of exposure to the COVID-19 virus in the workplace, businesses may allow their workers to work from home in complete isolation from others.</br> If it is not feasible for workers to perform their job from home, employers must do all that they can to minimise the risk of exposure to COVID-19 so far as reasonably practicable.
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Close</button> -->
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="start" style="background-color: #d54ff0; margin-left: 0px;">Start</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal -->
+
+<!-- Modal 2-->
+<div class="modal fade" id="staticBackdrop2" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="map-height img-responsive" src="assets/3672791_cropped.jpg" alt="working at home" id="img-wfh">
+      </br>
+        <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">That is correct!</h5>
+      </div>
+      <div class="modal-body">
+        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible.</br> For more information about working from home visit <a href="safeworkaustralia.gov.au/covid-19-information-workplaces/working-home"></a>.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal 2 -->
+
+<!-- Modal 3-->
+<div class="modal fade" id="staticBackdrop3" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="map-height img-responsive" src="assets/3625643.jpg" alt="sneeze on coworker" id="img-sneezing">
+      </br>
+        <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">That doesn't sound right!</h5>
+      </div>
+      <div class="modal-body">
+        Risk of transmission of the COVID-19 virus can be increased by close proximity, coughing and sneezing, self isolate where posible.</br> For more information about working from home visit <a href="safeworkaustralia.gov.au/covid-19-information-workplaces/working-home"></a>.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Try again</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal 3 -->
+
 </body>
 <footer>
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <p class="footer-text">All illustrations, <a href="http://www.freepik.com">Designed by slidesgo / Freepik</a> under free use license.
+        <p class="footer-text">All illustrations, <a href="http://www.freepik.com">Designed by slidesgo / Freepik</a>, <a href="http://www.freepik.com">Designed by stories / Freepik</a> and <a href="http://www.freepik.com">Designed by Freepik</a>  under free use license.
         </p>
     </div>
     
 </footer>
+<script>
+// present the modal to user on pageload
+$( document ).ready(function() {
+    console.log( "presenting intro modal" );
+    $('#staticBackdrop').modal('show');
+
+});
+
+// Start the timer the modal to user on pageload
+$( "#start" ).click(function() {
+  var progression = 0,
+    progress = setInterval(function() 
+    {
+        // $('#progress .progress-text').text(progression + '%');
+        $('#progress .progress-bar').css({'width':progression+'%'});
+        if(progression == 100) {
+            clearInterval(progress);
+            // alert('done');
+        } else
+            progression += 1;
+
+    }, 1000);
+});
+
+// Check the button text matches the correct answer
+$( "#office_answer_1" ).click(function() {
+  var correctAnswer = "Correct Api fetched answer text.";
+  var buttonText = $('#office_answer_1').text();
+  if(buttonText === correctAnswer) {
+    //add some pretty modal here
+    $('#staticBackdrop2').modal('show');
+    //return user to home page
+  } else {
+    //add some modal here
+    $('#staticBackdrop3').modal('show');  
+    //TODO: return user to screen
+  }      
+});
+
+$( "#office_answer_2" ).click(function() {
+  //TODO: store the correct answer from Ajax call into a wide scope variable
+  var correctAnswer = "Correct Api fetched answer text.";
+  var buttonText = $('#office_answer_2').text();
+  if(buttonText === correctAnswer) {
+    //add some pretty modal here
+    $('#staticBackdrop2').modal('show');
+    //return user to home page
+  } else {
+    //add some modal here
+    $('#staticBackdrop3').modal('show');   
+    //TODO: return user to screen
+  }      
+});
+
+//Fetch the questions
+// $.ajax({
+//         url: "https://responsivefight.herokuapp.com/api/officeQuestions",
+//         type: 'GET',
+//         dataType: 'json', // added data type
+//         success: function(res) {
+//             console.log(res);
+  // create an object with the key of the array
+//             var json = $.parseJSON(data); 
+//             var correctAnswer = json.
+//             alert(res);
+//         }
+//     });
+
+</script>
 </html>
