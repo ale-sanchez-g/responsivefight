@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app/app.js",
-    "test": "echo \"PENDING: no test specified\" && exit 0"
+    "test": "node_modules/.bin/cypress run"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/ale-sanchez-g/responsivefight/issues"
   },
-  "homepage": "https://github.com/ale-sanchez-g/responsivefight#readme"
+  "homepage": "https://github.com/ale-sanchez-g/responsivefight#readme",
+  "devDependencies": {
+    "cypress": "^4.3.0"
+  }
 }
