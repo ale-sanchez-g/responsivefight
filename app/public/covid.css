@@ -1,3 +1,30 @@
+button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 15px;
+}
+a {
+  color: darkblue;
+}
+img {
+  border-radius: 8px;
+}
+div.content {
+  padding-right: 100px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+}
+
+div.anime {
+  background-color: white;
+  animation-name: animation;
+  animation-duration: 15s;
+}
+
+@keyframes animation {
+  from {background-color: black;}
+  to {background-color: white;}
+}
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -21,9 +48,24 @@
     font-weight: bolder;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.summary {
+  text-align: center;
+  font-size: large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .btn {
     width: 100%;
 }
 .footer-text {
     text-align: center;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.responsive {
+  width: 100%;
+  height: auto;
 }
