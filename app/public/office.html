@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    
     <link rel="stylesheet" type="text/css" href="covid.css">
-<title>COVID-19 THE GAME</title>
+<title>The Office</title>
 </head>
 <body>
     <div class="row">
         <div class="col-lg-12">
-          <p class="option-label">COVID-19 THE GAME</p>
+          <p class="option-label">THE OFFICE</p>
         </div>
     </div>
 
@@ -81,7 +81,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="staticBackdropLabel">You have entered the office..</h5>
+        <img id="officeWorker" class="map-height img-responsive" src="assets/28839_cropped.jpg" style="max-height: 200px; display: block;" alt="working at home" id="img-wfh">
+        <!-- <img id="officeWorker" class="map-height img-responsive" src="https://media.giphy.com/media/oW4Gt2ZPynZAc/giphy.gif" style="max-height: 200px;" alt="working at home" id="img-wfh"> -->
+      </br>
+        <h5 class="modal-title text-center" style="font-weight: bold; font-size: x-large;" id="staticBackdropLabel">You have entered the office..</h5>
       </div>
       <div class="modal-body">
         Where possible, to eliminate the risk of exposure to the COVID-19 virus in the workplace, businesses may allow their workers to work from home in complete isolation from others.</br> If it is not feasible for workers to perform their job from home, employers must do all that they can to minimise the risk of exposure to COVID-19 so far as reasonably practicable.
@@ -108,7 +111,7 @@
         <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">That is correct!</h5>
       </div>
       <div class="modal-body">
-        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible.</br> For more information about working from home visit <a href="safeworkaustralia.gov.au/covid-19-information-workplaces/working-home"></a>.
+        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home </a>.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Close</button>
@@ -131,7 +134,7 @@
         <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">That doesn't sound right!</h5>
       </div>
       <div class="modal-body">
-        Risk of transmission of the COVID-19 virus can be increased by close proximity, coughing and sneezing, self isolate where posible.</br> For more information about working from home visit <a href="safeworkaustralia.gov.au/covid-19-information-workplaces/working-home"></a>.
+        Risk of transmission of the COVID-19 virus can be increased by close proximity, coughing and sneezing, self isolate where posible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home</a>.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Try again</button>
@@ -141,81 +144,13 @@
 </div>
 <!-- End Modal 3 -->
 
+<script type="application/javascript" src="scripts/office.js"></script>
 </body>
 <footer>
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <p class="footer-text">All illustrations, <a href="http://www.freepik.com">Designed by slidesgo / Freepik</a>, <a href="http://www.freepik.com">Designed by stories / Freepik</a> and <a href="http://www.freepik.com">Designed by Freepik</a>  under free use license.
+        <p class="footer-text">All illustrations, <a href="http://www.freepik.com">Designed by macrovector / Freepik</a>, <a href="http://www.freepik.com">Designed by slidesgo / Freepik</a>, <a href="http://www.freepik.com">Designed by stories / Freepik</a> and <a href="http://www.freepik.com">Designed by Freepik</a>  under free use license.
         </p>
     </div>
     
 </footer>
-<script>
-// present the modal to user on pageload
-$( document ).ready(function() {
-    console.log( "presenting intro modal" );
-    $('#staticBackdrop').modal('show');
-
-});
-
-// Start the timer the modal to user on pageload
-$( "#start" ).click(function() {
-  var progression = 0,
-    progress = setInterval(function() 
-    {
-        // $('#progress .progress-text').text(progression + '%');
-        $('#progress .progress-bar').css({'width':progression+'%'});
-        if(progression == 100) {
-            clearInterval(progress);
-            // alert('done');
-        } else
-            progression += 1;
-
-    }, 1000);
-});
-
-// Check the button text matches the correct answer
-$( "#office_answer_1" ).click(function() {
-  var correctAnswer = "Correct Api fetched answer text.";
-  var buttonText = $('#office_answer_1').text();
-  if(buttonText === correctAnswer) {
-    //add some pretty modal here
-    $('#staticBackdrop2').modal('show');
-    //return user to home page
-  } else {
-    //add some modal here
-    $('#staticBackdrop3').modal('show');  
-    //TODO: return user to screen
-  }      
-});
-
-$( "#office_answer_2" ).click(function() {
-  //TODO: store the correct answer from Ajax call into a wide scope variable
-  var correctAnswer = "Correct Api fetched answer text.";
-  var buttonText = $('#office_answer_2').text();
-  if(buttonText === correctAnswer) {
-    //add some pretty modal here
-    $('#staticBackdrop2').modal('show');
-    //return user to home page
-  } else {
-    //add some modal here
-    $('#staticBackdrop3').modal('show');   
-    //TODO: return user to screen
-  }      
-});
-
-//Fetch the questions
-// $.ajax({
-//         url: "https://responsivefight.herokuapp.com/api/officeQuestions",
-//         type: 'GET',
-//         dataType: 'json', // added data type
-//         success: function(res) {
-//             console.log(res);
-  // create an object with the key of the array
-//             var json = $.parseJSON(data); 
-//             var correctAnswer = json.
-//             alert(res);
-//         }
-//     });
-
-</script>
 </html>
