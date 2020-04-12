@@ -72,10 +72,10 @@ div.doubleblock {
     text-align: center;
 }
 <<<<<<< HEAD
-.vcenter{
+.vcenter {
   /* vertical-align: middle; */
   padding: 7px;
-=======
+}
 .center {
   display: block;
   margin-left: auto;
