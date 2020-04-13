@@ -42,12 +42,10 @@
 
     <!-- Progress Bar -->
     <div class="row col-sm-offset-2 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
-      <div>
-        <div class="progress" style="height: 3px;">
-          <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+      <div id="myProgress">
+        <div id="myBar"></div>
       </div>
-    </div>
+    </div> 
     
 
     <div class="container">
@@ -73,7 +71,7 @@
         </div>
       </div>
 
-<!-- Modal -->
+<!-- Intro Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -96,9 +94,9 @@
     </div>
   </div>
 </div>
-<!-- End Modal -->
+<!-- End Intro Modal -->
 
-<!-- Modal 2-->
+<!-- Modal Correct Answer-->
 <div class="modal fade" id="staticBackdrop2" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -119,9 +117,9 @@
     </div>
   </div>
 </div>
-<!-- End Modal 2 -->
+<!-- End Modal Correct Answer -->
 
-<!-- Modal 3-->
+<!-- Modal Incorrect Answer-->
 <div class="modal fade" id="staticBackdrop3" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -142,7 +140,31 @@
     </div>
   </div>
 </div>
-<!-- End Modal 3 -->
+<!-- End Modal Incorrect Answer -->
+
+<!-- Modal out of Time-->
+<div class="modal fade" id="staticBackdrop3" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="map-height img-responsive" src="assets/3633236.jpg" alt="Covid protection poster" id="img-protection_poster">
+      </br>
+        <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">Time's Up!</h5>
+      </div>
+      <div class="modal-body">
+        You need to take proactive action to eliminate risk of transmission of the COVID-19 virus.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home</a>.
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="startProgressBar()" class="btn btn-secondary" data-dismiss="modal" style="color: #ED0044; margin-bottom: 3px;">Try again</button>
+        <button type="button" onclick="document.location = 'office.html'" class="btn btn-secondary" data-dismiss="modal" style="color: #ED0044; margin-bottom: 3px;"><span class="glyphicon glyphicon-home"></span> Return Home</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal out of Time -->
 
 <script type="application/javascript" src="scripts/office.js"></script>
 </body>

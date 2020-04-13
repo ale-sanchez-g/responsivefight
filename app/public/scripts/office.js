@@ -9,19 +9,40 @@ $( document ).ready(function() {
 
 // Start the timer the modal to user on pageload
 $( "#start" ).click(function() {
-  var progression = 0,
-    progress = setInterval(function() 
-    {
-        // $('#progress .progress-text').text(progression + '%');
-        $('#progress .progress-bar').css({'width':progression+'%'});
-        if(progression == 100) {
-            clearInterval(progress);
-            // alert('done');
-        } else
-            progression += 1;
-
-    }, 1000);
+    startProgressBar();
 });
+
+function startProgressBar() {
+    var i = 0;
+      if (i == 0) {
+        i = 1;
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 220);
+        var ary = ['#4CAF50', '#FFFF00', '#FF0000'];
+        function frame() {
+          if (width >= 100) {
+            clearInterval(id);
+            i = 0;	
+            //reset the colour to default
+            document.getElementById("myBar").style.background = "#4CAF50";
+          }    
+          else {      	
+            width++;
+            elem.style.width = width + "%";   
+            switch(elem.style.width) {
+                  case "40%":
+                document.getElementById("myBar").style.background = "#FFFF00";
+                break;
+                  case "75%":
+                document.getElementById("myBar").style.background = "#FF0000";
+                case "100%":
+                document.getElementById("myBar").style.width = "0";
+            }        
+          }
+        }
+      }
+    }
 
 //Evaluate the answer and display appropiate modal
 function evaluateAnswer(textString){

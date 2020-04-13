@@ -81,3 +81,19 @@ div.doubleblock {
   width: 100%;
   height: auto;
 }
+.modal-header {
+  font-weight: bold;
+  font-size: x-large;
+}
+/* Progress Bar */
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 4px;
+  background-color: #4CAF50;
+}
+/* End Progress Bar */
