@@ -15,7 +15,7 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       cy.get('#office_answer_2')
       .should('be.visible')
-      cy.get('#img-office')
+      cy.get('#img_office')
       .should('be.visible')
     })
 
@@ -29,7 +29,7 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       cy.get('#bus_answer_2')
       .should('be.visible')
-      cy.get('#img-bus')
+      cy.get('#img_bus')
       .should('be.visible')
     })
 
@@ -43,7 +43,7 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       cy.get('#office_answer_2')
       .should('be.visible')
-      cy.get('#img-Restaurant')
+      cy.get('#img_restaurant')
       .should('be.visible')
       })
   })
