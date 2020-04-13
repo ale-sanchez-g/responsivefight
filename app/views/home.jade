@@ -1,21 +1,35 @@
 include meta
 
-div.block.anime
+div.anime.block
     p.option-label(style="font-size:5vw;") 
         | <i style="font-size:5vw;" class="material-icons" >&#xe003;</i> COVID-19 THE GAME <i style="font-size:5vw;" class="material-icons">&#xe003;</i>
-hr
+    
 div.block
-    p.summary(style="font-size:3vw;")
-        | The world has be taken over by SuperVillain #COVID19 and we need our SuperHeroes to come to the rescue.
-        | We need to combat this great thread, so I am looking to recruit a team of Super Heroes and build the CURE team.
-        | I am in search of heroes like The HandWasher, Invisible Distance, SOAP, WFH, and any other great warriors against COVID19, until CURE arrives to the rescue.
-hr
-img.centered.responsive(src="/img/gamePrinciple.png" alt="covid19 game")
-hr
-a(href="covid.html")
-    button.responsive(id="start") Start your battle
+row
+    div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
+        div.block.border
+            p
+                | The world has be taken over by SuperVillain #COVID19 and we need our SuperHeroes to come to the rescue.
+                | We need to combat this great thread, so I am looking to recruit a team of Super Heroes and build the CURE team.
+                | I am in search of heroes like The HandWasher, Invisible Distance, SOAP, WFH, and any other great warriors against COVID19, until CURE arrives to the rescue.
 
-footer
-    div.nime
-        p.summary
-            | you can visit <a href="https://github.com/users/ale-sanchez-g/projects/1">this project</a> for more information
+row
+    div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
+        div.block
+            .carousel.slide(data-ride="carousel")
+                div.carousel-inner
+                    .item.active
+                        img.centered.responsive(src="/img/gamePrinciple.png" alt="WHO announcement")
+                    .item
+                        img.centered.responsive(src="/img/gamePrinciple2.png" alt="The principle")
+
+row
+    div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
+        div.block
+            a.btn(href="covid.html" style="background-color: #81a5db;" id="start") Start your battle
+
+row 
+    div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
+        div.block
+            p.summary
+                | you can visit <a href="https://github.com/users/ale-sanchez-g/projects/1">this project</a> for more information

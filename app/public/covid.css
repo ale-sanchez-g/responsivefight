@@ -25,6 +25,12 @@ div.doubleblock {
   padding-left: 10px;
 }
 
+.border {
+  border-radius: 8px;
+  border-style: outset;
+  border-width: 1px;
+}
+
 .anime {
   background-color: white;
   animation-name: animation;
