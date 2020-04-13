@@ -30,7 +30,7 @@
     <!-- Question -->
     <div class="row">
       <div class="col-lg-12">
-        <p class="option-label" id="office_question_1"><span></span> Api fetched Question text</p>
+        <p class="option-label text-center" id="office_question_1"><span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;"></span> Marcus, your coworker, is constantly coughing in the office, what do you do?</p>
       </div>
     </div>
 
@@ -39,31 +39,32 @@
       <div id="myProgress">
         <div id="myBar"></div>
       </div>
-    </div> 
+    </div>
+  </br> 
     
 
     <div class="container">
-        <!-- <p>The .caption class adds proper padding and a dark grey color to text inside thumbnails.</p>
-        <p>Click on the images to enlarge them.</p> -->
+        
         <div class="row col-sm-12 col-md-12 col-lg-12">
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="thumbnail" style="background-color: #d54ff0;">
                 <div class="caption"> 
-                  <a href="#" id="office_answer_1" class="btn" style="position: relative;">Correct Api fetched answer text.</a>
+                  <a href="#" id="office_answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;">Use your superheroe Social Distance, notify your Manager and maintain a safe distance.</a>
                 </div>
               </a>
             </div>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="thumbnail" style="background-color: #d54ff0;">
-                <div class="caption">
-                  <a href="#" id="office_answer_2" class="btn" stlye="position: relative;">Incorrect Api fetched answer text.</a>
+                <div class="caption"> 
+                  <a href="#" id="office_answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;">Keep it to yourself, do not draw attention to others, and get on with your own work!.</a>
                 </div>
               </a>
             </div>
           </div>
         </div>
       </div>
+
 
 <!-- Intro Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -100,9 +101,9 @@
         </button>
         <img class="map-height img-responsive" src="assets/3672791_cropped.jpg" alt="working at home" id="img-wfh">
       </br>
-        <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">That is correct!</h5>
+        <h5 class="modal-title " style="text-align: center; font-size: x-large;" id="staticBackdropLabel">That is correct!</h5>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="font-size: larger; text-align: center;">
         Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home </a>.
       </div>
       <div class="modal-footer">
@@ -123,9 +124,9 @@
         </button>
         <img class="map-height img-responsive" src="assets/3625643.jpg" alt="sneeze on coworker" id="img-sneezing">
       </br>
-        <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">That doesn't sound right!</h5>
+        <h5 class="modal-title " style="text-align: center; font-size: x-large;" id="staticBackdropLabel">That doesn't sound right!</h5>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="font-size: larger; text-align: center;">
         Risk of transmission of the COVID-19 virus can be increased by close proximity, coughing and sneezing, self isolate where posible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home</a>.
       </div>
       <div class="modal-footer">
@@ -137,23 +138,23 @@
 <!-- End Modal Incorrect Answer -->
 
 <!-- Modal out of Time-->
-<div class="modal fade" id="staticBackdrop3" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop4" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
         <img class="map-height img-responsive" src="assets/3633236.jpg" alt="Covid protection poster" id="img-protection_poster">
       </br>
-        <h5 class="modal-title " style="text-align: center;" id="staticBackdropLabel">Time's Up!</h5>
+        <h5 class="modal-title " style="text-align: center;font-size: x-large;" id="staticBackdropLabel">Time's Up!</h5>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="font-size: larger; text-align: center;">
         You need to take proactive action to eliminate risk of transmission of the COVID-19 virus.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home</a>.
       </div>
       <div class="modal-footer">
-        <button type="button" onclick="startProgressBar()" class="btn btn-secondary" data-dismiss="modal" style="color: #ED0044; margin-bottom: 3px;">Try again</button>
-        <button type="button" onclick="document.location = 'office.html'" class="btn btn-secondary" data-dismiss="modal" style="color: #ED0044; margin-bottom: 3px;"><span class="glyphicon glyphicon-home"></span> Return Home</button>
+        <button type="button" onclick="startProgressBar()" class="btn btn-secondary" data-dismiss="modal" style="background-color: #ED0044; margin-bottom: 3px;">Try again</button>
+        <button type="button" onclick="document.location = 'office.html'" class="btn btn-secondary" data-dismiss="modal" style="background-color: #ED0044; margin-bottom: 3px; margin-left: 0px;"><span class="glyphicon glyphicon-home"></span> Return Home</button>
       </div>
     </div>
   </div>

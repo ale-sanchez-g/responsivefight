@@ -47,6 +47,16 @@ context('COVID19 Battles', () => {
       .should('be.visible')
     })
 
+    //TEST: timeout modal is visible on Page after interval
+    it('Office battle', () => {
+      cy.get('#start').click()
+      cy.get('#staticBackdrop')
+      .should('be.visible')
+      cy.wait(2400)
+      cy.get('#staticBackdrop4')
+      .should('be.visible')           
+    })
+
     // it('Bus battle', () => {
     //     cy.get('#start').click()
     //     cy.get('#bus').click()

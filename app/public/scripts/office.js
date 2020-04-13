@@ -8,7 +8,8 @@ $( document ).ready(function() {
 });
 
 // Start the timer the modal to user on pageload
-$( "#start" ).click(function() {
+$( "#start" ).click(function() {  
+    $('#office_question_1').focus();
     startProgressBar();
 });
 
@@ -21,11 +22,17 @@ function startProgressBar() {
         var id = setInterval(frame, 220);
         var ary = ['#4CAF50', '#FFFF00', '#FF0000'];
         function frame() {
-          if (width >= 100) {
+          if (width >= 100 || $('#staticBackdrop2').is(':visible')) {
             clearInterval(id);
             i = 0;	
             //reset the colour to default
             document.getElementById("myBar").style.background = "#4CAF50";
+            //show the modal only if the correct answer modal is not already on screen, 
+            if(!$('#staticBackdrop2').is(':visible')){ 
+              //hide the incorrect modal if shown on screen
+              $('#close_modal_btn_2').click();
+              $('#staticBackdrop4').modal('show');
+            }            
           }    
           else {      	
             width++;
@@ -37,7 +44,7 @@ function startProgressBar() {
                   case "75%":
                 document.getElementById("myBar").style.background = "#FF0000";
                 case "100%":
-                document.getElementById("myBar").style.width = "0";
+                document.getElementById("myBar").style.width = "0";                
             }        
           }
         }
@@ -48,7 +55,7 @@ function startProgressBar() {
 function evaluateAnswer(textString){
   //TODO: remove hardcoded correctanswer to submitAnswer() ajax function once API is enabled
   // submitAnswer();
-  var correctAnswer = "Correct Api fetched answer text.";
+  var correctAnswer = "Use your superheroe Social Distance, notify your Manager and maintain a safe distance.";
   //var buttonText = $('#office_answer_1').text();
   if(textString === correctAnswer) {
     $('#staticBackdrop2').modal('show');
@@ -62,7 +69,7 @@ function evaluateAnswer(textString){
 // Check the button text matches the correct answer
 $( "#office_answer_1" ).click(function() {
   var buttonText = $('#office_answer_1').text();
-  evaluateAnswer(buttonText);     
+  evaluateAnswer(buttonText);      
 });
 
 $( "#office_answer_2" ).click(function() {   

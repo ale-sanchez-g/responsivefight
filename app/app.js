@@ -48,9 +48,9 @@ var server = http.createServer(function(req,res){
     else if(req.url === '/api/officeQuestions') 
     {
         var myObj = {
-            question: 'Someone looks ill, what do you do?',
-            answer1: 'User your superheroe "Distance" and keep it to yourself',
-            answer2: 'run the other way and scream in panic!',
+            question: 'Marcus, your coworker, is constantly coughing in the office, what do you do?',
+            answer1: 'Use your superheroe Social Distance, notify your Manager and maintain a safe distance.',
+            answer2: 'Keep it to yourself, do not draw attention, and pretend you did not notice!',
             solution: {
                 "correctAnswer": 'User your superheroe "Distance" and keep it to yourself'
             }            
