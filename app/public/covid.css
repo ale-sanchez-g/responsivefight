@@ -71,6 +71,10 @@ div.doubleblock {
 .footer-text {
     text-align: center;
 }
+.vcenter {
+  /* vertical-align: middle; */
+  padding: 7px;
+}
 .center {
   display: block;
   margin-left: auto;
