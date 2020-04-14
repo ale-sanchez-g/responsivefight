@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="covid.css">
+<title>COVID-19 THE GAME</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-12">
+          <p class="option-label" id="restaurant_title">At the Restaurant <span id="tooltip_resturant" class="glyphicon glyphicon-info-sign vcenter pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Some static or api fetched information!"></span>
+          </p>
+          </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-offset-1 d-none d-md-block col-md-10 col col-lg-10">
+            <div class="thumbnail rounded mx-auto d-block">
+                <div class="col-lg">
+                    <img src="">
+                    <img id="img_restaurant" class="map-height img-responsive" src="assets/137882_cropped.jpg" alt="Restaurant background">
+                  </div>
+            </div>
+        </div>        
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-lg-12">
+          <p class="option-label">Choose your Battlefield</p>
+        </div>
+    </div> -->
+    
+    <!-- Question -->
+    <div class="row">
+      <div class="col-lg-12">
+        <p class="option-label" id="restaurant_question_1"><span></span> Api fetched Question text</p>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="row col-sm-offset-2 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
+      <div>
+        <div class="progress" style="height: 3px;">
+          <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="container">
+        <!-- <p>The .caption class adds proper padding and a dark grey color to text inside thumbnails.</p>
+        <p>Click on the images to enlarge them.</p> -->
+        <div class="row col-sm-12 col-md-12 col-lg-12">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="thumbnail" style="background-color: #eb857a;">
+                <div class="caption"> 
+                  <a href="#" id="office_answer_1" class="btn" style="position: relative;">Some Api fetched answer text.</a>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="thumbnail" style="background-color: #eb857a;">
+                <div class="caption">
+                  <a href="#" id="office_answer_2" class="btn" stlye="position: relative;">Some Api fetched answer text.</a>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
+<footer>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <p class="footer-text">All illustrations, <a href="http://www.freepik.com">Designed by Freepik</a> under free use license.
+        </p>
+    </div>
+    
+</footer>
+<!-- jQuery JS, for tooltip, TODO:\move to single script file -->
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  </script>
+</html>

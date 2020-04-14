@@ -33,6 +33,12 @@ div.doubleblock {
   padding-left: 10px;
 }
 
+.border {
+  border-radius: 8px;
+  border-style: outset;
+  border-width: 1px;
+}
+
 .anime {
   background-color: white;
   animation-name: animation;
@@ -79,6 +85,10 @@ div.doubleblock {
 .footer-text {
     text-align: center;
 }
+.vcenter {
+  /* vertical-align: middle; */
+  padding: 7px;
+}
 .center {
   display: block;
   margin-left: auto;
@@ -89,6 +99,7 @@ div.doubleblock {
   width: 100%;
   height: auto;
 }
+<<<<<<< HEAD
 .modal-header {
   font-weight: bold;
   font-size: x-large;
@@ -112,3 +123,5 @@ div.doubleblock {
   background-color: #d54ff0;
 }
 /* End Bootstrap answers buttons stacked side by side  */
+=======
+>>>>>>> e66bed47fae3425ee4569d13396a1f6d113730cf

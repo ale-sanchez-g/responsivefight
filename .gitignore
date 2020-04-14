@@ -352,3 +352,5 @@ MigrationBackup/
 # Cypress
 
 videos/
+cypress/videos/
+cypres/screenshots/
