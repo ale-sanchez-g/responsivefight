@@ -7,13 +7,14 @@ context('COVID19 Battles', () => {
   
     it('Office battle', () => {      
       cy.get('#start').click()
+      cy.get('#office').click()
       cy.get('#staticBackdrop')
       .should('be.visible')
       cy.get('#start').click()
       cy.get('#staticBackdrop')
       .should('be.hidden')      
       //check all elements are visible on Page
-      cy.get('#img-office')
+      cy.get('#img_office')
       .should('be.visible')
       cy.get('#myProgress')
       .should('be.visible')      
@@ -40,18 +41,6 @@ context('COVID19 Battles', () => {
       cy.get('#close_modal_btn_2').click()
       cy.get('#staticBackdrop3')
       .should('be.hidden')
-      
-      
-      cy.get('#office').click()
-      cy.get('#office_title').contains('At the Office') 
-      cy.get('#office_question_1')
-      .should('be.visible')
-      cy.get('#office_answer_1')
-      .should('be.visible')
-      cy.get('#office_answer_2')
-      .should('be.visible')
-      cy.get('#img_office')
-      .should('be.visible')
     })
 
     it('Bus battle', () => {
