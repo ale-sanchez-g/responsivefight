@@ -54,24 +54,6 @@ context('COVID19 Battles', () => {
       .should('be.visible')
     })
 
-<<<<<<< HEAD
-    //TEST: timeout modal is visible on Page after interval
-    it('Office battle', () => {
-      cy.get('#start').click()
-      cy.get('#staticBackdrop')
-      .should('be.visible')
-      cy.wait(2400)
-      cy.get('#staticBackdrop4')
-      .should('be.visible')           
-    })
-
-    // it('Bus battle', () => {
-    //     cy.get('#start').click()
-    //     cy.get('#bus').click()
-    //     cy.get('#img-bus')
-    //     .should('be.visible')
-    //   })
-=======
     it('Bus battle', () => {
       cy.get('#start').click()
       cy.get('#bus').click()
@@ -85,7 +67,6 @@ context('COVID19 Battles', () => {
       cy.get('#img_bus')
       .should('be.visible')
     })
->>>>>>> e66bed47fae3425ee4569d13396a1f6d113730cf
 
     it('Restaurant battle', () => {
       cy.get('#start').click()
