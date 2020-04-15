@@ -22,5 +22,5 @@
         - /root/.cache      
       ci:
         - npm install
-        - npm start &
+        - npm start & wait-on http://localhost:8080
         - npm test
