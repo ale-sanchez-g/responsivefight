@@ -4,7 +4,7 @@
     language: node_js
     
     node_js:
-      - 10.15.1
+      - 10.16.3
     # Build Environment
     build_environment: Ubuntu 16.04
     
@@ -18,14 +18,11 @@
         # https://github.com/cypress-io/cypress-docker-images
         image_name: cypress/browsers
         # use specific tag to avoid surprises
-        image_tag: node12.13.0-chrome80-ff74
+        image_tag: node10.16.3-chrome80-ff73
         pull: true          
       # Caching configuration to avoid reinstalling node modules and Cypress binary again and again
       # http://docs.shippable.com/ci/caching/
-      cache: true
-      cache_dir_list:
-        - /root/.npm
-        - /root/.cache      
+      cache: false      
       ci:
         - npm install
         - npm start &
