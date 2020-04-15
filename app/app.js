@@ -1,13 +1,18 @@
-var express = require('express');
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var home = require('./routes/home');
-
-var app = express();
+let express = require('express');
+let http = require('http');
+let fs = require('fs');
+let path = require('path');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let home = require('./routes/home');
+let static_html = [
+    "covid",
+    "office",
+    "bus",
+    "restaurant"
+]
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -17,37 +22,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.get('/', home.home);
 
-var port =process.env.PORT || 8080;
-
+let port =process.env.PORT || 8080;
 app.listen(port);
 
 module.exports = app;
 
-//create a server route to serve each individual html file and Json response
-var server = http.createServer(function(req,res){
+static_html.forEach(function(page){
+    app.get(`/${page}`, (req, res) => {
+        fs.readFile(__dirname + `/public/${page}.html`, 'utf8', (err, text) => {
+            res.send(text);
+        });
+    });
+});
+
+//create a server route to serve each local API call until we move to use the proper API
+let server = http.createServer(function(req,res){
     console.log('request was made: ' + req.url);
-    if(req.url === '/covid'){
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/covid.html').pipe(res);
-    }
-    else if(req.url === '/office'){
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/office.html').pipe(res);
-    } 
-    else if(req.url === '/bus'){
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/bus.html').pipe(res);
-    }
-    else if(req.url === '/restaurant'){
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/restaurant.html').pipe(res);
-    }
-    else if(req.url === '/api/officeQuestions') 
+    if(req.url === '/api/officeQuestions') 
     {
-        var myObj = {
+        let myObj = {
             question: 'Marcus, your coworker, is constantly coughing in the office, what do you do?',
             answer1: 'Use your superheroe Social Distance, notify your Manager and maintain a safe distance.',
             answer2: 'Keep it to yourself, do not draw attention, and pretend you did not notice!',
@@ -60,7 +55,7 @@ var server = http.createServer(function(req,res){
     }
     else if(req.url === '/api/busQuestions') 
     {
-        var myObj = {
+        let myObj = {
             question: 'Someone sits next you, and is begining to cough, what do you do?',
             answer1: 'User your superheroes "Punch" and keep it to yourself',
             answer2: 'move to another sit immediately and report it to the driver!',
@@ -73,7 +68,7 @@ var server = http.createServer(function(req,res){
     }
     else if(req.url === '/api/restaurantQuestions') 
     {
-        var myObj = {
+        let myObj = {
             question: 'You notice people siting next to each otherin a restaurant, what do you do?',
             answer1: 'User your superheroes "Sanitizer", keep a safe distance and ask them to remain at home',
             answer2: 'move away immediately and report it to the police!',
@@ -86,7 +81,7 @@ var server = http.createServer(function(req,res){
     }
     else 
     {
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(404, {'Content-Type': 'text/html'});
         fs.createReadStream(__dirname + '/404.html').pipe(res);
     }
 });
