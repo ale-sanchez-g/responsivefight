@@ -13,7 +13,13 @@
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
 
-    build:    
+    build:
+      pre_ci_boot:
+        # https://github.com/cypress-io/cypress-docker-images
+        image_name: cypress/browsers
+        # use specific tag to avoid surprises
+        image_tag: node12.13.0-chrome80-ff74
+        pull: true          
       # Caching configuration to avoid reinstalling node modules and Cypress binary again and again
       # http://docs.shippable.com/ci/caching/
       cache: true
