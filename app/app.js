@@ -6,6 +6,8 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 let home = require('./routes/home');
+let questions = require('./routes/api');
+
 let static_html = [
     "covid",
     "office",
@@ -23,6 +25,9 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.get('/', home.home);
+app.get('/api/officeQuestions', questions.office);
+app.get('/api/busQuestions', questions.bus);
+app.get('/api/restaurantQuestions', questions.restaurant);
 
 let port =process.env.PORT || 8080;
 app.listen(port);

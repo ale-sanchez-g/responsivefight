@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/ale-sanchez-g/responsivefight#readme",
   "devDependencies": {
-    "cypress": "^4.4.0"
+    "cypress": "3.4.1"
   }
 }
