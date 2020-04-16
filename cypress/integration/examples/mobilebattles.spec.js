@@ -56,7 +56,38 @@ context('COVID19 Mobile Battles', () => {
       .should('be.visible')
       cy.get('#img_bus')
       .should('be.visible')
+      
     })
+
+    it('Validate selecting the Start Button on Initial Modal button should close the Modal on Screen', () => {
+      cy.get('#bus_timer_start').click()
+      cy.get('#bus_intro_modal')
+      .should('be.hidden')
+    });
+
+    it('Validate CORRECT Bus answer should present CORRECT modal to user', () => {
+      cy.get('#bus_answer_1').click()
+      cy.get('#bus_correct_modal')
+      .should('be.visible')
+    });
+
+    it('Validate selecting the Close Modal button should close the Modal on Screen', () => {
+      cy.get('#close_correct_modal_btn').click()
+      cy.get('#bus_correct_modal')
+      .should('be.hidden')
+    });
+
+    it('Validate selecting INCORRECT answer button should present INCORRECT modal to user', () => {
+      cy.get('#bus_answer_2').click()
+      cy.get('#bus_incorrect_modal')
+      .should('be.visible')
+    });
+
+    it('Validate selecting the Close Modal button should close the Modal on Screen', () => {
+      cy.get('#close_correct_modal_btn').click()
+      cy.get('#bus_incorrect_modal')
+      .should('be.hidden')
+    });
 
     it('Restaurant battle', () => {
       cy.get('#start').click()
