@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app/app.js",
-    "test": "node_modules/.bin/cypress run --env shippable=true"
+    "test": "node_modules/.bin/cypress run --browser chrome --headless --env shippable=true"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/ale-sanchez-g/responsivefight#readme",
   "devDependencies": {
-    "cypress": "3.4.1"
+    "cypress": "4.0.0"
   }
 }
