@@ -4,7 +4,7 @@ $( document ).ready(function() {
     $('#staticBackdrop').modal('show');
     // $('.slideImg').animate({right:'0px'},1200);
     // TODO:Enable once API's are enabled
-    // getQnAData();    
+     getQnAData();    
 });
 
 // Start the timer the modal to user on pageload
@@ -78,22 +78,42 @@ $( "#office_answer_2" ).click(function() {
 });
 
 ///TODO:ENABLE BELOW ONCE API's ARE WORKING
-// function getQnAData (){
+function getQnAData (){
+var office_question   = $("#office_question_1");
+var office_answer_one = $("#office_answer_1");
+var office_answer_two = $("#office_answer_2");
 //Jquery Ajax - Fetch the questions
-// $.ajax({
-//         url: "https://responsivefight.herokuapp.com/api/officeQuestions",
-//         type: 'GET',
-//         dataType: 'json', // added data type
-//         success: function(res) {
-//             console.log(res);
-  // create an object with the key of the array
-//             var json = $.parseJSON(data); 
-//             var correctAnswer = json.
-//             alert(res);
-//         }
-//     });
-// }
+$.ajax({
+        url: "/api/officeQuestions",
+        type: 'GET',
+        //By using datatype we set what we receive and parse the response as a Json object to save us using something like 
+        //var response = JSON.parse(response); Neat right?
+        dataType: 'json', // << data type
+        success: function(response) {
+          //Log the success on the call
+          console.log("Q&A API reponse success");
+          //Break the object with the key of the array - in case you need to append extra stuff, etc
+            var question = response.question; 
+            var answer_one = response.answer1;
+            var answer_two = response.answer2;
+            var correct_answer = response.solution.correctAnswer;
+            //alert(correct_answer);
+            office_question.append(question);
+            office_answer_one.append(answer_one);
+            office_answer_two.append(answer_two);
+            //We don't need to replace the entire element with style, just append the value.
+            //$('#office_answer_1').replaceWith('<a href="#" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;">'+json.answer1+'</a>');
+          }
+          }).fail(function (jqXHR, textStatus, error) {
+          // Handle error here
+            office_question.append("Fail to receive API data");
+            office_answer_one.append("Fail to receive API data");
+            office_answer_two.append("Fail to receive API data");
+            console.log("API reponse is " + jqXHR.status);
+  });
+}
 
+//Enable this once server side logic does answer checking
 // function submitAnswer (answer) {
 // //Jquery Ajax - Post the Answer
 // var data = [{ "response": answer}]
