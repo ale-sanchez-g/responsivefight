@@ -2,11 +2,11 @@
 
 context('COVID19 Battles', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:8080')
+      cy.visit('http://localhost:8080/covid')
     })
     
     it('User can choose from different battlefields', () => {
-      cy.get('#start').click()
+      // cy.get('#start').click()
       //check all elements are visible on Page
       cy.get('#world_img')
       .should('be.visible')
@@ -25,7 +25,7 @@ context('COVID19 Battles', () => {
     })
 
     it('Office battle', () => {      
-      cy.get('#start').click()
+      // cy.get('#start').click()
       cy.get('#office').click()
       cy.get('#staticBackdrop')
       .should('be.visible')
@@ -66,7 +66,7 @@ context('COVID19 Battles', () => {
     })
 
     it('Bus battle', () => {      
-      cy.get('#start').click()
+      // cy.get('#start').click()
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')
       .should('be.visible')
@@ -105,7 +105,7 @@ context('COVID19 Battles', () => {
     })
 
     it('Restaurant battle', () => {
-      cy.get('#start').click()
+      // cy.get('#start').click()
       cy.get('#restaurant').click() 
       cy.get('#restaurant_title').contains('At the Restaurant ')             
       cy.get('#restaurant_question_1')
