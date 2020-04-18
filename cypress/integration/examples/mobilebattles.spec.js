@@ -33,15 +33,15 @@ context('COVID19 Mobile Battles', () => {
       .should('be.visible')
       cy.get('#close_modal_btn_1').click()
       cy.get('#staticBackdrop2')
-      .should('be.hidden')
+      .should('not.be.visible')
 
-      //Test: Select CORRECT answer button should present CORRECT modal to user
+      //Test: Select INCORRECT answer button should present INCORRECT modal to user
       cy.get('#office_answer_2').click()
       cy.get('#staticBackdrop3')
       .should('be.visible')
       cy.get('#close_modal_btn_2').click()
       cy.get('#staticBackdrop3')
-      .should('be.hidden')
+      .should('not.be.visible')
     })
 
     it('Bus battle', () => {      
@@ -71,7 +71,7 @@ context('COVID19 Mobile Battles', () => {
       .should('be.visible')
       cy.get('#close_correct_modal_btn').click()
       cy.get('#bus_correct_modal')
-      .should('be.hidden')
+      .should('not.be.visible')
 
       //Test: Select answer button should present modal B to user
       cy.get('#bus_answer_2').click()
@@ -79,7 +79,7 @@ context('COVID19 Mobile Battles', () => {
       .should('be.visible')
       cy.get('#close_incorrect_modal_btn').click()
       cy.get('#bus_incorrect_modal')
-      .should('be.hidden')
+      .should('not.be.visible')
     })
 
     it('Restaurant battle', () => {

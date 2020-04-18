@@ -40,7 +40,7 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       cy.get('#close_modal_btn_2').click()
       cy.get('#staticBackdrop3')
-      .should('be.hidden')
+      .should('not.be.visible')
     })
 
     it('Bus battle', () => {      
@@ -78,7 +78,7 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       cy.get('#close_incorrect_modal_btn').click()
       cy.get('#bus_incorrect_modal')
-      .should('be.hidden')
+      .should('not.be.visible')
     })
 
     it('Restaurant battle', () => {
