@@ -5,6 +5,25 @@ context('COVID19 Mobile Battles', () => {
       cy.viewport('iphone-6')
       cy.visit('http://localhost:8080')
     })
+
+    it('User can choose from different battlefields', () => {
+      cy.get('#start').click()
+      //check all elements are visible on Page
+      cy.get('#world_img')
+      .should('be.visible')
+      cy.get('#office_img')
+      .should('be.visible')
+      cy.get("#office")
+      .should('have.attr', 'href', 'office')      
+      cy.get('#bus_img')
+      .should('be.visible')
+      cy.get("#bus")
+      .should('have.attr', 'href', 'bus')  
+      cy.get('#restaurant_img')
+      .should('be.visible')
+      cy.get("#restaurant")
+      .should('have.attr', 'href', 'restaurant') 
+    })
   
     it('Office battle', () => {      
       cy.get('#start').click()
@@ -28,14 +47,6 @@ context('COVID19 Mobile Battles', () => {
       .should('be.visible')
       //End - check all elements are visible on Page
       
-      //Test: Select CORRECT answer button should present CORRECT modal to user
-      cy.get('#office_answer_1').click()
-      cy.get('#staticBackdrop2')
-      .should('be.visible')
-      cy.get('#close_modal_btn_1').click()
-      cy.get('#staticBackdrop2')
-      .should('not.be.visible')
-
       //Test: Select INCORRECT answer button should present INCORRECT modal to user
       cy.get('#office_answer_2').click()
       cy.get('#staticBackdrop3')
@@ -43,6 +54,16 @@ context('COVID19 Mobile Battles', () => {
       cy.get('#close_modal_btn_2').click()
       cy.get('#staticBackdrop3')
       .should('not.be.visible')
+
+      //Test: Select CORRECT answer button should present CORRECT modal to user
+      cy.get('#office_answer_1').click()
+      cy.get('#staticBackdrop2')
+      .should('be.visible')
+      cy.get('#close_modal_btn_1').click()
+
+      // User is sent back to the home page
+      cy.get('#world_img')
+      .should('be.visible')
     })
 
     it('Bus battle', () => {      
