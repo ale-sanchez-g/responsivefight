@@ -103,7 +103,7 @@ div.doubleblock {
   font-weight: bold;
   font-size: x-large;
 }
-/* Progress Bar */
+/* Office Progress Bar */
 #myProgress {
   width: 100%;
   background-color: #ddd;
@@ -114,7 +114,20 @@ div.doubleblock {
   height: 4px;
   background-color: #4CAF50;
 }
-/* End Progress Bar */
+/* End Office Progress Bar */
+
+/* Bus Progress Bar */
+#bus_progress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#bus_bar {
+  width: 0%;
+  height: 4px;
+  background-color: #4CAF50;
+}
+/* End Bus Progress Bar */
 
 /* Bootstrap answers buttons stacked side by side  */
 .btn-office {
