@@ -108,14 +108,39 @@ context('COVID19 Mobile Battles', () => {
     it('Restaurant battle', () => {
       cy.get('#start').click()
       cy.get('#restaurant').click() 
+      cy.get('#restaurant_intro_modal')
+      .should('be.visible')
+      cy.get('#restaurant_timer_start').click()
+      cy.get('#restaurant_intro_modal')
+      .should('be.hidden')      
+      //check all elements are visible on Page      
+      cy.get('#img_restaurant')
+      .should('be.visible')
+      cy.get('#restaurant_progress')
+      .should('be.visible') 
       cy.get('#restaurant_title').contains('At the Restaurant ')             
       cy.get('#restaurant_question_1')
       .should('be.visible')
-      cy.get('#office_answer_1')
+      cy.get('#restaurant_answer_1')
       .should('be.visible')
-      cy.get('#office_answer_2')
+      cy.get('#restaurant_answer_2')
       .should('be.visible')
-      cy.get('#img_restaurant')
+      //End - check all elements are visible on Page
+
+      //Test: Select answer button should present modal A to user
+      cy.get('#restaurant_answer_1').click()
+      cy.get('#restaurant_correct_modal')
       .should('be.visible')
+      cy.get('#close_correct_modal_btn').click()
+      cy.get('#restaurant_correct_modal')
+      .should('be.hidden')
+
+      //Test: Select answer button should present modal B to user
+      cy.get('#restaurant_answer_2').click()
+      cy.get('#restaurant_incorrect_modal')
+      .should('be.visible')
+      cy.get('#close_incorrect_modal_btn').click()
+      cy.get('#restaurant_incorrect_modal')
+      .should('not.be.visible')
       })
   })
