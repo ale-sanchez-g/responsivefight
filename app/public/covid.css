@@ -42,7 +42,7 @@ div.doubleblock {
 .anime {
   background-color: white;
   animation-name: animation;
-  animation-duration: 1s;
+  animation-duration: 3.5s;
   animation-iteration-count: 100;
 }
 
