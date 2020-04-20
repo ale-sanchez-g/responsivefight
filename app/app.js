@@ -107,14 +107,30 @@ let server = http.createServer(function(req,res){
     }
     else if(req.url === '/api/restaurantQuestions') 
     {
-        let myObj = {
+        let myObj = [{
             question: 'You notice people siting next to each otherin a restaurant, what do you do?',
             answer1: 'User your superheroes "Sanitizer", keep a safe distance and ask them to remain at home',
-            answer2: 'move away immediately and report it to the police!',
+            answer2: 'move away immediately and report it to the Driver!',
             solution: {
-                "correctAnswer": 'move to another sit immediately and report it to the driver!'
-            }
-        };
+                "correctAnswer": 'move away immediately and report it to the Driver!'
+                }
+            },
+            {
+                question: 'You notice one of the waiters serving food is Ill and handling orders at a restaurant, what do you do?',
+                answer1: 'Ignore the signs of "Social Waiting", and remain oblivious or the situatione',
+                answer2: 'Use reasonable logic, keep distance from the waiter and report it to management!',
+                solution: {
+                    "correctAnswer": 'Use reasonable logic, keep distance from the waiter and report it to management!'
+                    }
+            },
+            {
+                question: 'You notice the people at the bar are re-using shot glasses for a group round of drinks, what do you do?',
+                answer1: 'Approach the Group as it seems "Fun", and partake in the social festivities',
+                answer2: 'Do not ignore the sign of possible contamination and report it to Management.',
+                solution: {
+                    "correctAnswer": 'Do not ignore the sign of possible contamination and report it to Management.'
+                    }
+        }];
         res.writeHead(200, {'Content-Type': 'application/json'});    
         res.end(JSON.stringify(myObj))
     }
