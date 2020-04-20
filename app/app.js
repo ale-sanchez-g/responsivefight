@@ -47,14 +47,32 @@ let server = http.createServer(function(req,res){
     console.log('request was made: ' + req.url);
     if(req.url === '/api/officeQuestions') 
     {
-        let myObj = {
+        let myObj = 
+        [
+            {
             question: 'Marcus, your coworker, is constantly coughing in the office, what do you do?',
             answer1: 'Use your superheroe Social Distance, notify your Manager and maintain a safe distance.',
             answer2: 'Keep it to yourself, do not draw attention, and pretend you did not notice!',
             solution: {
                 "correctAnswer": 'User your superheroe "Distance" and keep it to yourself'
-            }            
-        };
+                }
+            },
+            {
+                question: 'Mary from HR, send a memo advising she is ill and everyone should reach her via email only, what do you do?',
+                answer1: 'Use your superheroe Social Distancing, notify your Manager and recomend to her staying at home.',
+                answer2: 'Ignore the risk, email Mary only if neccessary and go on with your own work!',
+                solution: {
+                    "correctAnswer": 'Use your superheroe Social Distancing, notify your Manager and recomend to her staying at home.'
+                }
+            },
+            {
+                question: 'Alex, your Manager, tells you his partner recently came back from overseas recently, and is seen constantly sneezing during the day, what do you do?',
+                answer1: 'Comfort your Manager, and assure him it is only natural to have a seasonal cold this time of the year.',
+                answer2: 'Use your superheroe Social Distance, advise your Manager of the pertaining risk and maintain a safe distance.',
+                solution: {
+                    "correctAnswer": 'Use your superheroe Social Distance, advise your Manager of the pertaining risk and maintain a safe distance.'
+            }
+        }];
         res.writeHead(200, {'Content-Type': 'application/json'});    
         res.end(JSON.stringify(myObj))
     }
