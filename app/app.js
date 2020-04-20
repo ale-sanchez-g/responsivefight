@@ -78,14 +78,30 @@ let server = http.createServer(function(req,res){
     }
     else if(req.url === '/api/busQuestions') 
     {
-        let myObj = {
+        let myObj = [{
             question: 'Someone sits next you, and is begining to cough, what do you do?',
-            answer1: 'User your superheroes "Punch" and keep it to yourself',
-            answer2: 'move to another sit immediately and report it to the driver!',
+            answer1: 'User your superheroes "Slap" and keep it to yourself',
+            answer2: 'move to another seat immediately and report it to the driver!',
             solution: {
-                "correctAnswer": 'move to another sit immediately and report it to the driver!'
-            }
-        };
+                "correctAnswer": 'move to another seat immediately and report it to the driver!'
+                }
+            },
+            {
+                question: 'A tourist enters the bus stop, and closely approaches you for directions, what do you do?',
+                answer1: 'Use your Superhero "Distancing" & Sanitizer, politely point to the driver keep to yourself',
+                answer2: 'Shake hands and give the lost passenger directions the driver!',
+                solution: {
+                    "correctAnswer": 'move to another sit immediately and report it to the driver!'
+                }
+            },
+            {
+                question: 'A family of 3 children enters the bus stop, and they all look rather ill, what do you do?',
+                answer1: 'Use your superheroes Face Mask, Social Distancing & Sanitizer, and maintain a distance',
+                answer2: 'Approach the family, ask them to be responsible and head to the doctor immediately!',
+                solution: {
+                    "correctAnswer": 'Use your superheroes Face Mask, Social Distancing & Sanitizer, and maintain a distance!'
+                }
+        }];
         res.writeHead(200, {'Content-Type': 'application/json'});    
         res.end(JSON.stringify(myObj))
     }
