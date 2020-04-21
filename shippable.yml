@@ -7,7 +7,10 @@
       - 10.16.3
     # Build Environment
     build_environment: Ubuntu 16.04
-    
+    env:
+      global:
+        - APP_NAME=responsivefight
+
     # Create directories for test and coverage reports
     before_script:
       - mkdir -p shippable/testresults
@@ -21,8 +24,8 @@
         image_tag: node10.16.3-chrome80-ff73
         pull: true
       ci:
-        - sh version.sh
+        - echo $BUILD_NUMBER
+        - version.sh
         - npm install
-        - npm start &
-        - sleep 10
-        - npm test
+      on_success:
+        - git push -f git@heroku.com:$APP_NAME.git master
