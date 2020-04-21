@@ -25,7 +25,7 @@
         pull: true
         options: "-m 900M"
       ci:
-        - export ELECTRON_EXTRA_LAUNCH_ARGS=--disable-http-cache --ignore-certificate-errors  --disable-dev-shm-usage
+        - export ELECTRON_EXTRA_LAUNCH_ARGS='--disable-http-cache --ignore-certificate-errors  --disable-dev-shm-usage'
         - chmod u+x version.sh
         - ./version.sh
         - cat app/public/version.json
