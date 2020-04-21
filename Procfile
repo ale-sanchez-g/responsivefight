@@ -1,1 +1,1 @@
-web: npm start
+web: sh version.sh || npm start
