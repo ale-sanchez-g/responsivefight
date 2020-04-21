@@ -33,7 +33,7 @@
       on_success:
         - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
         - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f /tmp/ssh/00_sub > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
-        - heroku container:login || docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
+        - docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
         - docker build -t registry.heroku.com/$APP_NAME/web .
         - docker push registry.heroku.com/$APP_NAME/web
         - if [ "$BRANCH" == "master" ]; then git push -f git@heroku.com:$APP_NAME.git master; fi
