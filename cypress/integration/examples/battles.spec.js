@@ -24,7 +24,7 @@ context('COVID19 Battles', () => {
       .should('have.attr', 'href', 'restaurant') 
     })
 
-    it('Bus battle', () => {      
+    it.skip('Bus battle', () => {      
       cy.get('#start').click()
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')

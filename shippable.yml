@@ -29,6 +29,8 @@
         - cat app/public/version.json
         - npm install
         - npm start &
-        - npm test
+        - npm test  
       on_success:
+        - docker build -t registry.heroku.com/responsivefight/web .
+        - docker push registry.heroku.com/responsivefight/web
         - if [ "$BRANCH" == "master" ]; then git push -f git@heroku.com:$APP_NAME.git master; fi

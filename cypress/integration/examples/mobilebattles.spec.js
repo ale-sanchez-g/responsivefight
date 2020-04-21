@@ -66,7 +66,7 @@ context('COVID19 Mobile Battles', () => {
       .should('be.visible')
     })
 
-    it('Bus battle', () => {      
+    it.skip('Bus battle', () => {      
       cy.get('#start').click()
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')

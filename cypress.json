@@ -2,5 +2,5 @@
     "video": false,
     "numTestsKeptInMemory": 0,
     "screenshotOnRunFailure": false,
-    "reporter": "landing"
+    "reporter": "spec"
 }

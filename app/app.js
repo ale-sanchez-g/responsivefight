@@ -30,7 +30,6 @@ app.get('/api/busQuestions', questions.bus);
 app.get('/api/restaurantQuestions', questions.restaurant);
 
 let port =process.env.PORT || 8080;
-app.listen(port);
 
 module.exports = app;
 
@@ -42,53 +41,12 @@ static_html.forEach(function(page){
     });
 });
 
-//create a server route to serve each local API call until we move to use the proper API
-let server = http.createServer(function(req,res){
-    console.log('request was made: ' + req.url);
-    if(req.url === '/api/officeQuestions') 
-    {
-        let myObj = {
-            question: 'Marcus, your coworker, is constantly coughing in the office, what do you do?',
-            answer1: 'Use your superheroe Social Distance, notify your Manager and maintain a safe distance.',
-            answer2: 'Keep it to yourself, do not draw attention, and pretend you did not notice!',
-            solution: {
-                "correctAnswer": 'User your superheroe "Distance" and keep it to yourself'
-            }            
-        };
-        res.writeHead(200, {'Content-Type': 'application/json'});    
-        res.end(JSON.stringify(myObj))
-    }
-    else if(req.url === '/api/busQuestions') 
-    {
-        let myObj = {
-            question: 'Someone sits next you, and is begining to cough, what do you do?',
-            answer1: 'User your superheroes "Punch" and keep it to yourself',
-            answer2: 'move to another sit immediately and report it to the driver!',
-            solution: {
-                "correctAnswer": 'move to another sit immediately and report it to the driver!'
-            }
-        };
-        res.writeHead(200, {'Content-Type': 'application/json'});    
-        res.end(JSON.stringify(myObj))
-    }
-    else if(req.url === '/api/restaurantQuestions') 
-    {
-        let myObj = {
-            question: 'You notice people siting next to each otherin a restaurant, what do you do?',
-            answer1: 'User your superheroes "Sanitizer", keep a safe distance and ask them to remain at home',
-            answer2: 'move away immediately and report it to the police!',
-            solution: {
-                "correctAnswer": 'move to another sit immediately and report it to the driver!'
-            }
-        };
-        res.writeHead(200, {'Content-Type': 'application/json'});    
-        res.end(JSON.stringify(myObj))
-    }
-    else 
-    {
-        res.writeHead(404, {'Content-Type': 'text/html'});
-        fs.createReadStream(__dirname + '/404.html').pipe(res);
-    }
-});
 
-server.listen(3000);
+let server = app.listen(port, function () {
+
+    var host = "127.0.0.1";
+    var port = server.address().port;
+
+    console.log("Example app listening at http://%s:%s", host, port)
+
+});
