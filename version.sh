@@ -1,3 +1,5 @@
+#!/bin/bash
+
 str='
 {
     "version": "$BUILD_NUMBER",

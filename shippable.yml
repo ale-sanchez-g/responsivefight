@@ -24,7 +24,9 @@
         image_tag: node10.16.3-chrome80-ff73
         pull: true
       ci:
-        - ./version.sh
         - npm install
+      post_ci:
+        - chmod u+x version.sh
+        - ./version.sh
       on_success:
         - if [ "$BRANCH" == "master" ]; then git push -f git@heroku.com:$APP_NAME.git master; fi
