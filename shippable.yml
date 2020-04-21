@@ -25,7 +25,6 @@
         pull: true
       ci:
         - echo $BUILD_NUMBER
-        - version.sh
         - npm install
       on_success:
         - git push -f git@heroku.com:$APP_NAME.git master
