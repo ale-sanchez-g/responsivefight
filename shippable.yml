@@ -29,6 +29,6 @@
         - cat app/public/version.json
         - npm install
         - npm start &
-        - cypress run
+        - npm test
       on_success:
         - if [ "$BRANCH" == "master" ]; then git push -f git@heroku.com:$APP_NAME.git master; fi

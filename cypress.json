@@ -1,5 +1,6 @@
 {
     "video": false,
     "numTestsKeptInMemory": 0,
-    "screenshotOnRunFailure": false
+    "screenshotOnRunFailure": false,
+    "reporter": "landing"
 }
