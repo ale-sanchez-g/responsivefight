@@ -1,1 +1,0 @@
-echo $HEROKU_API_KEY
