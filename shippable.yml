@@ -33,6 +33,7 @@
       on_success:
         - docker build -t registry.heroku.com/$APP_NAME/web .
         - docker push registry.heroku.com/$APP_NAME/web
+        - heroku container:release -a $APP_NAME web
         - if [ "$BRANCH" == "master" ]; then git push -f git@heroku.com:$APP_NAME.git master; fi
 
     integrations:
