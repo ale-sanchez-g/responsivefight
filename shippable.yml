@@ -10,7 +10,7 @@
     env:
       global:
         - APP_NAME=responsivefight
-
+        - secure: KuYulKFZDPRNrxWVcG04CaD4iiOiVNC7z2e/5tnxxd39Qde30I1CgV76I/HNovG4ypEvmPFRWOZbOu3RKdaMcGNT4Fu6vqd4DlEPbx1tCu4K2kZbsk030P8kttiKsXhVAh+4vOyTF9FIhqZd2nC8p7hRz3pZ/QSrrxeFw8PqlfA3lkn6pwpIZ7cbvR/hnsxSjTyHldVaCXZlud1AMLARWDJXriieg2keWLqBPtGmYFP3mHbV7Mie9zG7V/jVEJ/tAkSjfhqCaOspkDGcMMdd15Q4DEZ9xnjNMrhBcqBU5og7FdND9gemjfC1reo/qCKgN3aNSTLc0+2PNt6FuscBuA==
     # Create directories for test and coverage reports
     before_script:
       - mkdir -p shippable/testresults
@@ -31,11 +31,13 @@
         - npm start &
         - npm test  
       on_success:
+        - chmod u+x heroku.sh
         - rm -rf node_modules
         - npm install --production
         - which heroku || wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
         - docker build -t registry.heroku.com/$APP_NAME/web .
         - docker push registry.heroku.com/$APP_NAME/web
+        - ./heroku.sh
         - heroku container:release -a responsivefight web
         - if [ "$BRANCH" == "master" ]; then git push -f git@heroku.com:$APP_NAME.git master; fi
 
