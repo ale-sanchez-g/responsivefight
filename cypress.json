@@ -1,3 +1,9 @@
 {
-    "video": false
-}
+    "video": false,
+    "numTestsKeptInMemory": 0,
+    "screenshotOnRunFailure": false,
+    "reporter": "junit",
+    "reporterOptions": {
+      "mochaFile": "shippable/testresults/test-output-[hash].xml",
+      "toConsole": false
+    }}
