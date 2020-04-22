@@ -10,7 +10,7 @@
     env:
       global:
         - APP_NAME=responsivefight
-        - secure: k6/84MShokjmP9Hh1mQ2mtYc6VlXM6tiR0rsFu7FqmsymcwBvlhFqI9vkYKb396YxoqKt9B3qRUzT3HMzjg3IGtr9fpKDGe75QivQguoczsxFJIdf63uwXASGfgmgdBZmkIlfs/u2YefFS5+glKQJMLQCS/EvYNZqBY4ANZLIwHYFfb3S9Qc61D8SjRL9H0SE72nK7yXDsKYR153ap2/ApCp1JdMMX5JYNFhBy2cKS6TZbjIICnIExOAdd7X1J/HvWtVUFcSDKqEZvChcEaLdB1SETGopi0uQgut/40Vyez2WHL/S7Dc3Rf5pwMPZhiOwYm88s+EoqKiv7b7Hj24Cw==    # Create directories for test and coverage reports
+        - secure: jTIjUCxuaCckv89Ex1CmEYRbvRmXYR2Ag0VheBlHkpPojUcymJUCnthsPM7vlT+Vf6S5Kyct/LfFyZck2WhDgdIC95sCwLyuMC4T6/pN7g9WU1rJs7qQc8xcgEabRpQNrSnuebzCE5JufEugxqgiebt0bOoGN4Mp+/BZz+oxvuKM00UihV7BA5pr7E+TZAJGOayVLt+WY3eBG/cUJhFkCN1OAIsT41SIXJLEX0yqtv8CkdCbGtVOCoZv8uorhRAKv9UgZh4u3wKRT1UljLk20hsXT+ei5rE0QTIyN5UQ5W1YsISnq8zEhr7jlabM4LeXfFHddx6HY0bc0LrLw2aO2A==
     before_script:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
@@ -37,6 +37,8 @@
         - docker build -t registry.heroku.com/$APP_NAME/web .
         - docker push registry.heroku.com/$APP_NAME/web
         - ./heroku.sh
+        - cat ~/.netrc
+        - heroku login -i 
         - heroku container:release -a responsivefight web
         - if [ "$BRANCH" == "master" ]; then git push -f git@heroku.com:$APP_NAME.git master; fi
 
