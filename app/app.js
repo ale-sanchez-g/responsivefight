@@ -41,6 +41,11 @@ static_html.forEach(function(page){
     });
 });
 
+app.get('*', function(req, res){
+    fs.readFile(__dirname + `/public/404.html`, 'utf8', (err, text) => {
+        res.send(text, 404);
+    });
+});
 
 let server = app.listen(port, function () {
 
