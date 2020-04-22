@@ -10,8 +10,7 @@
     env:
       global:
         - APP_NAME=responsivefight
-        - secure: KuYulKFZDPRNrxWVcG04CaD4iiOiVNC7z2e/5tnxxd39Qde30I1CgV76I/HNovG4ypEvmPFRWOZbOu3RKdaMcGNT4Fu6vqd4DlEPbx1tCu4K2kZbsk030P8kttiKsXhVAh+4vOyTF9FIhqZd2nC8p7hRz3pZ/QSrrxeFw8PqlfA3lkn6pwpIZ7cbvR/hnsxSjTyHldVaCXZlud1AMLARWDJXriieg2keWLqBPtGmYFP3mHbV7Mie9zG7V/jVEJ/tAkSjfhqCaOspkDGcMMdd15Q4DEZ9xnjNMrhBcqBU5og7FdND9gemjfC1reo/qCKgN3aNSTLc0+2PNt6FuscBuA==
-    # Create directories for test and coverage reports
+        - secure: k6/84MShokjmP9Hh1mQ2mtYc6VlXM6tiR0rsFu7FqmsymcwBvlhFqI9vkYKb396YxoqKt9B3qRUzT3HMzjg3IGtr9fpKDGe75QivQguoczsxFJIdf63uwXASGfgmgdBZmkIlfs/u2YefFS5+glKQJMLQCS/EvYNZqBY4ANZLIwHYFfb3S9Qc61D8SjRL9H0SE72nK7yXDsKYR153ap2/ApCp1JdMMX5JYNFhBy2cKS6TZbjIICnIExOAdd7X1J/HvWtVUFcSDKqEZvChcEaLdB1SETGopi0uQgut/40Vyez2WHL/S7Dc3Rf5pwMPZhiOwYm88s+EoqKiv7b7Hj24Cw==    # Create directories for test and coverage reports
     before_script:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
