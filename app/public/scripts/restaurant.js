@@ -105,7 +105,7 @@ function getQnAData() {
         //var response = JSON.parse(response); Neat right?
         dataType: 'json', // << data type
         success: function (response) {
-            alert(response);
+            //alert(response);
             //Log the success on the call
             console.log("Q&A API reponse success");
             //Break the object with the key of the array - in case you need to append extra stuff, etc
