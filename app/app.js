@@ -42,6 +42,7 @@ static_html.forEach(function(page){
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //create a server route to serve each local API call until we move to use the proper API
 let server = http.createServer(function(req,res){
     console.log('request was made: ' + req.url);
@@ -140,11 +141,16 @@ let server = http.createServer(function(req,res){
         fs.createReadStream(__dirname + '/404.html').pipe(res);
     }
 =======
+=======
+>>>>>>> 9526d4b51fdcb0c94d841fbf20b1c915d999284a
 app.get('*', function(req, res){
     fs.readFile(__dirname + `/public/404.html`, 'utf8', (err, text) => {
         res.send(text, 404);
     });
+<<<<<<< HEAD
 >>>>>>> f01cf70332bfc23cbf089038db5fcab89afc1d63
+=======
+>>>>>>> 9526d4b51fdcb0c94d841fbf20b1c915d999284a
 });
 
 let server = app.listen(port, function () {
