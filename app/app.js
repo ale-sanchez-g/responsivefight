@@ -30,7 +30,6 @@ app.get('/api/busQuestions', questions.bus);
 app.get('/api/restaurantQuestions', questions.restaurant);
 
 let port =process.env.PORT || 8080;
-app.listen(port);
 
 module.exports = app;
 
@@ -42,6 +41,7 @@ static_html.forEach(function(page){
     });
 });
 
+<<<<<<< HEAD
 //create a server route to serve each local API call until we move to use the proper API
 let server = http.createServer(function(req,res){
     console.log('request was made: ' + req.url);
@@ -139,6 +139,19 @@ let server = http.createServer(function(req,res){
         res.writeHead(404, {'Content-Type': 'text/html'});
         fs.createReadStream(__dirname + '/404.html').pipe(res);
     }
+=======
+app.get('*', function(req, res){
+    fs.readFile(__dirname + `/public/404.html`, 'utf8', (err, text) => {
+        res.send(text, 404);
+    });
+>>>>>>> f01cf70332bfc23cbf089038db5fcab89afc1d63
 });
 
-server.listen(3000);
+let server = app.listen(port, function () {
+
+    var host = "127.0.0.1";
+    var port = server.address().port;
+
+    console.log("Example app listening at http://%s:%s", host, port)
+
+});
