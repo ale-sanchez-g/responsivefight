@@ -7,8 +7,10 @@
       - 10.16.3
     # Build Environment
     build_environment: Ubuntu 16.04
-    
-    # Create directories for test and coverage reports
+    env:
+      global:
+        - APP_NAME=responsivefight
+        - secure: jTIjUCxuaCckv89Ex1CmEYRbvRmXYR2Ag0VheBlHkpPojUcymJUCnthsPM7vlT+Vf6S5Kyct/LfFyZck2WhDgdIC95sCwLyuMC4T6/pN7g9WU1rJs7qQc8xcgEabRpQNrSnuebzCE5JufEugxqgiebt0bOoGN4Mp+/BZz+oxvuKM00UihV7BA5pr7E+TZAJGOayVLt+WY3eBG/cUJhFkCN1OAIsT41SIXJLEX0yqtv8CkdCbGtVOCoZv8uorhRAKv9UgZh4u3wKRT1UljLk20hsXT+ei5rE0QTIyN5UQ5W1YsISnq8zEhr7jlabM4LeXfFHddx6HY0bc0LrLw2aO2A==
     before_script:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage
@@ -21,7 +23,17 @@
         image_tag: node10.16.3-chrome80-ff73
         pull: true
       ci:
+        - chmod u+x version.sh
+        - ./version.sh
+        - cat app/public/version.json
         - npm install
         - npm start &
-        - sleep 10
-        - npm test
+        - npm test  
+      on_success:
+        - chmod u+x heroku.sh
+        - if [ "$BRANCH" == "master" ]; then ./heroku.sh; fi
+
+    integrations:
+      hub:
+        - integrationName: HerokuRegistry
+          type: dockerRegistryLogin

@@ -6,7 +6,28 @@ describe('API Testing with Cypress', () => {
         cy.request('http://localhost:8080/api/officeQuestions').as('office')
         cy.request('http://localhost:8080/api/busQuestions').as('bus')
         cy.request('http://localhost:8080/api/restaurantQuestions').as('restaurant')
+        cy.request('http://localhost:8080/version.json').as('version')
       })
+
+    it('Validate the version header', () => {
+        cy.get('@version')
+            .its('headers')
+            .its('content-type')
+            .should('include', 'application/json');
+    });
+ 
+    it('Validate the version status code', () => {
+        cy.get('@version')
+            .its('status')
+            .should('equal', 200);
+    });
+ 
+    it('Validate the version body', () => {
+        cy.get('@version').its('body')
+        .should('include',/^version/)
+        .should('include',/^branch/)
+        .should('include',/^commitId/);
+    });
 
    it('Validate the Office header', () => {
        cy.get('@office')
