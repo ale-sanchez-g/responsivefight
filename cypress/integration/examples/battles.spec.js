@@ -3,6 +3,7 @@
 context('COVID19 Battles', () => {
     beforeEach(() => {
       cy.visit('http://localhost:8080')
+      //cy.visit('https://responsivefight.herokuapp.com')
     })
     
     it('User can choose from different battlefields', () => {
@@ -24,7 +25,7 @@ context('COVID19 Battles', () => {
       .should('have.attr', 'href', 'restaurant') 
     })
 
-    it.skip('Bus battle', () => {      
+    it('Bus battle', () => {      
       cy.get('#start').click()
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')
@@ -46,21 +47,20 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       //End - check all elements are visible on Page
       
-      //Test: Select answer button should present modal A to user
-      cy.get('#bus_answer_1').click()
+      //TEST the incorrect Modal is not present
+      cy.get('#bus_incorrect_modal')
+      .should('not.be.visible')
+      //E2E TEST: Selecting the correct answer will present the success modal
+      cy.getCookie('busca')
+      .then((cookie) => {
+        let correctAnswer = cookie.value           
+        cy.log(correctAnswer)
+        console.log(correctAnswer); 
+        cy.contains(correctAnswer).click();
+      })            
       cy.get('#bus_correct_modal')
       .should('be.visible')
       cy.get('#close_correct_modal_btn').click()
-      cy.get('#bus_correct_modal')
-      .should('be.hidden')
-
-      //Test: Select answer button should present modal B to user
-      cy.get('#bus_answer_2').click()
-      cy.get('#bus_incorrect_modal')
-      .should('be.visible')
-      cy.get('#close_incorrect_modal_btn').click()
-      cy.get('#bus_incorrect_modal')
-      .should('not.be.visible')
     })
 
     it('Restaurant battle', () => {
@@ -85,20 +85,20 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       //End - check all elements are visible on Page
 
-      //Test: Select answer button should present modal A to user
-      cy.get('#restaurant_answer_1').click()
-      cy.get('#restaurant_correct_modal')
-      .should('be.visible')
-      cy.get('#close_correct_modal_btn').click()
-      cy.get('#restaurant_correct_modal')
-      .should('be.hidden')
-
-      //Test: Select answer button should present modal B to user
-      cy.get('#restaurant_answer_2').click()
-      cy.get('#restaurant_incorrect_modal')
-      .should('be.visible')
-      cy.get('#close_incorrect_modal_btn').click()
-      cy.get('#restaurant_incorrect_modal')
-      .should('not.be.visible')
-      })
+      //TODO:ENABLE ONCE RESTAURANT COOKIE IS SET
+      //TEST the incorrect Modal is not present
+      // cy.get('#restaurant_incorrect_modal')
+      // .should('not.be.visible')
+      // //E2E TEST: Selecting the correct answer will present the success modal
+      // cy.getCookie('busca')
+      // .then((cookie) => {
+      //   let correctAnswer = cookie.value           
+      //   cy.log(correctAnswer)
+      //   console.log(correctAnswer); 
+      //   cy.contains(correctAnswer).click();
+      // })            
+      // cy.get('#restaurant_correct_modal')
+      // .should('be.visible')
+      // cy.get('#close_correct_modal_btn').click()
+       })
   })
