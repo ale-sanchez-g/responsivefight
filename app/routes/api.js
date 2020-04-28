@@ -46,11 +46,13 @@ exports.bus = function(req, res){
 exports.restaurant = function(req, res){
    
     var routing = apiUrl + "restaurant";
-    console.log(routing);
+    console.log(routing);    
+    //let questionPick = getRandomInt(3);
 
     request.get(routing, function(err, response, body) {
         if (!err && response.statusCode == 200) {
             var locals = JSON.parse(body);
+            //res.send(locals[questionPick]);
             res.send(locals);
         }
     })

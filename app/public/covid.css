@@ -129,6 +129,19 @@ div.doubleblock {
 }
 /* End Bus Progress Bar */
 
+/* Restaurant Progress Bar */
+#restaurant_progress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#restaurant_bar {
+  width: 0%;
+  height: 4px;
+  background-color: #4CAF50;
+}
+/* End Restaurant Progress Bar */
+
 /* Bootstrap answers buttons stacked side by side  */
 .btn-office {
   display: inline-block;
