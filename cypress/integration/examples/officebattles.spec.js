@@ -25,16 +25,15 @@ context('COVID19 Battles', () => {
       .should('be.visible')
       //End - check all elements are visible on Page
       
-      //Test: Select CORRECT answer button should present CORRECT modal to user
-      cy.get('#office_answer_2').click()
-      cy.get('#staticBackdrop3')
-      .should('be.visible')
-      cy.get('#close_modal_btn_2').click()
-      cy.get('#staticBackdrop3')
-      .should('not.be.visible')
-
-      //Test: Select CORRECT answer button should present CORRECT modal to user
-      cy.get('#office_answer_1').click()
+      //E2E TEST: Selecting the correct answer will present the success modal
+      cy.wait(500) //for some reason we need to wait for the cookie to load
+      cy.getCookie('busca')
+      .then((cookie) => {
+        let correctAnswer = cookie.value           
+        cy.log(correctAnswer)
+        console.log(correctAnswer); 
+        cy.contains(correctAnswer).click();
+      })          
       cy.get('#staticBackdrop2')
       .should('be.visible')
       cy.get('#close_modal_btn_1').click()

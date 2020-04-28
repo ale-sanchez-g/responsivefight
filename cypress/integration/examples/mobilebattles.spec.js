@@ -47,20 +47,19 @@ context('COVID19 Mobile Battles', () => {
       .should('be.visible')
       //End - check all elements are visible on Page
       
-      //Test: Select INCORRECT answer button should present INCORRECT modal to user
-      cy.get('#office_answer_2').click()
-      cy.get('#staticBackdrop3')
-      .should('be.visible')
-      cy.get('#close_modal_btn_2').click()
-      cy.get('#staticBackdrop3')
-      .should('not.be.visible')
-
-      //Test: Select CORRECT answer button should present CORRECT modal to user
-      cy.get('#office_answer_1').click()
+      //E2E TEST: Selecting the correct answer will present the success modal
+      cy.wait(500) //for some reason we need to wait for the cookie to load
+      cy.getCookie('busca')
+      .then((cookie) => {
+        let correctAnswer = cookie.value           
+        cy.log(correctAnswer)
+        console.log(correctAnswer); 
+        cy.contains(correctAnswer).click();
+      })          
       cy.get('#staticBackdrop2')
       .should('be.visible')
       cy.get('#close_modal_btn_1').click()
-
+    
       // User is sent back to the home page
       cy.get('#world_img')
       .should('be.visible')
@@ -128,18 +127,19 @@ context('COVID19 Mobile Battles', () => {
 
       //TODO:ENABLE ONCE RESTAURANT COOKIE IS SET
       //TEST the incorrect Modal is not present
-      // cy.get('#restaurant_incorrect_modal')
-      // .should('not.be.visible')
-      // //E2E TEST: Selecting the correct answer will present the success modal
-      // cy.getCookie('busca')
-      // .then((cookie) => {
-      //   let correctAnswer = cookie.value           
-      //   cy.log(correctAnswer)
-      //   console.log(correctAnswer); 
-      //   cy.contains(correctAnswer).click();
-      // })            
-      // cy.get('#restaurant_correct_modal')
-      // .should('be.visible')
-      // cy.get('#close_correct_modal_btn').click()
+      cy.get('#restaurant_incorrect_modal')
+      .should('not.be.visible')
+      //E2E TEST: Selecting the correct answer will present the success modal
+      cy.wait(500) //for some reason we need to wait for the cookie to load
+      cy.getCookie('busca')
+      .then((cookie) => {
+        let correctAnswer = cookie.value           
+        cy.log(correctAnswer)
+        console.log(correctAnswer); 
+        cy.contains(correctAnswer).click();
+      })            
+      cy.get('#restaurant_correct_modal')
+      .should('be.visible')
+      cy.get('#close_correct_modal_btn').click()
       })
   })

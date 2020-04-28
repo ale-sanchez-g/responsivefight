@@ -84,21 +84,21 @@ context('COVID19 Battles', () => {
       cy.get('#restaurant_answer_2')
       .should('be.visible')
       //End - check all elements are visible on Page
-
       //TODO:ENABLE ONCE RESTAURANT COOKIE IS SET
       //TEST the incorrect Modal is not present
-      // cy.get('#restaurant_incorrect_modal')
-      // .should('not.be.visible')
-      // //E2E TEST: Selecting the correct answer will present the success modal
-      // cy.getCookie('busca')
-      // .then((cookie) => {
-      //   let correctAnswer = cookie.value           
-      //   cy.log(correctAnswer)
-      //   console.log(correctAnswer); 
-      //   cy.contains(correctAnswer).click();
-      // })            
-      // cy.get('#restaurant_correct_modal')
-      // .should('be.visible')
-      // cy.get('#close_correct_modal_btn').click()
+      cy.get('#restaurant_incorrect_modal')
+      .should('not.be.visible')
+      //E2E TEST: Selecting the correct answer will present the success modal
+      cy.wait(500) //for some reason we need to wait for the cookie to load
+      cy.getCookie('busca')
+      .then((cookie) => {
+        let correctAnswer = cookie.value           
+        cy.log(correctAnswer)
+        console.log(correctAnswer); 
+        cy.contains(correctAnswer).click();
+      })          
+      cy.get('#restaurant_correct_modal')
+      .should('be.visible')
+      cy.get('#close_correct_modal_btn').click()
        })
   })

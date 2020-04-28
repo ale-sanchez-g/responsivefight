@@ -117,6 +117,7 @@ $.ajax({
             office_question.append(question);
             office_answer_one.append(answer_one);
             office_answer_two.append(answer_two);
+            document.cookie = `busca=${correct_answer}`
             //We don't need to replace the entire element with style, just append the value.
             //$('#office_answer_1').replaceWith('<a href="#" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;">'+json.answer1+'</a>');
           }
