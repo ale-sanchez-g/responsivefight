@@ -1,9 +1,11 @@
 {
-    "video": false,
-    "numTestsKeptInMemory": 0,
-    "screenshotOnRunFailure": false,
-    "reporter": "junit",
-    "reporterOptions": {
-      "mochaFile": "shippable/testresults/test-output-[hash].xml",
-      "toConsole": false
-    }}
+  "video": false,
+  "numTestsKeptInMemory": 0,
+  "screenshotOnRunFailure": false,
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "shippable/testresults/test-output-[hash].xml",
+    "toConsole": false
+  },
+  "projectId": "zdo4bo"
+}
