@@ -55,7 +55,7 @@ function startProgressBar() {
 function evaluateAnswer(textString){
   //TODO: remove hardcoded correctanswer to submitAnswer() ajax function once API is enabled
   // submitAnswer();
-  var correctAnswer = getCookie("busca");
+  var correctAnswer = localStorage.getItem("busca");
   //var correctAnswer = "Use your superheroe Social Distance, notify your Manager and maintain a safe distance.";
   //var buttonText = $('#office_answer_1').text();
   if(textString === correctAnswer) {
@@ -78,21 +78,6 @@ $( "#office_answer_2" ).click(function() {
   evaluateAnswer(buttonText2);       
 });
 
-function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(';');
-  for(var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
 ///TODO:ENABLE BELOW ONCE API's ARE WORKING
 function getQnAData (){
 var office_question   = $("#office_question_1");
@@ -113,11 +98,11 @@ $.ajax({
             var answer_one = response.answer1;
             var answer_two = response.answer2;
             var correct_answer = response.solution.correctAnswer;
+            localStorage.setItem("busca", correct_answer);
             //alert(correct_answer);
             office_question.append(question);
             office_answer_one.append(answer_one);
             office_answer_two.append(answer_two);
-            document.cookie = `busca=${correct_answer}`
             //We don't need to replace the entire element with style, just append the value.
             //$('#office_answer_1').replaceWith('<a href="#" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;">'+json.answer1+'</a>');
           }
