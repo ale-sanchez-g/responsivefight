@@ -51,9 +51,9 @@ context('COVID19 Battles', () => {
       cy.get('#bus_incorrect_modal')
       .should('not.be.visible')
       //E2E TEST: Selecting the correct answer will present the success modal
-      cy.getCookie('busca')
-      .then((cookie) => {
-        let correctAnswer = cookie.value           
+      cy.window()
+      .then((window) => {
+        let correctAnswer = localStorage.getItem('busca')           
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();
@@ -90,9 +90,9 @@ context('COVID19 Battles', () => {
       .should('not.be.visible')
       //E2E TEST: Selecting the correct answer will present the success modal
       cy.wait(500) //for some reason we need to wait for the cookie to load
-      cy.getCookie('busca')
-      .then((cookie) => {
-        let correctAnswer = cookie.value           
+      cy.window()
+      .then((window) => {
+        let correctAnswer = localStorage.getItem('busca')           
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();

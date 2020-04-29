@@ -49,13 +49,13 @@ context('COVID19 Mobile Battles', () => {
       
       //E2E TEST: Selecting the correct answer will present the success modal
       cy.wait(500) //for some reason we need to wait for the cookie to load
-      cy.getCookie('busca')
-      .then((cookie) => {
-        let correctAnswer = cookie.value           
+      cy.window()
+      .then((window) => {
+        let correctAnswer = localStorage.getItem('busca')           
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();
-      })          
+      })         
       cy.get('#staticBackdrop2')
       .should('be.visible')
       cy.get('#close_modal_btn_1').click()
@@ -91,9 +91,9 @@ context('COVID19 Mobile Battles', () => {
       cy.get('#bus_incorrect_modal')
       .should('not.be.visible')
       //E2E TEST: Selecting the correct answer will present the success modal
-      cy.getCookie('busca')
-      .then((cookie) => {
-        let correctAnswer = cookie.value           
+      cy.window()
+      .then((window) => {
+        let correctAnswer = localStorage.getItem('busca')           
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();
@@ -131,13 +131,13 @@ context('COVID19 Mobile Battles', () => {
       .should('not.be.visible')
       //E2E TEST: Selecting the correct answer will present the success modal
       cy.wait(500) //for some reason we need to wait for the cookie to load
-      cy.getCookie('busca')
-      .then((cookie) => {
-        let correctAnswer = cookie.value           
+      cy.window()
+      .then((window) => {
+        let correctAnswer = localStorage.getItem('busca')           
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();
-      })            
+      })             
       cy.get('#restaurant_correct_modal')
       .should('be.visible')
       cy.get('#close_correct_modal_btn').click()

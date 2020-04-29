@@ -54,7 +54,7 @@ function evaluateAnswer(textString) {
     //TODO: remove hardcoded correctanswer to submitAnswer() ajax function once API is enabled
     // submitAnswer();
     // var correctAnswer = "Use your Superhero Social distance & Sanitizer, move away, sanitize your hands and keep your distance.";
-    var correctAnswer = getCookie("busca");
+    var correctAnswer = localStorage.getItem("busca");
 
     //var buttonText = $('#bus_answer_1').text();
     if (textString === correctAnswer) {
@@ -77,20 +77,6 @@ $("#restaurant_answer_2").click(function () {
     evaluateAnswer(buttonText2);
 });
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
 
 //TODO:ENABLE BELOW ONCE API's ARE WORKING
 function getQnAData() {
@@ -113,7 +99,7 @@ function getQnAData() {
             var answer_one = response.answer1;
             var answer_two = response.answer2;
             var correct_answer = response.solution.correctAnswer;
-            document.cookie = `busca=${correct_answer}`
+            localStorage.setItem("busca", correct_answer);
             //alert(correct_answer);
             restaurant_question.append(question);
             restaurant_answer_one.append(answer_one);
