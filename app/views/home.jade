@@ -27,10 +27,16 @@ row
 row
     div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
         div.block
-            a.btn(href="covid" style="background-color: #81a5db;" id="start") Start your battle
+            p.summary
+                | Tell me your name warrior
+            input.center(id="worrior_username" type="text" style="text-align:center;")
+            br
+            a.btn(href="covid" style="background-color: #81a5db;" id="start") Start your journey
 
 row 
     div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
         div.block
             p.summary
                 | you can visit <a href="https://github.com/users/ale-sanchez-g/projects/1">this project</a> for more information
+
+script(type="application/javascript", src="scripts/home.js")

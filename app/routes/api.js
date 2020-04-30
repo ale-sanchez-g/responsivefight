@@ -1,14 +1,16 @@
-var request = require('request');
-var app_env = process.env['APP_ENV'];
-var apiUrl;
+let request = require('request');
+let app_env = process.env['APP_ENV'];
+let heroApi, villainApi;
 
 switch (app_env) {
     case "local":
-        apiUrl = "http://alejandro:3001/";
-        console.log("alejandro:3001 config");
+        heroApi = "http://0.0.0.0:3001/";
+        villainApi = "http://0.0.0.0:3000/";
+        console.log("configure local apis on 3000 and 3001");
         break;
     default:
-        apiUrl = "https://covid19superheroes.herokuapp.com/";
+        heroApi = "https://covid19superheroes.herokuapp.com/";
+        villainApi = "https://supervillain.herokuapp.com/";
         console.log("production config");
 }
 
@@ -18,7 +20,7 @@ function getRandomInt(max) {
 
 exports.office = function(req, res){
    
-    var routing = apiUrl + "office";
+    var routing = heroApi + "office";
     console.log(routing);
 
     request.get(routing, function(err, response, body) {
@@ -31,7 +33,7 @@ exports.office = function(req, res){
 
 exports.bus = function(req, res){
    
-    let routing = apiUrl + "bus";
+    let routing = heroApi + "bus";
     console.log(routing);
     let questionPick = getRandomInt(3);
 
@@ -45,7 +47,7 @@ exports.bus = function(req, res){
 
 exports.restaurant = function(req, res){
    
-    var routing = apiUrl + "restaurant";
+    var routing = heroApi + "restaurant";
     console.log(routing);    
     //let questionPick = getRandomInt(3);
 
@@ -57,3 +59,24 @@ exports.restaurant = function(req, res){
         }
     })
 };
+
+exports.createUser = function(req, res){
+    
+    // Access the provided 'user_name' query parameters
+    let user_name = req.query.user_name;
+
+    var routing = villainApi + "v1/user";
+    
+    request.post(routing, {
+        json: {
+          username: user_name,
+          score: 0
+        }
+      }, function(err, response, body) {        
+        if (!err && response.statusCode == 201) {
+            res.send(`welcome warrior ${user_name}`);
+        } else {
+            res.send(`welcome back warrior ${user_name}`);
+        }
+    })
+}

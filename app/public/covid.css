@@ -148,3 +148,10 @@ div.doubleblock {
   background-color: #d54ff0;
 }
 /* End Bootstrap answers buttons stacked side by side  */
+
+/* Bootstrap for inputs  */
+input {
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+}
