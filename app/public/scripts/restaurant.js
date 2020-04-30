@@ -58,7 +58,15 @@ function evaluateAnswer(textString) {
 
     //var buttonText = $('#bus_answer_1').text();
     if (textString === correctAnswer) {
+        var uname = localStorage.getItem("userName");
+        var points = parseInt(localStorage.getItem("points", points),10);
+        var start_points = parseInt(localStorage.getItem("score"),10);
+        var score = start_points + points;
+        
+        localStorage.setItem("score", score);
+
         $('#restaurant_correct_modal').modal('show');
+        addPoints(uname,score);
         //return user to home page
     } else {
         $('#restaurant_incorrect_modal').modal('show');
@@ -83,6 +91,8 @@ function getQnAData() {
     var restaurant_question = $("#restaurant_question_1");
     var restaurant_answer_one = $("#restaurant_answer_1");
     var restaurant_answer_two = $("#restaurant_answer_2");
+    var answer_score = $("#score");
+
     //Jquery Ajax - Fetch the questions
     $.ajax({
         url: "/api/restaurantQuestions",
@@ -99,11 +109,15 @@ function getQnAData() {
             var answer_one = response.answer1;
             var answer_two = response.answer2;
             var correct_answer = response.solution.correctAnswer;
+            var points =  response.solution.score;
+            var uname = localStorage.getItem("userName");
             localStorage.setItem("busca", correct_answer);
+            localStorage.setItem("points", points);
             //alert(correct_answer);
             restaurant_question.append(question);
             restaurant_answer_one.append(answer_one);
             restaurant_answer_two.append(answer_two);
+            answer_score.append(uname + "you have scored " + points + " points!");
         }
     }).fail(function (jqXHR, textStatus, error) {
         // Handle error here
@@ -113,6 +127,26 @@ function getQnAData() {
         console.log("API reponse is " + jqXHR.status);
     });
 }
+
+  function addPoints (user, points) {
+  //Jquery Ajax - Post the Answer
+  var data = { username: user, score: points}
+  console.log(data);
+  $.ajax({
+      url: "https://supervillain.herokuapp.com/v1/user",  
+      type: "PUT",
+      dataType: "json",
+      contentType: "application/json; charset=utf-8",    
+      data: JSON.stringify(data),
+      success: function(res){
+        //parse response into json object
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        //alert the user if something went wrong
+         console.log("Failed update user score: " + xhr.statusText);
+      }
+    });
+  }
 
   // function submitAnswer (answer) {
   // //Jquery Ajax - Post the Answer

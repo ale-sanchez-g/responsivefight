@@ -59,10 +59,6 @@ context('COVID19 Mobile Battles', () => {
       cy.get('#staticBackdrop2')
       .should('be.visible')
       cy.get('#close_modal_btn_1').click()
-    
-      // User is sent back to the home page
-      cy.get('#world_img')
-      .should('be.visible')
     })
 
     it('Bus battle', () => {      

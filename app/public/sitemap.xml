@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+  <loc>https://responsivefight.herokuapp.com/</loc>
+  </url>
+   <url>
+  <loc>https://responsivefight.herokuapp.com/covid</loc>
+  </url>
+   <url>
+  <loc>https://responsivefight.herokuapp.com/office</loc>
+  </url>
+   <url>
+  <loc>https://responsivefight.herokuapp.com/bus</loc>
+  </url>
+   <url>
+  <loc>https://responsivefight.herokuapp.com/restaurant</loc>
+  </url>
+   <url>
+  <loc>https://responsivefight.herokuapp.com/version.json</loc>
+  </url>
+ </urlset> 

@@ -8,7 +8,8 @@ $( "#start" ).click(function() {
     let uname = document.getElementById('worrior_username').value || "guest";
     createUser(uname);
     console.log("user '" + uname + "' has been created");
-    localStorage.setItem("userName", uname);      
+    localStorage.setItem("userName", uname);
+    localStorage.setItem("score", 0);
   });
 
 ///TODO:ENABLE BELOW ONCE API's ARE WORKING

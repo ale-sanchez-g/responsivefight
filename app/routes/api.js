@@ -4,12 +4,12 @@ let heroApi, villainApi;
 
 switch (app_env) {
     case "local":
-        heroApi = "http://0.0.0.0:3001/";
+        heroApi = "http://0.0.0.0:3001/api/v2/";
         villainApi = "http://0.0.0.0:3000/";
         console.log("configure local apis on 3000 and 3001");
         break;
     default:
-        heroApi = "https://covid19superheroes.herokuapp.com/";
+        heroApi = "https://covid19superheroes.herokuapp.com/api/v2/";
         villainApi = "https://supervillain.herokuapp.com/";
         console.log("production config");
 }
@@ -21,12 +21,13 @@ function getRandomInt(max) {
 exports.office = function(req, res){
    
     var routing = heroApi + "office";
-    console.log(routing);
 
     request.get(routing, function(err, response, body) {
         if (!err && response.statusCode == 200) {
-            var locals = JSON.parse(body);
-            res.json(locals);
+            let locals = JSON.parse(body);
+            let size = locals.length;
+            let questionPick = getRandomInt(size);
+            res.json(locals[questionPick]);
         }
     })
 };
@@ -34,13 +35,13 @@ exports.office = function(req, res){
 exports.bus = function(req, res){
    
     let routing = heroApi + "bus";
-    console.log(routing);
-    let questionPick = getRandomInt(3);
 
     request.get(routing, function(err, response, body) {
         if (!err && response.statusCode == 200) {
-            var locals = JSON.parse(body);
-            res.send(locals[questionPick]);
+            let locals = JSON.parse(body);
+            let size = locals.length;
+            let questionPick = getRandomInt(size);
+            res.json(locals[questionPick]);
         }
     })
 };
@@ -48,14 +49,13 @@ exports.bus = function(req, res){
 exports.restaurant = function(req, res){
    
     var routing = heroApi + "restaurant";
-    console.log(routing);    
-    //let questionPick = getRandomInt(3);
 
     request.get(routing, function(err, response, body) {
         if (!err && response.statusCode == 200) {
             var locals = JSON.parse(body);
-            //res.send(locals[questionPick]);
-            res.send(locals);
+            let size = locals.length;
+            let questionPick = getRandomInt(size);
+            res.json(locals[questionPick]);
         }
     })
 };
