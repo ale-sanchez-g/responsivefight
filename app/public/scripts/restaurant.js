@@ -113,11 +113,15 @@ function getQnAData() {
             var uname = localStorage.getItem("userName");
             localStorage.setItem("busca", correct_answer);
             localStorage.setItem("points", points);
-            //alert(correct_answer);
+            // if the questions fail to load from the API
+            if (answer_one == undefined || answer_two == undefined) {
+                answer_one = "Jump up and down like a crazy person!";
+                answer_two = localStorage.getItem("busca");
+            }
             restaurant_question.append(question);
             restaurant_answer_one.append(answer_one);
             restaurant_answer_two.append(answer_two);
-            answer_score.append(uname + "you have scored " + points + " points!");
+            answer_score.append(uname + " you have scored " + points + " points!");
         }
     }).fail(function (jqXHR, textStatus, error) {
         // Handle error here

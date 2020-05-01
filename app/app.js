@@ -12,7 +12,8 @@ let static_html = [
     "covid",
     "office",
     "bus",
-    "restaurant"
+    "restaurant",
+    "leaderboard"
 ]
 let app = express();
 

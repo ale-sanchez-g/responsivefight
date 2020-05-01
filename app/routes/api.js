@@ -28,6 +28,8 @@ exports.office = function(req, res){
             let size = locals.length;
             let questionPick = getRandomInt(size);
             res.json(locals[questionPick]);
+        } else {
+            console.log(err);
         }
     })
 };
@@ -42,8 +44,9 @@ exports.bus = function(req, res){
             let size = locals.length;
             let questionPick = getRandomInt(size);
             res.json(locals[questionPick]);
-        }
-    })
+        } else {
+            console.log(err);
+        }    })
 };
 
 exports.restaurant = function(req, res){
@@ -56,8 +59,9 @@ exports.restaurant = function(req, res){
             let size = locals.length;
             let questionPick = getRandomInt(size);
             res.json(locals[questionPick]);
-        }
-    })
+        } else {
+            console.log(err);
+        }    })
 };
 
 exports.createUser = function(req, res){
