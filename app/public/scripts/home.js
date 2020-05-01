@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     var userName = localStorage.getItem("userName");
-    $('#welcome_text').append(`Chose your battle field ${userName}`);
+    $('#welcome_text').append(`Choose your battle field ${userName}`);
 });
 
 // Check the button text matches the correct answer

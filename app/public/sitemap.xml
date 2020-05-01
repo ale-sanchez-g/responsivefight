@@ -16,6 +16,9 @@
   <loc>https://responsivefight.herokuapp.com/restaurant</loc>
   </url>
    <url>
-  <loc>https://responsivefight.herokuapp.com/version.json</loc>
+  <loc>https://responsivefight.herokuapp.com/leaderboard</loc>
+  </url>
+  <url>
+    <loc>https://responsivefight.herokuapp.com/version.json</loc>
   </url>
  </urlset> 

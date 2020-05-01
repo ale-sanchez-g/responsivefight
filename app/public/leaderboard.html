@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="covid.css">
+    <title>COVID-19 THE GAME</title>
+    </head>
+<body>
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="option-label">COVID-19 THE GAME - LEADERBOARD</p>
+          </div>
+      </div>
+    <div class="header" id="myHeader">
+        <div class="tcontainer">
+            <div class="ticker-wrap">
+                <div class="ticker-move">
+         
+          <div class="ticker-item">Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.</div>
+          <div class="ticker-item">Maintain at least 1 metre (3 feet) distance between yourself and others.</div>
+          <div class="ticker-item">Avoid going to crowded places.</div>
+          <div class="ticker-item">Avoid touching eyes, nose and mouth.</div>
+          <div class="ticker-item">Stay home and self-isolate even with minor symptoms such as cough, headache, mild fever, until you recover.</div>
+          <div class="ticker-item">Keep up to date on the latest information from trusted sources.</div>
+          <div class="ticker-item">Visit <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">WHO.int</a> for more information.</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <p id='showData' class="option-label"></p> 
+    </div></div>
+    <button type="button" onclick="window.location.href = 'covid';" id="leaderboard_link" class="btn btn-secondary" data-dismiss="modal" style="background-color: green; color: white; margin-bottom: 3px;">Continue fighting</button>
+</body>
+
+<script type="application/javascript" src="scripts/leaderboard.js"></script>
+</html>

@@ -2,8 +2,6 @@
 $( document ).ready(function() {
   console.log( "presenting intro modal" );
   $('#bus_intro_modal').modal('show');
-  // $('.slideImg').animate({right:'0px'},1200);
-  // TODO:Enable once API's are enabled
   getQnAData();    
 });
 
@@ -60,7 +58,15 @@ var correctAnswer = localStorage.getItem("busca");
 
 //var buttonText = $('#bus_answer_1').text();
 if(textString === correctAnswer) {
+  var uname = localStorage.getItem("userName");
+  var points = parseInt(localStorage.getItem("points", points),10);
+  var start_points = parseInt(localStorage.getItem("score"),10);
+  var score = start_points + points;
+  
+  localStorage.setItem("score", score);
+
   $('#bus_correct_modal').modal('show');
+  addPoints(uname,score);
   //return user to home page
 } else {
   $('#bus_incorrect_modal').modal('show');  
@@ -85,6 +91,7 @@ function getQnAData (){
   var bus_question   = $("#bus_question_1");
   var bus_answer_one = $("#bus_answer_1");
   var bus_answer_two = $("#bus_answer_2");
+  var answer_score = $("#score");
   //Jquery Ajax - Fetch the questions
   $.ajax({
           url: "/api/busQuestions",
@@ -92,22 +99,29 @@ function getQnAData (){
           //By using datatype we set what we receive and parse the response as a Json object to save us using something like 
           //var response = JSON.parse(response); Neat right?
           dataType: 'json', // << data type
-          success: function(response) {
+          success: function (response) {
+            //alert(response);
             //Log the success on the call
             console.log("Q&A API reponse success");
             //Break the object with the key of the array - in case you need to append extra stuff, etc
-              var question = response.question; 
-              var answer_one = response.answer1;
-              var answer_two = response.answer2;
-              var correct_answer = response.solution.correctAnswer;
-              localStorage.setItem("busca", correct_answer);
-              //alert(correct_answer);
-              bus_question.append(question);
-              bus_answer_one.append(answer_one);
-              bus_answer_two.append(answer_two);
-              //We don't need to replace the entire element with style, just append the value.
-              //$('#bus_answer_1').replaceWith('<a href="#" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;">'+json.answer1+'</a>');
+            var question = response.question;
+            var answer_one = response.answer1;
+            var answer_two = response.answer2;
+            var correct_answer = response.solution.correctAnswer;
+            var points =  response.solution.score;
+            var uname = localStorage.getItem("userName");
+            localStorage.setItem("busca", correct_answer);
+            localStorage.setItem("points", points);
+            // if the questions fail to load from the API
+            if (answer_one == undefined || answer_two == undefined) {
+                answer_one = "Jump up and down like a crazy person!";
+                answer_two = localStorage.getItem("busca");
             }
+            bus_question.append(question);
+            bus_answer_one.append(answer_one);
+            bus_answer_two.append(answer_two);
+            answer_score.append(uname + " you have scored " + points + " points!");
+        }
             }).fail(function (jqXHR, textStatus, error) {
             // Handle error here
               bus_question.append("Fail to receive API data");
@@ -117,6 +131,26 @@ function getQnAData (){
     });
   }
 
+function addPoints (user, points) {
+  //Jquery Ajax - Post the Answer
+  var data = { username: user, score: points}
+  console.log(data);
+  $.ajax({
+      url: "https://supervillain.herokuapp.com/v1/user",  
+      type: "PUT",
+      dataType: "json",
+      contentType: "application/json; charset=utf-8",    
+      data: JSON.stringify(data),
+      success: function(res){
+        //parse response into json object
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        //alert the user if something went wrong
+          console.log("Failed update user score: " + xhr.statusText);
+      }
+    });
+  }
+    
 // function submitAnswer (answer) {
 // //Jquery Ajax - Post the Answer
 // var data = [{ "response": answer}]
