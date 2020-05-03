@@ -7,7 +7,12 @@ context('COVID19 Battles', () => {
     })
     
     it('User can choose from different battlefields', () => {
-      cy.get('#start').click()
+      
+      // Create Warrior
+      cy.get('#worrior_username').type("Testing Machine")
+      cy.get('#warrior').click()
+      cy.contains("Testing Machine").click()
+
       //check all elements are visible on Page
       cy.get('#world_img')
       .should('be.visible')
@@ -26,7 +31,11 @@ context('COVID19 Battles', () => {
     })
 
     it('Bus battle', () => {      
-      cy.get('#start').click()
+      // Create Warrior
+      cy.get('#worrior_username').type("Testing Machine")
+      cy.get('#warrior').click()
+      cy.contains("Testing Machine").click()
+      
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')
       .should('be.visible')
@@ -64,7 +73,11 @@ context('COVID19 Battles', () => {
     })
 
     it('Restaurant battle', () => {
-      cy.get('#start').click()
+      // Create Warrior
+      cy.get('#worrior_username').type("Testing Machine")
+      cy.get('#warrior').click()
+      cy.contains("Testing Machine").click()
+      
       cy.get('#restaurant').click() 
       cy.get('#restaurant_intro_modal')
       .should('be.visible')

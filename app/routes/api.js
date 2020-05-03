@@ -63,24 +63,3 @@ exports.restaurant = function(req, res){
             console.log(err);
         }    })
 };
-
-exports.createUser = function(req, res){
-    
-    // Access the provided 'user_name' query parameters
-    let user_name = req.query.user_name;
-
-    var routing = villainApi + "v1/user";
-    
-    request.post(routing, {
-        json: {
-          username: user_name,
-          score: 0
-        }
-      }, function(err, response, body) {        
-        if (!err && response.statusCode == 201) {
-            res.send(`welcome warrior ${user_name}`);
-        } else {
-            res.send(`welcome back warrior ${user_name}`);
-        }
-    })
-}

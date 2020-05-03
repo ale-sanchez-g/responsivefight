@@ -29,7 +29,6 @@ app.get('/', home.home);
 app.get('/api/officeQuestions', questions.office);
 app.get('/api/busQuestions', questions.bus);
 app.get('/api/restaurantQuestions', questions.restaurant);
-app.get('/api/createUser', questions.createUser);
 
 let port =process.env.PORT || 8080;
 
