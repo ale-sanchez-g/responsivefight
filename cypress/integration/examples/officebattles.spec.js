@@ -6,6 +6,12 @@ context('COVID19 Battles', () => {
     })
   
     it('Office battle', () => {      
+      // Create Warrior
+      cy.get('#worrior_username').type("Testing Machine")
+      cy.get('#warrior').click()
+      cy.contains("Testing Machine").click()
+      
+      cy.get('#office').click()
       cy.get('#staticBackdrop')
       .should('be.visible')
       cy.get('#start').click()
@@ -33,7 +39,7 @@ context('COVID19 Battles', () => {
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();
-      })          
+      })         
       cy.get('#staticBackdrop2')
       .should('be.visible')
       cy.get('#close_modal_btn_1').click()
