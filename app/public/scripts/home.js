@@ -1,7 +1,6 @@
 $( document ).ready(function() {
     localStorage.clear();
     localStorage.setItem("new", true);
-    document.getElementById("start").style.display = "none";
     var userName = localStorage.getItem("userName");
     $('#welcome_text').append(`Choose your battle field ${userName}`);
     pingAPI("https://covid19superheroes.herokuapp.com/api/v2/bus");

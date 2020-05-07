@@ -63,13 +63,19 @@ function evaluateAnswer(textString) {
 
     //var buttonText = $('#bus_answer_1').text();
     if (textString === correctAnswer) {
+
+        // read index for selecting a question and add 1
+        var index = localStorage.getItem("restaurantNumber")
+        localStorage.setItem("officerestaurantNumber", (parseInt(index) + 1) );
+
+        // Capture and set username and score
         var uname = localStorage.getItem("userName");
         var points = parseInt(localStorage.getItem("points", points),10);
         var start_points = parseInt(localStorage.getItem("score"),10);
         var score = start_points + points;
-        
         localStorage.setItem("score", score);
 
+        // Present modal
         $('#restaurant_correct_modal').modal('show');
         addPoints(uname,score);
         //return user to home page
@@ -97,10 +103,16 @@ function getQnAData() {
     var restaurant_answer_one = $("#restaurant_answer_1");
     var restaurant_answer_two = $("#restaurant_answer_2");
     var answer_score = $("#score");
+    var i = localStorage.getItem("restaurantNumber");
 
+    if (i == null) {
+      i = 0;
+      localStorage.setItem("restaurantNumber", 0);
+    }
+    
     //Jquery Ajax - Fetch the questions
     $.ajax({
-        url: "/api/restaurantQuestions",
+        url: "/api/restaurantQuestions?index=" + i,
         type: 'GET',
         //By using datatype we set what we receive and parse the response as a Json object to save us using something like 
         //var response = JSON.parse(response); Neat right?
@@ -130,9 +142,11 @@ function getQnAData() {
         }
     }).fail(function (jqXHR, textStatus, error) {
         // Handle error here
-        restaurant_question.append("Failed to receive API data");
-        restaurant_answer_one.append("Failed to receive API data");
-        restaurant_answer_two.append("Failed to receive API data");
+
+        restaurant_question.append("You have completed this battleground");
+        restaurant_answer_one.append("Check your score");
+        document.getElementById("restaurant_answer_1").href = "leaderboard";
+        document.getElementById("restaurant_answer_2_button").style.display = "none";
         console.log("API reponse is " + jqXHR.status);
     });
 }

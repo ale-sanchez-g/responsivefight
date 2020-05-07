@@ -63,13 +63,19 @@ var correctAnswer = localStorage.getItem("busca");
 
 //var buttonText = $('#bus_answer_1').text();
 if(textString === correctAnswer) {
+  
+  // read index for selecting a question and add 1
+  var index = localStorage.getItem("busNumber")
+  localStorage.setItem("busNumber", (parseInt(index) + 1) );
+
+  // Capture and set username and score
   var uname = localStorage.getItem("userName");
   var points = parseInt(localStorage.getItem("points", points),10);
   var start_points = parseInt(localStorage.getItem("score"),10);
   var score = start_points + points;
-  
   localStorage.setItem("score", score);
 
+  // Present modal
   $('#bus_correct_modal').modal('show');
   addPoints(uname,score);
   //return user to home page
@@ -97,9 +103,18 @@ function getQnAData (){
   var bus_answer_one = $("#bus_answer_1");
   var bus_answer_two = $("#bus_answer_2");
   var answer_score = $("#score");
+
+  //Get Bus Question number or set to 0 to pick first questions  
+  var i = localStorage.getItem("busNumber");
+
+  if (i == null) {
+    i = 0;
+    localStorage.setItem("busNumber", 0);
+  }
+
   //Jquery Ajax - Fetch the questions
   $.ajax({
-          url: "/api/busQuestions",
+          url: "/api/busQuestions?index=" + i,
           type: 'GET',
           //By using datatype we set what we receive and parse the response as a Json object to save us using something like 
           //var response = JSON.parse(response); Neat right?
@@ -128,10 +143,11 @@ function getQnAData (){
             answer_score.append(uname + " you have scored " + points + " points!");
         }
             }).fail(function (jqXHR, textStatus, error) {
-            // Handle error here
-              bus_question.append("Fail to receive API data");
-              bus_answer_one.append("Fail to receive API data");
-              bus_answer_two.append("Fail to receive API data");
+              // Handle error here
+              bus_question.append("You have completed this battleground");
+              bus_answer_one.append("Check your score");
+              document.getElementById("bus_answer_1").href = "leaderboard";
+              document.getElementById("bus_answer_2_button").style.display = "none";
               console.log("API reponse is " + jqXHR.status);
     });
   }
