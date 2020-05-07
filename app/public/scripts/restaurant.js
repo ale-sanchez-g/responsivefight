@@ -66,7 +66,7 @@ function evaluateAnswer(textString) {
 
         // read index for selecting a question and add 1
         var index = localStorage.getItem("restaurantNumber")
-        localStorage.setItem("officerestaurantNumber", (parseInt(index) + 1) );
+        localStorage.setItem("restaurantNumber", (parseInt(index) + 1) );
 
         // Capture and set username and score
         var uname = localStorage.getItem("userName");
