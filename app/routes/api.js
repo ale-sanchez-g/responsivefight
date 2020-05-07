@@ -14,52 +14,31 @@ switch (app_env) {
         console.log("production config");
 }
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
-exports.office = function(req, res){
-   
-    var routing = heroApi + "office";
-
-    request.get(routing, function(err, response, body) {
-        if (!err && response.statusCode == 200) {
-            let locals = JSON.parse(body);
-            let size = locals.length;
-            let questionPick = getRandomInt(size);
-            res.json(locals[questionPick]);
-        } else {
-            console.log(err);
-        }
-    })
-};
-
-exports.bus = function(req, res){
-   
-    let routing = heroApi + "bus";
-
-    request.get(routing, function(err, response, body) {
-        if (!err && response.statusCode == 200) {
-            let locals = JSON.parse(body);
-            let size = locals.length;
-            let questionPick = getRandomInt(size);
-            res.json(locals[questionPick]);
-        } else {
-            console.log(err);
-        }    })
-};
-
-exports.restaurant = function(req, res){
-   
-    var routing = heroApi + "restaurant";
-
+function getQuestion(routing, req, res, index) {
+    
     request.get(routing, function(err, response, body) {
         if (!err && response.statusCode == 200) {
             var locals = JSON.parse(body);
-            let size = locals.length;
-            let questionPick = getRandomInt(size);
-            res.json(locals[questionPick]);
+            res.json(locals[index]);
         } else {
             console.log(err);
         }    })
+ }
+
+exports.office = function(req, res){
+    var index = req.query.index || 0;
+    var routing = heroApi + "office";
+    getQuestion(routing, req, res, index);
+};
+
+exports.bus = function(req, res){
+    var index = req.query.index || 0;
+    let routing = heroApi + "bus";
+    getQuestion(routing, req, res, index);
+};
+
+exports.restaurant = function(req, res){
+    var index = req.query.index || 0;
+    var routing = heroApi + "restaurant";
+    getQuestion(routing, req, res, index);
 };

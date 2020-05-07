@@ -64,13 +64,19 @@ function evaluateAnswer(textString){
   //var correctAnswer = "Use your superheroe Social Distance, notify your Manager and maintain a safe distance.";
   //var buttonText = $('#office_answer_1').text();
   if(textString === correctAnswer) {
+
+    // read index for selecting a question and add 1
+    var index = localStorage.getItem("officeNumber")
+    localStorage.setItem("officeNumber", (parseInt(index) + 1) );
+
+    // Capture and set username and score
     var uname = localStorage.getItem("userName");
     var points = parseInt(localStorage.getItem("points", points),10);
     var start_points = parseInt(localStorage.getItem("score"),10);
     var score = start_points + points;
-    
     localStorage.setItem("score", score);
     
+    // Present modal
     $('#staticBackdrop2').modal('show');
     addPoints(uname,score);
     //return user to home page
@@ -97,9 +103,16 @@ var office_question   = $("#office_question_1");
 var office_answer_one = $("#office_answer_1");
 var office_answer_two = $("#office_answer_2");
 var answer_score = $("#score");
+var i = localStorage.getItem("officeNumber");
+
+if (i == null) {
+  i = 0;
+  localStorage.setItem("officeNumber", 0);
+}
+
 //Jquery Ajax - Fetch the questions
 $.ajax({
-        url: "/api/officeQuestions",
+        url: "/api/officeQuestions?index=" + i,
         type: 'GET',
         //By using datatype we set what we receive and parse the response as a Json object to save us using something like 
         //var response = JSON.parse(response); Neat right?
@@ -129,9 +142,10 @@ $.ajax({
       }
           }).fail(function (jqXHR, textStatus, error) {
           // Handle error here
-            office_question.append("Fail to receive API data");
-            office_answer_one.append("Fail to receive API data");
-            office_answer_two.append("Fail to receive API data");
+            office_question.append("You have completed this battleground");
+            office_answer_one.append("Check your score");
+            document.getElementById("office_answer_1").href = "leaderboard";
+            document.getElementById("office_answer_2_button").style.display = "none";
             console.log("API reponse is " + jqXHR.status);
   });
 }
