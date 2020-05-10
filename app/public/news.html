@@ -14,7 +14,7 @@
 <body> 
 
 <header>
-  <h2 id="h2_battlefield">Public Transport</h2>
+  <h2 id="h2_battlefield">This page is dynamic</h2>
 </header>
 
 <section>
@@ -25,19 +25,20 @@
   </nav>
   
   <article>
-    <h3 id="h3_battlefield">You have jumped on the train..</h3>
+    <h3 id="h3_battlefield">This page is dynamic...</h3>
     <div class="modal-body">
-      Where possible, to eliminate the risk of exposure to the COVID-19 virus in the workplace, businesses may allow their workers to work from home in complete isolation from others.</br> If it is not feasible for workers to perform their job from home, employers must do all that they can to minimise the risk of exposure to COVID-19 so far as reasonably practicable.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean at rutrum odio. Mauris volutpat pharetra lacinia. Sed eget enim nec massa lobortis suscipit. Nulla tempor, urna ut rhoncus finibus.
+      <p class="summary block" id="question"></p>
     </div>
     <div class="thumbnail" style="background-color: #857773;">
         <div class="caption"> 
-          <a href="#" id="office_answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+          <a href="#" id="answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
         </div>
       </a>
     </div>
     <div id="office_answer_2_button" class="thumbnail" style="background-color: #857773;">
         <div class="caption"> 
-          <a href="#" id="office_answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+          <a href="#" id="answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
         </div>
       </a>
     </div>
@@ -61,7 +62,82 @@
         </div>
       </div>
 </section>
-    
+
+<!-- Modal Correct Answer-->
+<div class="modal fade" id="correctModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="map-height img-responsive" src="https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.png" alt="working at home" id="img-wfh">
+      </br>
+        <h5 class="modal-title " style="text-align: center; font-size: x-large;" id="staticBackdropLabel">That is correct!</h5>
+        <p class="modal-title " style="text-align: center; font-size: small;" id="score"></p>
+      </div>
+      <div class="modal-body" style="font-size: larger; text-align: center;">
+        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home" target="_blank">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home </a>.
+      </div>
+      <div class="modal-footer">
+        <button class="responsive" type="button" onclick="window.location.href = 'bus';" id="close_modal_btn_1" class="btn btn-secondary" data-dismiss="modal" style="background-color: green; color: white; margin-bottom: 3px;">Try the next battle</button>
+        <button class="responsive" type="button" onclick="window.location.href = 'leaderboard';" id="leaderboard_link" class="btn btn-secondary" data-dismiss="modal" style="background-color: green; color: white; margin-bottom: 3px;">Check your final score</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal Correct Answer -->
+
+<!-- Modal Incorrect Answer-->
+<div class="modal fade" id="incorrectModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="https://syeima.bn.files.1drv.com/y4mo4tGRH2wG-urYekQqC6zuClC7BkWCZLwajA7zn2SvAmFBcMOn202MF-DQozbFYOK5was0hp_XGiKfq5T21aR3N35Dek14OavEccay4GSsioDg96ZLZC5OmZD4pZibALHA30hZtHrN1hzSd9Ge1Yg0baiN9unabfdP2M8oaxZvuBO9ClmdsZmot36cy4dGhk_3XX0Duz5o8JGs-ccvU-s4w?width=256&height=171&cropmode=none"/>
+      </br>
+        <h5 class="modal-title " style="text-align: center; font-size: x-large;" id="staticBackdropLabel">That doesn't sound right!</h5>
+      </div>
+      <div class="modal-body" style="font-size: larger; text-align: center;">
+        You have contracted covid19, and ended up in hospital. You are lucky your symptoms are mild and you only need to self quarantine for 14 days at home. Pay more attention to your interactions or you will not be so lucky next time.</br>
+        For more information about how to protect yourself visit <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" target="_blank">who.int</a>.
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close_modal_btn_2" onclick="window.location.href = '/';" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Try again</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal Incorrect Answer -->
+
+<!-- Intro Modal -->
+<div class="modal fade" id="introModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="center" src="https://r4eima.bn.files.1drv.com/y4matrszAe_wJusufxTNDTeyy3ywK0yEjddP3Uo5VJM2JWB7AUb0ML_TONTFBYpZce70qqiNbe19f_vq75xjgtcCZ9afFO6emrqk6SuWK9ffvw-npnYvDv3phE0pCLh1_ptdQ4mTKZt3mpeC9Q-1vuU3vo0FQzX27uEevDuqxjFkGCqqyTFFdOMFCbYTjTorZvHnbxq9zjnjO5w-cvGr-yNYA?width=300&height=300&cropmode=none" />
+      </br>
+        <h5 class="modal-title text-center" style="font-weight: bold; font-size: x-large;" id="staticBackdropLabel">You are in a battlefield...</h5>
+      </div>
+      <div class="modal-body">
+        You have entered a world where covid19 is alive and all around us. You must be careful with all your day to day interactions as you might end up in Hospital, or even worst death.
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Close</button> -->
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="start" style="background-color: #301d0b; margin-left: 0px;">Start</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Intro Modal -->
+
+<!-- Load single page javascript -->
+<script type="application/javascript" src="scripts/singlePage.js"></script>    
 </body>
 
 <footer>
