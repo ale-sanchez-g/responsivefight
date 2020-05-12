@@ -11,6 +11,7 @@ $( document ).ready(function() {
 $( "#warrior" ).click(function() {
     let uname = document.getElementById('worrior_username').value || "guest";
     createUser(uname);
+    userStage(uname);
     console.log("user '" + uname + "' has been created");
     localStorage.setItem("userName", uname);
     localStorage.setItem("score", 0);
@@ -51,3 +52,26 @@ function pingAPI (uri){
     console.log(err);
 });  
 };
+
+// Set user stage
+function userStage (user_name) {
+    var settings = {
+        "url": "https://covid19-logic.herokuapp.com/v1/graphql",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "x-hasura-admin-secret": "lol123lol",
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            query: "mutation userStage { insert_user_stage(objects: {username: \"" + user_name + "\", stage: \"bus_2\"}, on_conflict: {constraint: user_stage_pkey, update_columns: stage}) { affected_rows } }"
+        })
+        };
+    
+    $.ajax(settings).done(function (response) {
+        var stage = response.data.user_stage[0].stage;
+        localStorage.setItem("stage", stage);
+        console.log(stage);
+        fetchQuestion(stage);
+    });
+}
