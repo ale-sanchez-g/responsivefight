@@ -13,7 +13,8 @@ $( document ).ready(function() {
 $( "#warrior" ).click(function() {
     let uname = document.getElementById('worrior_username').value || "guest";
     createUser(uname);
-    setUserStage(uname);
+    userStage(uname);
+    
     console.log("user '" + uname + "' has been created");
     localStorage.setItem("userName", uname);
     localStorage.setItem("score", 0);
@@ -55,12 +56,9 @@ function pingAPI (uri){
     });  
 };
 
-// Set up User journey start point
-function setUserStage (user_name) {
+// Set user stage
+function userStage (user_name) {
     var flow = JSON.parse(localStorage.getItem("flow"));
-    var count = Object.keys(flow).length;
-    localStorage.setItem("length", count);
-
     var settings = {
         "url": "https://covid19-logic.herokuapp.com/v1/graphql",
         "method": "POST",
@@ -97,6 +95,5 @@ function getFlow () {
     $.ajax(settings).done(function (response) {
       localStorage.setItem("flow", JSON.stringify(response.data.flows[0].flow_sequence));
       localStorage.setItem("position", "stage_1");
-
     });
 }

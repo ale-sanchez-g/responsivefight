@@ -3,7 +3,8 @@ $( document ).ready(function() {
     var userName = localStorage.getItem("userName");
     getUserStage(userName);
     $('#introModal').modal('show');
-  });
+    startProgressBar();  
+});
 
 // Start the timer the modal to user on pageload
 $("#answer_1").click(function () {
@@ -20,12 +21,10 @@ $("#answer_2").click(function () {
 // Continue the journey
 $("#continue").click(function () {
   var stage = localStorage.getItem("stage");            
-  if ( stage == undefined ){ 
-    location.href = "/leaderboard";
-  } else {
     updateUserSatge(stage);
     fetchQuestion(stage);
-  }
+    document.getElementById("bar").style.visibility = "visible";
+    startProgressBar();  
 });
 
 // Get user Stage from GraphQL
@@ -69,13 +68,19 @@ function fetchQuestion(stage) {
       };
 
     $.ajax(settings).done(function (response) {
+      if ( response.data.questions[0] == undefined ) {
+        window.location.replace("/leaderboard");
+      } else {
+        
         var question =  response.data.questions[0].question;
         var answer_one =  response.data.questions[0].answer1;
         var answer_two =  response.data.questions[0].answer2;
-        
+
         document.getElementById("question").textContent=question;
         document.getElementById("answer_1").textContent=answer_one;
         document.getElementById("answer_2").textContent=answer_two;
+
+      }
 
     });
 }
@@ -173,3 +178,42 @@ $.ajax(settings).done(function (response) {
 
 });
 }
+
+function startProgressBar() {
+  var i = 0;
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById("bar");
+      var width = 1;
+      var id = setInterval(frame, 220);
+      var ary = ['#4CAF50', '#FFFF00', '#FF0000'];
+      function frame() {
+        if (width >= 100 || $('#correctModal').is(':visible')) {
+          clearInterval(id);
+          i = 0;	
+          //hide bar
+          document.getElementById("bar").style.visibility = "hidden";
+          //show the modal only if the correct answer modal is not already on screen, 
+          if(!$('#correctModal').is(':visible')){ 
+            // Present modal
+            $('#incorrectModal').modal('show');
+          }            
+        }    
+        else {      	
+          width++;
+          elem.style.width = width + "%";   
+          switch(elem.style.width) {
+                case "40%":
+                  document.getElementById("bar").style.background = "#FFFF00";
+                  break;
+                case "75%":
+                  document.getElementById("bar").style.background = "#FF0000";
+                  break;
+                case "100%":
+                  document.getElementById("bar").style.visibility = "hidden";
+                  break;                
+          }        
+        }
+      }
+    }
+  }
