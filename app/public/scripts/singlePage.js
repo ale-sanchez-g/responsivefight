@@ -17,6 +17,17 @@ $("#answer_2").click(function () {
     evaluateAnswer(buttonText);
 });
 
+// Continue the journey
+$("#continue").click(function () {
+  var stage = localStorage.getItem("stage");            
+  if ( stage == undefined ){ 
+    location.href = "/leaderboard";
+  } else {
+    updateUserSatge(stage);
+    fetchQuestion(stage);
+  }
+});
+
 // Get user Stage from GraphQL
 function getUserStage (user) {
 var settings = {
@@ -44,10 +55,6 @@ $.ajax(settings).done(function (response) {
 function fetchQuestion(stage) {
     console.log("getting questions from GraphQL");
 
-    var d_question = $("#question");
-    var d_answer_one = $("#answer_1");
-    var d_answer_two = $("#answer_2");
-
     var settings = {
         "url": "https://covid19-logic.herokuapp.com/v1/graphql",
         "method": "POST",
@@ -66,9 +73,10 @@ function fetchQuestion(stage) {
         var answer_one =  response.data.questions[0].answer1;
         var answer_two =  response.data.questions[0].answer2;
         
-        d_question.append(question);
-        d_answer_one.append(answer_one);
-        d_answer_two.append(answer_two);
+        document.getElementById("question").textContent=question;
+        document.getElementById("answer_1").textContent=answer_one;
+        document.getElementById("answer_2").textContent=answer_two;
+
     });
 }
 
@@ -122,9 +130,46 @@ function evaluateAnswer(btnText) {
             // Present modal
             $('#correctModal').modal('show');
             addPoints(uname,score);
+
+            // Move to next Stage
+            var flow = JSON.parse(localStorage.getItem("flow"));
+            var stg = localStorage.getItem("position")
+            var arry = stg.split("_");
+            var i = arry[1];
+            var new_stage = (parseInt(i, 10) + 1);
+            
+            console.log(new_stage);
+
+            var stage = flow[`stage_${new_stage}`];
+            console.log(stage);
+            localStorage.setItem("stage", stage);
+            localStorage.setItem("position", `stage_${new_stage}`);            
+            
         } else {
             // Present modal
             $('#incorrectModal').modal('show');
         }
     });
 }    
+
+// Update user stage
+function updateUserSatge(stage) {
+  var userName = localStorage.getItem("userName");
+  var settings = {
+    "url": "https://covid19-logic.herokuapp.com/v1/graphql",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+        "x-hasura-admin-secret": "lol123lol",
+        "Content-Type": "application/json"
+    },
+    "data": JSON.stringify({
+      query: "mutation startJourney { insert_user_stage(objects: { username: \"" + userName + "\", stage: \"" + stage + "\"}, on_conflict: {constraint: user_stage_pkey, update_columns: stage}) { affected_rows } }" 
+    })
+    };
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+
+});
+}
