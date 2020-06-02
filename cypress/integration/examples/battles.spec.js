@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context.skip('COVID19 Battles', () => {
+context('COVID19 Battles', () => {
     beforeEach(() => {
       cy.visit('http://localhost:8080')
       //cy.visit('https://responsivefight.herokuapp.com')
@@ -8,9 +8,9 @@ context.skip('COVID19 Battles', () => {
 
       // Create Warrior
       cy.get('#worrior_username').type(uname)
-      cy.wait(500) // this wait is needed to synch the page
+      cy.wait(1000) // this wait is needed to synch the page
       cy.get('#warrior').click()
-      cy.wait(500) // this wait is needed to synch the page
+      cy.wait(1000) // this wait is needed to synch the page
       cy.contains(uname).click()
     })
     
