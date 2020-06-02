@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node app/app.js",
     "test": "node_modules/.bin/cypress run --browser chrome --headless --env shippable=true",
+    "local": "node_modules/.bin/cypress open --browser chrome",
     "dashboard": "node_modules/.bin/cypress run --record --key $CYPRESS_KEY --browser chrome --headless"
   },
   "repository": {

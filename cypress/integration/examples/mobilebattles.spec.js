@@ -1,17 +1,22 @@
 /// <reference types="cypress" />
 
-context('COVID19 Mobile Battles', () => {
+context.skip('COVID19 Mobile Battles', () => {
     beforeEach(() => {
       cy.viewport('iphone-6')
       cy.visit('http://localhost:8080')
+     
+      let uname =  Math.random().toString(20).substr(2, 6);
+      
+      // Create Warrior
+      cy.get('#worrior_username').type(uname)
+      cy.wait(500) // this wait is needed to synch the page
+      cy.get('#warrior').click()
+      cy.wait(500) // this wait is needed to synch the page
+      cy.contains(uname).click()
     })
 
     it('User can choose from different battlefields', () => {
-      // Create Warrior
-      cy.get('#worrior_username').type("Testing Machine")
-      cy.get('#warrior').click()
-      cy.contains("Testing Machine").click()
-      
+
       //check all elements are visible on Page
       cy.get('#world_img')
       .should('be.visible')
@@ -30,10 +35,6 @@ context('COVID19 Mobile Battles', () => {
     })
   
     it('Office battle', () => {      
-      // Create Warrior
-      cy.get('#worrior_username').type("Testing Machine")
-      cy.get('#warrior').click()
-      cy.contains("Testing Machine").click()
       
       cy.get('#office').click()
       cy.get('#staticBackdrop')
@@ -70,10 +71,6 @@ context('COVID19 Mobile Battles', () => {
     })
 
     it('Bus battle', () => {      
-      // Create Warrior
-      cy.get('#worrior_username').type("Testing Machine")
-      cy.get('#warrior').click()
-      cy.contains("Testing Machine").click()
       
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')
@@ -112,10 +109,6 @@ context('COVID19 Mobile Battles', () => {
     })
 
     it('Restaurant battle', () => {
-      // Create Warrior
-      cy.get('#worrior_username').type("Testing Machine")
-      cy.get('#warrior').click()
-      cy.contains("Testing Machine").click()
       
       cy.get('#restaurant').click() 
       cy.get('#restaurant_intro_modal')
