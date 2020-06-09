@@ -36,14 +36,14 @@ module.exports = app;
 
 static_html.forEach(function(page){
     app.get(`/${page}`, (req, res) => {
-        fs.readFile(__dirname + `/public/${page}.html`, 'utf8', (err, text) => {
+        fs.readFile(__dirname + `/pages/${page}.html`, 'utf8', (err, text) => {
             res.send(text);
         });
     });
 });
 
 app.get('*', function(req, res){
-    fs.readFile(__dirname + `/public/404.html`, 'utf8', (err, text) => {
+    fs.readFile(__dirname + `/pages/404.html`, 'utf8', (err, text) => {
         res.send(text, 404);
     });
 });

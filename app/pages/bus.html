@@ -9,12 +9,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="covid.css">
-<title>The Office</title>
+<title>COVID-19 THE GAME</title>
 </head>
 <body>
     <div class="row">
       <div class="col-lg-12">
-        <p class="option-label" id="office_title">At the Office<span id="tooltip_resturant" class="glyphicon glyphicon-info-sign vcenter pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Some static or api fetched information!"></span>
+        <p class="option-label" id="bus_title">Inside the Bus<span id="tooltip_resturant" class="glyphicon glyphicon-info-sign vcenter pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Some static or api fetched information!"></span>
         </p>
         </div>
     </div>
@@ -24,7 +24,7 @@
             <div class="thumbnail rounded mx-auto d-block">
                 <div class="col-lg">
                     <img src="">
-                    <img id="img_office" class="map-height img-responsive" src="assets/3372240.jpg" alt="Work office background">
+                    <img id="img_bus" class="map-height img-responsive" src="assets/bus.jpg" alt="Public bus background">
                   </div>
             </div>
         </div>        
@@ -33,34 +33,33 @@
     <!-- Question -->
     <div class="row">
       <div class="col-lg-12">
-        <p class="option-label text-center" id="office_question_1"><span class="glyphicon glyphicon-question-sign" style="margin-right: 5px;"></span></p>
+        <p class="option-label text-center" id="bus_question_1"><span></span></p>
       </div>
     </div>
 
     <!-- Progress Bar -->
     <div class="row col-sm-offset-2 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
-      <div id="myProgress">
-        <div id="myBar"></div>
+      <div id="bus_progress">
+        <div id="bus_bar"></div>
       </div>
     </div>
-  </br> 
+  </br>
     
 
     <div class="container">
-        
         <div class="row col-sm-12 col-md-12 col-lg-12">
           <div class="col-sm-6 col-md-6 col-lg-6">
-            <div class="thumbnail" style="background-color: #d54ff0;">
+            <div class="thumbnail" style="background-color: #81a5db;">
                 <div class="caption"> 
-                  <a href="#" id="office_answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+                  <a href="#" id="bus_answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
                 </div>
               </a>
             </div>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-6">
-            <div id="office_answer_2_button" class="thumbnail" style="background-color: #d54ff0;">
+            <div id="bus_answer_2_button" class="thumbnail" style="background-color: #81a5db;">
                 <div class="caption"> 
-                  <a href="#" id="office_answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+                  <a href="#" id="bus_answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
                 </div>
               </a>
             </div>
@@ -68,26 +67,23 @@
         </div>
       </div>
 
-
 <!-- Intro Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="bus_intro_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <img id="officeWorker" class="map-height img-responsive" src="assets/28839_cropped.jpg" style="max-height: 200px; display: block;" alt="working at home" id="img-wfh">
-        <!-- <img id="officeWorker" class="map-height img-responsive" src="https://media.giphy.com/media/oW4Gt2ZPynZAc/giphy.gif" style="max-height: 200px;" alt="working at home" id="img-wfh"> -->
+        <img id="bus_seating" class="map-height img-responsive" src="assets/58964.jpg" style="max-height: 200px; display: block;" alt="taking the bus" id="img_entering_bus">
       </br>
-        <h5 class="modal-title text-center" style="font-weight: bold; font-size: x-large;" id="staticBackdropLabel">You have entered the office..</h5>
+        <h5 class="modal-title text-center" style="font-weight: bold; font-size: x-large;" id="staticBackdropLabel">You have taken the public bus..</h5>
       </div>
       <div class="modal-body">
-        Where possible, to eliminate the risk of exposure to the COVID-19 virus in the workplace, businesses may allow their workers to work from home in complete isolation from others.</br> If it is not feasible for workers to perform their job from home, employers must do all that they can to minimise the risk of exposure to COVID-19 so far as reasonably practicable.
+        Where possible, to eliminate the risk of exposure to the COVID-19 virus in public places, public transport should be avoid where reasonable or delivery options considered.</br> If it is not feasible, eliminate the risk of exposure to COVID-19 by using opting for safe home delivery where it's practical.
       </div>
       <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Close</button> -->
-        <button type="button" class="btn btn-primary" data-dismiss="modal" id="start" style="background-color: #d54ff0; margin-left: 0px;">Start</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="bus_timer_start" style="background-color: #81a5db; margin-left: 0px;">Start</button>
       </div>
     </div>
   </div>
@@ -95,23 +91,23 @@
 <!-- End Intro Modal -->
 
 <!-- Modal Correct Answer-->
-<div class="modal fade" id="staticBackdrop2" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="bus_correct_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <img class="map-height img-responsive" src="https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.png" alt="working at home" id="img-wfh">
+        <img class="map-height img-responsive" src="https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(19).tmb-1920v.png" alt="working at home" id="img-wfh">
       </br>
         <h5 class="modal-title " style="text-align: center; font-size: x-large;" id="staticBackdropLabel">That is correct!</h5>
         <p class="modal-title " style="text-align: center; font-size: small;" id="score"></p>
       </div>
       <div class="modal-body" style="font-size: larger; text-align: center;">
-        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home" target="_blank">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home </a>.
+        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and avoid commuting where possible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home" target="_blank">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home </a>.
       </div>
       <div class="modal-footer">
-        <button class="responsive" type="button" onclick="window.location.href = 'bus';" id="close_modal_btn_1" class="btn btn-secondary" data-dismiss="modal" style="background-color: green; color: white; margin-bottom: 3px;">Try the next battle</button>
+        <button class="responsive" type="button" onclick="window.location.href = 'restaurant';" id="close_correct_modal_btn" class="btn btn-secondary" data-dismiss="modal" style="background-color: green; color: white; margin-bottom: 3px;">Try the next battle</button>
         <button class="responsive" type="button" onclick="window.location.href = 'leaderboard';" id="leaderboard_link" class="btn btn-secondary" data-dismiss="modal" style="background-color: green; color: white; margin-bottom: 3px;">Check your final score</button>
       </div>
     </div>
@@ -120,7 +116,7 @@
 <!-- End Modal Correct Answer -->
 
 <!-- Modal Incorrect Answer-->
-<div class="modal fade" id="staticBackdrop3" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="bus_incorrect_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -135,7 +131,7 @@
         Risk of transmission of the COVID-19 virus can be increased by close proximity, coughing and sneezing, self isolate where posible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home" target="_blank">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home</a>.
       </div>
       <div class="modal-footer">
-        <button type="button" id="close_modal_btn_2" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Try again</button>
+        <button type="button" id="close_incorrect_modal_btn" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Try again</button>
       </div>
     </div>
   </div>
@@ -143,7 +139,7 @@
 <!-- End Modal Incorrect Answer -->
 
 <!-- Modal out of Time-->
-<div class="modal fade" id="staticBackdrop4" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="bus_out_of_time_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -166,11 +162,11 @@
 </div>
 <!-- End Modal out of Time -->
 
-<script type="application/javascript" src="scripts/office.js"></script>
+<script type="application/javascript" src="scripts/bus.js"></script>
 </body>
 <footer>
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <p class="footer-text">All illustrations, <a href="http://www.freepik.com" target="_blank">Designed by macrovector / Freepik</a>, <a href="http://www.freepik.com" target="_blank">Designed by slidesgo / Freepik</a>, <a href="http://www.freepik.com" target="_blank">Designed by stories / Freepik</a> and <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>  under free use license.
+        <p class="footer-text">All illustrations, <a href="http://www.freepik.com" target="_blank">Designed by gstudioimagen / Freepik</a>, <a href="http://www.freepik.com" target="_blank">Designed by macrovector / Freepik</a> under free use license.
         </p>
     </div>
     

@@ -1,5 +1,5 @@
 User-agent: *
 Sitemap: https://responsivefight.herokuapp.com/sitemap.xml
 Disallow: /assets/
-Disallow: /img/
 Disallow: /scripts/
+Disallow: /pages/
