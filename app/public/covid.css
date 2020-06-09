@@ -21,7 +21,7 @@ img {
   border-radius: 8px;
 }
 
-div.block {
+.block {
   padding-top: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
@@ -100,8 +100,16 @@ div.doubleblock {
   width: 50%;
 }
 .responsive {
+  width:90%; /*Takes 90% width from WebContainer*/
+  height: 90%;
+  padding: 7px;
+}
+.fullscren {
   width: 100%;
-  height: auto;
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .modal-header {
   font-weight: bold;
@@ -165,7 +173,8 @@ input {
 /* OUTER CONTAINER */
 .tcontainer {
   padding: 10px 16px;
-  background: black;
+  background-color: #857773;
+  background-image: linear-gradient(315deg, #857773 0%, #301d0b 74%);  
   padding: 10px;
   width: 100%;
   overflow: hidden; /* Hide scroll bar */
@@ -175,7 +184,8 @@ input {
 .ticker-wrap {
   width: 100%;
   padding-left: 100%; /* Push contents to right side of screen */
-  background-color: black;
+  background-color: #857773;
+  background-image: linear-gradient(315deg, #857773 0%, #301d0b 74%);  
 }
 
 /* INNER CONTAINER */
@@ -216,3 +226,45 @@ th, td {
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+/* This is the new section for version 2.0 */
+header {
+  background-color: #857773;
+  background-image: linear-gradient(315deg, #857773 0%, #301d0b 74%);  
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  /* background-color: #857773; */
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  height: 500px;
+  background-color: #f1f1f1;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}

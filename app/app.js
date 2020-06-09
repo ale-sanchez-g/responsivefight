@@ -1,5 +1,4 @@
 let express = require('express');
-let http = require('http');
 let fs = require('fs');
 let path = require('path');
 let logger = require('morgan');
@@ -13,7 +12,8 @@ let static_html = [
     "office",
     "bus",
     "restaurant",
-    "leaderboard"
+    "leaderboard",
+    "news"
 ]
 let app = express();
 

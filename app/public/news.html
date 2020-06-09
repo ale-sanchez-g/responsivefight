@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="covid.css">
+<title>COVID-19 THE GAME</title>
+</head>
+<body> 
+
+<header>
+  <h2 id="h2_battlefield">You have enter a world where covid is alive...</h2>
+</header>
+
+<section>
+  <nav>
+    <video id="battle_video" class="responsive" autoplay muted>
+      <source src="assets/office.mp4" type="video/mp4">
+    </video>
+  </nav>
+  
+  <article>
+    <h3 id="h3_battlefield">This is a public place</h3>
+    <div class="modal-body">
+      Stay aware of the latest information on the COVID-19 outbreak, available on the WHO website and through your national and local public health authority. Most countries around the world have seen cases of COVID-19 and many are experiencing outbreaks. Authorities in China and some other countries have succeeded in slowing their outbreaks. However, the situation is unpredictable so check regularly for the latest news.
+  </br>
+      
+  <!-- Progress Bar -->
+      <div class="row col-sm-offset-2 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
+        <div class="block" id="progress">
+          <div class="block" id="bar" style="background-color: #857773;"></div>
+        </div>
+      </div>
+      <br>
+  <!-- END Progress Bar -->
+      <br>
+      <p class="summary block" id="question"></p>
+    </div>
+    <div class="thumbnail" style="background-color: #857773;">
+        <div class="caption"> 
+          <a id="answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+        </div>
+      </a>
+    </div>
+    <div id="office_answer_2_button" class="thumbnail" style="background-color: #857773;">
+        <div class="caption"> 
+          <a id="answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+        </div>
+      </a>
+    </div>
+  </article>
+</section>
+
+<section id="ticker">
+    <div class="tcontainer">
+        <div class="ticker-wrap">
+          <div class="ticker-move">
+       
+        <div class="ticker-item">Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.</div>
+        <div class="ticker-item">Maintain at least 1 metre (3 feet) distance between yourself and others.</div>
+        <div class="ticker-item">Avoid going to crowded places.</div>
+        <div class="ticker-item">Avoid touching eyes, nose and mouth.</div>
+        <div class="ticker-item">Stay home and self-isolate even with minor symptoms such as cough, headache, mild fever, until you recover.</div>
+        <div class="ticker-item">Keep up to date on the latest information from trusted sources.</div>
+        <div class="ticker-item">Visit <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">WHO.int</a> for more information.</div>
+
+          </div>
+        </div>
+      </div>
+</section>
+
+<!-- Modal Correct Answer-->
+<div class="modal fade" id="correctModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="map-height img-responsive" src="https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.png" alt="working at home" id="img-wfh">
+      </br>
+        <h5 class="modal-title " style="text-align: center; font-size: x-large;" id="staticBackdropLabel">That is correct!</h5>
+        <p class="modal-title " style="text-align: center; font-size: small;" id="score"></p>
+      </div>
+      <div class="modal-body" style="font-size: larger; text-align: center;">
+        Eliminate the risk of exposure to the COVID-19 virus by keeping a safe distance, and work if possible.</br> For more information about working from home visit <a href="https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home" target="_blank">https://www.safeworkaustralia.gov.au/covid-19-information-workplaces/working-home </a>.
+      </div>
+      <div class="modal-footer">
+        <button class="responsive" type="button" id="continue" class="btn btn-secondary" data-dismiss="modal" style="background-color: green; color: white; margin-bottom: 3px;">Continue...</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal Correct Answer -->
+
+<!-- Modal Incorrect Answer-->
+<div class="modal fade" id="incorrectModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="https://syeima.bn.files.1drv.com/y4mo4tGRH2wG-urYekQqC6zuClC7BkWCZLwajA7zn2SvAmFBcMOn202MF-DQozbFYOK5was0hp_XGiKfq5T21aR3N35Dek14OavEccay4GSsioDg96ZLZC5OmZD4pZibALHA30hZtHrN1hzSd9Ge1Yg0baiN9unabfdP2M8oaxZvuBO9ClmdsZmot36cy4dGhk_3XX0Duz5o8JGs-ccvU-s4w?width=256&height=171&cropmode=none"/>
+      </br>
+        <h5 class="modal-title " style="text-align: center; font-size: x-large;" id="staticBackdropLabel">Oh no!</h5>
+      </div>
+      <div class="modal-body" style="font-size: larger; text-align: center;">
+        You have contracted covid19, and ended up in hospital. You are lucky your symptoms are mild and you only need to self quarantine for 14 days at home. Pay more attention to your interactions or you will not be so lucky next time.</br>
+        For more information about how to protect yourself visit <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" target="_blank">who.int</a>.
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close_modal_btn_2" onclick="window.location.href = '/';" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Try again</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal Incorrect Answer -->
+
+<!-- Intro Modal -->
+<div class="modal fade" id="introModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img class="center" src="https://r4eima.bn.files.1drv.com/y4matrszAe_wJusufxTNDTeyy3ywK0yEjddP3Uo5VJM2JWB7AUb0ML_TONTFBYpZce70qqiNbe19f_vq75xjgtcCZ9afFO6emrqk6SuWK9ffvw-npnYvDv3phE0pCLh1_ptdQ4mTKZt3mpeC9Q-1vuU3vo0FQzX27uEevDuqxjFkGCqqyTFFdOMFCbYTjTorZvHnbxq9zjnjO5w-cvGr-yNYA?width=300&height=300&cropmode=none" />
+      </br>
+        <h5 class="modal-title text-center" style="font-weight: bold; font-size: x-large;" id="staticBackdropLabel">You are in a battlefield...</h5>
+      </div>
+      <div class="modal-body">
+        You have entered a world where covid19 is alive and all around us. You must be careful with all your day to day interactions as you might end up in Hospital, or even worst death.
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: black; margin-bottom: 3px;">Close</button> -->
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="start" style="background-color: #301d0b; margin-left: 0px;">Start</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Intro Modal -->
+
+<!-- Load single page javascript -->
+<script type="application/javascript" src="scripts/singlePage.js"></script>    
+</body>
+
+<footer>
+  <div class="col-sm-12 col-md-12 col-lg-12">
+      <p class="footer-text">All illustrations, <a href="http://www.freepik.com" target="_blank">Designed by macrovector / Freepik</a>, <a href="http://www.freepik.com" target="_blank">Designed by slidesgo / Freepik</a>, <a href="http://www.freepik.com" target="_blank">Designed by stories / Freepik</a> and <a href="http://www.freepik.com" target="_blank">Designed by Freepik</a>  under free use license.
+      </p>
+  </div>
+  
+</footer>
+
+</html>

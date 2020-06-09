@@ -3,13 +3,19 @@
 context('COVID19 Battles', () => {
     beforeEach(() => {
       cy.visit('http://localhost:8080/office')
+
+      let uname =  Math.random().toString(20).substr(2, 6);
+      
+      // Create Warrior
+      cy.get('#worrior_username').type(uname)
+      cy.wait(1000) // this wait is needed to synch the page
+      cy.get('#warrior').click()
+      cy.wait(1000) // this wait is needed to synch the page
+      cy.contains(uname).click()
+
     })
   
     it('Office battle', () => {      
-      // Create Warrior
-      cy.get('#worrior_username').type("Testing Machine")
-      cy.get('#warrior').click()
-      cy.contains("Testing Machine").click()
       
       cy.get('#office').click()
       cy.get('#staticBackdrop')

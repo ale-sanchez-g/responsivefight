@@ -3,14 +3,18 @@ $( document ).ready(function() {
     localStorage.setItem("new", true);
     var userName = localStorage.getItem("userName");
     $('#welcome_text').append(`Choose your battle field ${userName}`);
+    // Wake up required APIs
     pingAPI("https://covid19superheroes.herokuapp.com/api/v2/bus");
-    pingAPI("https://supervillain.herokuapp.com/v1/user")
+    pingAPI("https://supervillain.herokuapp.com/v1/user");
+    getFlow();
 });
 
 // Check the button text matches the correct answer
 $( "#warrior" ).click(function() {
     let uname = document.getElementById('worrior_username').value || "guest";
     createUser(uname);
+    userStage(uname);
+    
     console.log("user '" + uname + "' has been created");
     localStorage.setItem("userName", uname);
     localStorage.setItem("score", 0);
@@ -45,9 +49,51 @@ function pingAPI (uri){
       success: function(res){
           console.log(res);
       }
-  }).fail(function (jqXHR, textStatus, err) {
-    console.log("API reponse is " + jqXHR.status);
-    console.log(textStatus);
-    console.log(err);
-});  
+    }).fail(function (jqXHR, textStatus, err) {
+        console.log("API reponse is " + jqXHR.status);
+        console.log(textStatus);
+        console.log(err);
+    });  
 };
+
+// Set user stage
+function userStage (user_name) {
+    var flow = JSON.parse(localStorage.getItem("flow"));
+    var settings = {
+        "url": "https://covid19-logic.herokuapp.com/v1/graphql",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "x-hasura-admin-secret": "lol123lol",
+          "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+          query: "mutation startJourney { insert_user_stage(objects: { username: \"" + user_name + "\", stage: \"" + flow.stage_1 + "\"}, on_conflict: {constraint: user_stage_pkey, update_columns: stage}) { affected_rows } }" 
+        })
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+}
+
+// Get flow
+function getFlow () {
+  var settings = {
+      "url": "https://covid19-logic.herokuapp.com/v1/graphql",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "x-hasura-admin-secret": "lol123lol",
+        "Content-Type": "application/json"
+      },
+      "data": JSON.stringify({
+        query: "query getFlow {flows(where: {id: {_eq: \"flow_1\"}}) {flow_sequence}}"
+      })
+    };
+    
+    $.ajax(settings).done(function (response) {
+      localStorage.setItem("flow", JSON.stringify(response.data.flows[0].flow_sequence));
+      localStorage.setItem("position", "stage_1");
+    });
+}
