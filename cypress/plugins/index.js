@@ -15,6 +15,8 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+let percyHealthCheck = require('@percy/cypress/task')
+
 module.exports = (on, config) => {
   on('before:browser:launch', (browser = {}, launchOptions) => {
     // `args` is an array of all the arguments that will
@@ -35,6 +37,8 @@ module.exports = (on, config) => {
 
       return launchOptions
     }
-  })
+  }),
+
+  on("task", percyHealthCheck);
 }
 

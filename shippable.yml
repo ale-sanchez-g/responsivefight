@@ -12,6 +12,7 @@
         - APP_NAME=responsivefight
         - secure: jTIjUCxuaCckv89Ex1CmEYRbvRmXYR2Ag0VheBlHkpPojUcymJUCnthsPM7vlT+Vf6S5Kyct/LfFyZck2WhDgdIC95sCwLyuMC4T6/pN7g9WU1rJs7qQc8xcgEabRpQNrSnuebzCE5JufEugxqgiebt0bOoGN4Mp+/BZz+oxvuKM00UihV7BA5pr7E+TZAJGOayVLt+WY3eBG/cUJhFkCN1OAIsT41SIXJLEX0yqtv8CkdCbGtVOCoZv8uorhRAKv9UgZh4u3wKRT1UljLk20hsXT+ei5rE0QTIyN5UQ5W1YsISnq8zEhr7jlabM4LeXfFHddx6HY0bc0LrLw2aO2A==
         - secure: XFAC1dqSfnW/thCf4iihSD4A3gqPU9K/sDBoNU4sVgyOMt0gl+RtLrAtlD+7k8OqABCFCJFHiETXOG+FOLFLG+dFMUKfAhx4aYoNAPdnWfexsSbTqegTxFwZUWPUZkIXUGuLXARj48uNqjEVlTUUoYCquvbPPm9frRkLih/EjUOLXCA39vTaVL6HjmvqYk2NE6IfI9XGTzxF8bqhY22G/0Q/XwWfh0L/63jpFRa2REVfceWIOwtNKdVMrTj/gHYRNtuA1LSmXzIHB3rNdXTGd+v1x4BHuiW18xj6S7iv7wc0GrZIieY+DKpUHZP+uoPFSMmtH9M4BriDjdXWS2t5ng==
+        - secure: TOnEgiUpxnAWduUVeWBcr/FDn1wlfWaeawinIdW3mbzlO3ebxhrPXN8aCS4+W9lj4Pp6VxF6IKbPPCFG4Fm6CJV9SRPiJLcnyThScSKaD4TElU0SKIitMVToHJzyk//lbGk5DJulPHK7qd+im3QSJcSsBC77Nan2BfkzAEH0WbJIsMsOpJXtn+tYszIaN4gWz71qN10moZliIpGhFR2mfgKvkj58vhKI/HF80ISFFDrTQvHDffLmvqE/lS+tKwnxgcnUgMbERk7VbwGsS1FEZ5RcMf5YzGTsnm6eX+HyO7MaI+S6KojFRtFEA4XQIxZo6y3unKPE7OXB6BnwZeSCWg==
     before_script:
       - mkdir -p shippable/testresults
       - mkdir -p shippable/codecoverage

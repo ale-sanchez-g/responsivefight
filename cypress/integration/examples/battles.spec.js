@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+let wds = [768, 992, 1200];
 
 context('COVID19 Battles', () => {
     beforeEach(() => {
@@ -35,13 +36,24 @@ context('COVID19 Battles', () => {
 
     it('Bus battle', () => {      
       
+      // Covid page snapshot
+      cy.percySnapshot('Covid page', { widths: wds });
+
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')
       .should('be.visible')
+
+      // Bus intro snapshot
+      cy.percySnapshot('Bus intro', { widths: wds });
+
       cy.get('#bus_timer_start').click()
       cy.get('#bus_intro_modal')
       .should('be.hidden')      
       //check all elements are visible on Page
+
+      // Bus intro snapshot
+      cy.percySnapshot('Bus question', { widths: wds });
+
       cy.get('#img_bus')
       .should('be.visible')
       cy.get('#bus_progress')
@@ -65,7 +77,11 @@ context('COVID19 Battles', () => {
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();
-      })            
+      })
+      
+      // Bus intro snapshot
+      cy.percySnapshot('Bus correct', { widths: wds });
+
       cy.get('#bus_correct_modal')
       .should('be.visible')
       cy.get('#close_correct_modal_btn').click()
@@ -76,10 +92,19 @@ context('COVID19 Battles', () => {
       cy.get('#restaurant').click() 
       cy.get('#restaurant_intro_modal')
       .should('be.visible')
+
+      // restaurant intro snapshot
+      cy.percySnapshot('Restaurant intro', { widths: wds });
+      
       cy.get('#restaurant_timer_start').click()
       cy.get('#restaurant_intro_modal')
       .should('be.hidden')      
-      //check all elements are visible on Page      
+
+      //check all elements are visible on Page 
+      
+      // restaurant questions snapshot
+      cy.percySnapshot('Restaurant questions', { widths: wds });
+
       cy.get('#img_restaurant')
       .should('be.visible')
       cy.get('#restaurant_progress')
@@ -104,7 +129,11 @@ context('COVID19 Battles', () => {
         cy.log(correctAnswer)
         console.log(correctAnswer); 
         cy.contains(correctAnswer).click();
-      })          
+      }) 
+
+      // restaurant correct snapshot
+      cy.percySnapshot('Restaurant correct', { widths: wds });
+      
       cy.get('#restaurant_correct_modal')
       .should('be.visible')
       cy.get('#close_correct_modal_btn').click()

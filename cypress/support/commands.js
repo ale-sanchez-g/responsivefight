@@ -23,6 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+//
+// At the top of cypress/support/commands.js
+import '@percy/cypress';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
