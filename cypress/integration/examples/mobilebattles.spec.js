@@ -18,8 +18,6 @@ context('COVID19 Mobile Battles', () => {
     it('User can choose from different battlefields', () => {
 
       //check all elements are visible on Page
-      cy.get('#world_img')
-      .should('be.visible')
       cy.get('#office_img')
       .should('be.visible')
       cy.get("#office")

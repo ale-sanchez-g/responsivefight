@@ -6,6 +6,35 @@
   background-size: 100% 100%;
 } */
 
+/*custom fonts*/
+@font-face {
+  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Patua One', cursive;
+  font-family: 'Roboto', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Patua+One&family=Roboto&display=swap');
+}
+.alpha-heading{
+  font-family: Alfa Slab One;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  text-align: center;
+}
+.montserrat-subheading{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  text-align: center;
+}
+.montserrat-battlefield{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  text-align: center;
+}
 body{
   overflow-y : auto;
 }
@@ -76,7 +105,7 @@ div.doubleblock {
     text-align: center;
     font-size: x-large;
     font-weight: bolder;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Patua One', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .summary {
   text-align: center;
@@ -212,7 +241,7 @@ input {
   color: white;
   display: inline-block; /* Lay items in a horizontal line */
   padding: 0 2rem;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 table {
