@@ -289,11 +289,17 @@ article {
   height: 500px;
   background-color: #f1f1f1;
 }
+.thumbnail {
+  width: 50%;
+}
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
+  nav, article, .box, .thumbnail{
+    width: 90%;
+    height: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
