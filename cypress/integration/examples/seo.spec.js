@@ -17,6 +17,6 @@ describe('API Testing with Cypress', () => {
         cy.get('@robots')
             .its('status')
             .should('equal', 200);
-    });04
+    });
 
 });
