@@ -289,12 +289,30 @@ article {
   height: 500px;
   background-color: #f1f1f1;
 }
+.thumbnail {
+  width: 50%;
+}
+
+.left {
+  padding:20px;
+  float:left;
+  width:40%; /* The width is 20%, by default */
+}
+
+.main {
+  padding:20px;
+  float:left;
+  width:60%; /* The width is 60%, by default */
+}
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 600px) {
-  nav, article {
+@media (max-width: 780px) {
+  nav, article, .box, .thumbnail, .left, .main, .right{
     width: 100%;
-    height: auto;
+    height: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

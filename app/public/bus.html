@@ -12,31 +12,29 @@
 <title>COVID-19 THE GAME</title>
 </head>
 <body>
-    <div class="row">
-      <div class="col-lg-12">
-        <p class="option-label" id="bus_title">Inside the Bus<span id="tooltip_resturant" class="glyphicon glyphicon-info-sign vcenter pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Some static or api fetched information!"></span>
-        </p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-12 col-md-offset-1 d-none d-md-block col-md-10 col col-lg-10">
-            <div class="thumbnail rounded mx-auto d-block">
-                <div class="col-lg">
-                    <img src="">
-                    <img id="img_bus" class="map-height img-responsive" src="assets/24745_cropped.jpg" alt="Public bus background">
-                  </div>
-            </div>
-        </div>        
-    </div>
-    
+  <header>
+    <p class="option-label" id="bus_title">Inside the Bus<span id="tooltip_resturant" class="glyphicon glyphicon-info-sign vcenter pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Some static or api fetched information!"></span>
+    </p>
+</header>
+<section>
+<div class="left">
+  <img src="assets/24745_cropped.jpg" alt="bus" id="img_bus" style="width:300px; height: 300px; ">    
+</div>
+<div class="main">
     <!-- Question -->
-    <div class="row">
-      <div class="col-lg-12">
-        <p class="option-label text-center" id="bus_question_1"><span></span></p>
-      </div>
+    <div class="center">
+      <p class="option-label text-center" id="bus_question_1" style="font-size: larger;"><span></span></p>
     </div>
-
+    <div class="vcenter" style="background-color: #81a5db; border: 1px solid">
+      <a href="#" id="bus_answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+    </div>
+    <br>
+    <div class="vcenter" style="background-color: #81a5db; border: 1px solid">
+      <a href="#" id="bus_answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
+    </div>
+</div>
+</section>   
+<br>
     <!-- Progress Bar -->
     <div class="row col-sm-offset-2 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
       <div id="bus_progress">
@@ -44,29 +42,6 @@
       </div>
     </div>
   </br>
-    
-
-    <div class="container">
-        <div class="row col-sm-12 col-md-12 col-lg-12">
-          <div class="col-sm-6 col-md-6 col-lg-6">
-            <div class="thumbnail" style="background-color: #81a5db;">
-                <div class="caption"> 
-                  <a href="#" id="bus_answer_1" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-6">
-            <div id="bus_answer_2_button" class="thumbnail" style="background-color: #81a5db;">
-                <div class="caption"> 
-                  <a href="#" id="bus_answer_2" class="btn text-wrap" style="position: relative; white-space: inherit; font-size: larger; text-align: center;"></a>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
 <!-- Intro Modal -->
 <div class="modal fade" id="bus_intro_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
