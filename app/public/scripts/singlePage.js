@@ -1,3 +1,5 @@
+const apiKey = process.env.hasurasec
+
 // present the modal to user on pageload
 $( document ).ready(function() {
     var userName = localStorage.getItem("userName");
@@ -34,7 +36,7 @@ var settings = {
     "method": "POST",
     "timeout": 0,
     "headers": {
-        "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": \"" + apiKey + "\",
         "Content-Type": "application/json"
     },
     "data": JSON.stringify({
@@ -59,7 +61,7 @@ function fetchQuestion(stage) {
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": \"" + apiKey + "\",
           "Content-Type": "application/json"
         },
         "data": JSON.stringify({
@@ -115,7 +117,7 @@ function evaluateAnswer(btnText) {
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": \"" + apiKey + "\",
           "Content-Type": "application/json"
         },
         "data": JSON.stringify({
@@ -165,7 +167,7 @@ function updateUserSatge(stage) {
     "method": "POST",
     "timeout": 0,
     "headers": {
-        "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": \"" + apiKey + "\",
         "Content-Type": "application/json"
     },
     "data": JSON.stringify({
