@@ -1,3 +1,5 @@
+const apiKey = process.env.hasurasec
+
 $( document ).ready(function() {
     localStorage.clear();
     localStorage.setItem("new", true);
@@ -64,7 +66,7 @@ function userStage (user_name) {
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": \"" + apiKey + "\",
           "Content-Type": "application/json"
         },
         "data": JSON.stringify({
@@ -84,7 +86,7 @@ function getFlow () {
       "method": "POST",
       "timeout": 0,
       "headers": {
-        "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": \"" + apiKey + "\",
         "Content-Type": "application/json"
       },
       "data": JSON.stringify({
