@@ -34,7 +34,7 @@ var settings = {
     "method": "POST",
     "timeout": 0,
     "headers": {
-        "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": "57-Harry-Point",
         "Content-Type": "application/json"
     },
     "data": JSON.stringify({
@@ -59,7 +59,7 @@ function fetchQuestion(stage) {
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "x-hasura-admin-secret": "lol123lol",
+          "x-hasura-admin-secret": "57-Harry-Point",
           "Content-Type": "application/json"
         },
         "data": JSON.stringify({
@@ -115,7 +115,7 @@ function evaluateAnswer(btnText) {
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "x-hasura-admin-secret": "lol123lol",
+          "x-hasura-admin-secret": "57-Harry-Point",
           "Content-Type": "application/json"
         },
         "data": JSON.stringify({
@@ -165,7 +165,7 @@ function updateUserSatge(stage) {
     "method": "POST",
     "timeout": 0,
     "headers": {
-        "x-hasura-admin-secret": "lol123lol",
+        "x-hasura-admin-secret": "57-Harry-Point",
         "Content-Type": "application/json"
     },
     "data": JSON.stringify({
