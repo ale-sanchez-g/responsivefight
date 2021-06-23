@@ -18,6 +18,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "responsivefight"
           heroku_email: "morsisdivine@gmail.com"
-          usedocker: false
-          stack: "heroku-20"
-          healthcheck: "https://responsivefight.herokuapp.com/version,json"
