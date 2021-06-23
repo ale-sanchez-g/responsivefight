@@ -22,7 +22,7 @@ jobs:
           docker_build_args: |
             BUILD_NUMBER
             BRANCH
-            COMMITs
+            COMMIT
         env:
           BUILD_NUMBER: 12345
           BRANCH: masters
