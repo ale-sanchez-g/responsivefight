@@ -4,7 +4,6 @@ cypress/
 cypress.json
 
 # Do not load HEROKU files
-Procfile
 # version.sh
 
 # Do not load Shippable files
