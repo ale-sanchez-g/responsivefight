@@ -3,7 +3,6 @@ FROM node:16-alpine
 
 # Add our code
 ADD ./ /apps
-COPY package-lock.json /apps
 WORKDIR /app
 
 # Run the app.

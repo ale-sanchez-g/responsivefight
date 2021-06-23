@@ -18,12 +18,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "responsivefight"
           heroku_email: "morsisdivine@gmail.com"
-          usedocker: true
-          docker_build_args: |
-            BUILD_NUMBER
-            BRANCH
-            COMMIT
-        env:
-          BUILD_NUMBER: 12345
-          BRANCH: masters
-          COMMIT: 12345
+          usedocker: false
+          stack: "heroku-20"
