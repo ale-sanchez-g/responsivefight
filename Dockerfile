@@ -1,10 +1,10 @@
 #Grab the latest alpine image
 FROM node:10-alpine
 
-RUN bash -c "/version.sh"
+RUN "./version.sh"
 
 # Add our code
-ADD ./ /app
+ADD ./ /apps
 WORKDIR /app
 
 # Run the app.
