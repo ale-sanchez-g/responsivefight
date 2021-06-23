@@ -1,9 +1,9 @@
 #Grab the latest alpine image
-FROM node:10-alpine
- 
+FROM node:lts-alpine
+
 # Add our code
-ADD ./ /app
-WORKDIR /app
+ADD . /
+RUN npm install --production
 
 # Run the app.
 CMD ["npm", "start"]
