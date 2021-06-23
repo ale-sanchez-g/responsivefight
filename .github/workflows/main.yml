@@ -22,8 +22,8 @@ jobs:
           docker_build_args: |
             BUILD_NUMBER
             BRANCH
-            COMMIT
+            COMMITs
         env:
-          BUILD_NUMBER: $GITHUB_ACTION
-          BRANCH: master
-          COMMIT: $GITHUB_RUN_NUMBER
+          BUILD_NUMBER: 12345
+          BRANCH: masters
+          COMMIT: 12345
