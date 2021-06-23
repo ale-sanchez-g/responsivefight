@@ -1,5 +1,5 @@
 #Grab the latest alpine image
-FROM node:16-alpine
+FROM node
 
 RUN npm install --production
 # Add our code
