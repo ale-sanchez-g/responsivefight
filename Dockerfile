@@ -1,7 +1,5 @@
 #Grab the latest alpine image
-FROM node:10-alpine
-
-RUN "./version.sh"
+FROM node:lts-alpine
 
 # Add our code
 ADD ./ /apps
