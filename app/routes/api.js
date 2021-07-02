@@ -1,16 +1,18 @@
 let request = require('request');
 let app_env = process.env['APP_ENV'];
-let heroApi, villainApi;
+let heroApi, villainApi, logic;
 
 switch (app_env) {
     case "local":
         heroApi = "http://0.0.0.0:3001/api/v2/";
         villainApi = "http://0.0.0.0:3000/";
+        logic = "http://0.0.0.0:8080/"
         console.log("configure local apis on 3000 and 3001");
         break;
     default:
         heroApi = "https://covid19superheroes.herokuapp.com/api/v2/";
         villainApi = "https://supervillain.herokuapp.com/";
+        logic = "https://covid19-logic.herokuapp.com/"
         console.log("production config");
 }
 
@@ -24,6 +26,34 @@ function getQuestion(routing, req, res, index) {
             console.log(err);
         }    })
  }
+
+function postQuery (routing, req, res, index, btlfld, hasuraKey) {
+    var options = {
+        'method': 'POST',
+        'url': routing + 'v1/graphql',
+        'headers': {
+          'x-hasura-admin-secret': `${hasuraKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          query: `query getQuestions {
+        questions(where: {id: {_ilike: "${btlfld}%"}}) {
+          id
+          answer1
+          answer2
+          question
+          score
+        }
+      }`,
+          variables: {}
+        })
+      };
+      request(options, function (error, response) {
+        if (error) throw new Error(error);
+        var locals = JSON.parse(response.body);
+        res.json(locals.data.questions[index]);
+      });
+} 
 
 exports.office = function(req, res){
     var index = req.query.index || 0;
@@ -41,4 +71,22 @@ exports.restaurant = function(req, res){
     var index = req.query.index || 0;
     var routing = heroApi + "restaurant";
     getQuestion(routing, req, res, index);
+};
+
+exports.gqloffice = function(req, res){
+    var index = req.query.index || 0;
+    let hk = process.env['H_KEY'];
+    postQuery(logic, req, res, index, "off", hk);
+};
+
+exports.gqlbus = function(req, res){
+    var index = req.query.index || 0;
+    let hk = process.env['H_KEY'];
+    postQuery(logic, req, res, index, "bus", hk);
+};
+
+exports.gqlrestaurant = function(req, res){
+    var index = req.query.index || 0;
+    let hk = process.env['H_KEY'];
+    postQuery(logic, req, res, index, "res", hk);
 };

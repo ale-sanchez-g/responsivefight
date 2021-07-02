@@ -30,6 +30,11 @@ app.get('/api/officeQuestions', questions.office);
 app.get('/api/busQuestions', questions.bus);
 app.get('/api/restaurantQuestions', questions.restaurant);
 
+// GraphQL
+app.get('/api/gqloffQ', questions.gqloffice);
+app.get('/api/gqlbusQ', questions.gqlbus);
+app.get('/api/gqlresQ', questions.gqlrestaurant);
+
 let port =process.env.PORT || 8080;
 
 module.exports = app;
