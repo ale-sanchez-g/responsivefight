@@ -32,3 +32,12 @@ This will have the application running on port 8080 <http://localhost/8080> conn
 The deployment happens in shippable, but building the docker image, pushing it to the heroku registry and then using the Herku CLI to deploy.
 
 You can refer to the shippable.yml file for the details
+
+## Docker
+
+Run application with docker
+
+```
+docker build --build-arg H_KEY=<Hasure_secret> -t testresponsivefight:latest .
+docker run -p 8080:8080 testresponsivefight
+```
