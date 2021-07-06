@@ -55,6 +55,25 @@ function postQuery (routing, req, res, index, btlfld, hasuraKey) {
       });
 } 
 
+function gqlFlow (routing, req, res, hasuraKey) {
+    var options = {
+        'method': 'POST',
+        'url': routing + 'v1/graphql',
+        'headers': {
+          'x-hasura-admin-secret': `${hasuraKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          query: `query getFlow {flows(where: {id: {_eq: "flow_1"}}) {flow_sequence}}`,
+          variables: {}
+        })
+      };
+      request(options, function (error, response) {
+        if (error) throw new Error(error);
+        var locals = JSON.parse(response.body);
+        res.json(locals.data.flows[0].flow_sequence);
+      });
+}
 exports.office = function(req, res){
     var index = req.query.index || 0;
     var routing = heroApi + "office";
@@ -89,4 +108,9 @@ exports.gqlrestaurant = function(req, res){
     var index = req.query.index || 0;
     let hk = process.env['H_KEY'];
     postQuery(logic, req, res, index, "res", hk);
+};
+
+exports.getFlow = function(req, res){
+    let hk = process.env['H_KEY'];
+    gqlFlow(logic, req, res, hk);
 };

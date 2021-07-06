@@ -6,7 +6,7 @@ $( document ).ready(function() {
     // Wake up required APIs
     pingAPI("https://covid19superheroes.herokuapp.com/api/v2/bus");
     pingAPI("https://supervillain.herokuapp.com/v1/user");
-    getFlow();
+    gqlFlow();
 });
 
 // Check the button text matches the correct answer
@@ -77,23 +77,16 @@ function userStage (user_name) {
       });
 }
 
-// Get flow
-function getFlow () {
-  var settings = {
-      "url": "https://covid19-logic.herokuapp.com/v1/graphql",
-      "method": "POST",
-      "timeout": 0,
-      "headers": {
-        "x-hasura-admin-secret": "57-Harry-Point",
-        "Content-Type": "application/json"
-      },
-      "data": JSON.stringify({
-        query: "query getFlow {flows(where: {id: {_eq: \"flow_1\"}}) {flow_sequence}}"
-      })
-    };
-    
-    $.ajax(settings).done(function (response) {
-      localStorage.setItem("flow", JSON.stringify(response.data.flows[0].flow_sequence));
-      localStorage.setItem("position", "stage_1");
-    });
-}
+function gqlFlow (){
+  $.get({
+      url: "/api/getflow",
+      success: function(res){
+          localStorage.setItem("flow", JSON.stringify(res));
+          localStorage.setItem("position", "stage_1");
+      }
+    }).fail(function (jqXHR, textStatus, err) {
+        console.log("API reponse is " + jqXHR.status);
+        console.log(textStatus);
+        console.log(err);
+    });  
+};
