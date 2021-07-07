@@ -6,6 +6,9 @@ let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 let home = require('./routes/home');
 let questions = require('./routes/api');
+let questionState = require('./routes/gqlQuestionApi');
+let userState = require('./routes/gqlUserApi');
+
 
 let static_html = [
     "covid",
@@ -31,11 +34,11 @@ app.get('/api/busQuestions', questions.bus);
 app.get('/api/restaurantQuestions', questions.restaurant);
 
 // GraphQL
-app.get('/api/gqloffQ', questions.gqloffice);
-app.get('/api/gqlbusQ', questions.gqlbus);
-app.get('/api/gqlresQ', questions.gqlrestaurant);
-app.get('/api/getflow', questions.getFlow);
-app.post('/api/userstage', questions.userStage)
+app.get('/api/gqloffQ', questionState.gqloffice);
+app.get('/api/gqlbusQ', questionState.gqlbus);
+app.get('/api/gqlresQ', questionState.gqlrestaurant);
+app.get('/api/getflow', questionState.getFlow);
+app.post('/api/userstage', userState.userStage)
 
 let port =process.env.PORT || 8080;
 
