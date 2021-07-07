@@ -13,7 +13,7 @@ $( document ).ready(function() {
 $( "#warrior" ).click(function() {
     let uname = document.getElementById('worrior_username').value || "guest";
     createUser(uname);
-    userStage(uname);
+    gqluserStage(uname);
     
     console.log("user '" + uname + "' has been created");
     localStorage.setItem("userName", uname);
@@ -56,26 +56,7 @@ function pingAPI (uri){
     });  
 };
 
-// Set user stage
-function userStage (user_name) {
-    var flow = JSON.parse(localStorage.getItem("flow"));
-    var settings = {
-        "url": "https://covid19-logic.herokuapp.com/v1/graphql",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "x-hasura-admin-secret": "57-Harry-Point",
-          "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-          query: "mutation startJourney { insert_user_stage(objects: { username: \"" + user_name + "\", stage: \"" + flow.stage_1 + "\"}, on_conflict: {constraint: user_stage_pkey, update_columns: stage}) { affected_rows } }" 
-        })
-      };
-      
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-      });
-}
+//--- BFF calls below ---//
 
 function gqlFlow (){
   $.get({
@@ -90,3 +71,22 @@ function gqlFlow (){
         console.log(err);
     });  
 };
+
+function gqluserStage (user_name) {
+  var flow = JSON.parse(localStorage.getItem("flow"));
+  var jsonBody = {
+    username: user_name,
+    stage: flow.stage_1
+  }
+  $.post({
+    url: "/api/userstage",
+    data: jsonBody,
+    success: function(res){
+      console.log(res);
+    }
+  }).fail(function (jqXHR, textStatus, err) {
+      console.log("API reponse is " + jqXHR.status);
+      console.log(textStatus);
+      console.log(err);
+  }); 
+}

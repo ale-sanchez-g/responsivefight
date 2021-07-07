@@ -35,6 +35,7 @@ app.get('/api/gqloffQ', questions.gqloffice);
 app.get('/api/gqlbusQ', questions.gqlbus);
 app.get('/api/gqlresQ', questions.gqlrestaurant);
 app.get('/api/getflow', questions.getFlow);
+app.post('/api/userstage', questions.userStage)
 
 let port =process.env.PORT || 8080;
 

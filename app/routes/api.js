@@ -74,6 +74,26 @@ function gqlFlow (routing, req, res, hasuraKey) {
         res.json(locals.data.flows[0].flow_sequence);
       });
 }
+
+function setStage (routing, req, res, hasuraKey) {
+  var options = {
+    'method': 'POST',
+    'url': routing + 'v1/graphql',
+    'headers': {
+      'x-hasura-admin-secret': `${hasuraKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      query: `mutation startJourney { insert_user_stage(objects: { username: "${req.body.username}", stage: "${req.body.stage}"}, on_conflict: {constraint: user_stage_pkey, update_columns: stage}) { affected_rows } }`,
+      variables: {}
+    })
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    res.sendStatus(201);
+  });
+}
+
 exports.office = function(req, res){
     var index = req.query.index || 0;
     var routing = heroApi + "office";
@@ -114,3 +134,9 @@ exports.getFlow = function(req, res){
     let hk = process.env['H_KEY'];
     gqlFlow(logic, req, res, hk);
 };
+
+exports.userStage = function(req, res){
+  let hk = process.env['H_KEY'];
+  setStage(logic, req, res, hk)
+};
+
