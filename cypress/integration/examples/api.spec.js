@@ -6,6 +6,11 @@ describe('API Testing with Cypress', () => {
         cy.request('http://localhost:8080/api/officeQuestions').as('office')
         cy.request('http://localhost:8080/api/busQuestions').as('bus')
         cy.request('http://localhost:8080/api/restaurantQuestions').as('restaurant')
+
+        cy.request('http://localhost:8080/api/gqlbusQ').as('gqlbusQ')
+        cy.request('http://localhost:8080/api/gqlresQ').as('gqlresQ')
+        cy.request('http://localhost:8080/api/gqloffQ').as('gqloffQ')
+
         cy.request('http://localhost:8080/version.json').as('version')
       })
 
@@ -99,4 +104,51 @@ describe('API Testing with Cypress', () => {
             .should('include',/^correctAnswer/)
             .should('include',/^score/);
         });
-});
+        it('Validate the gqlbusQ call', () => {
+            cy.get('@gqlbusQ')
+                .its('headers')
+                .its('content-type')
+                .should('include', 'application/json');
+            cy.get('@gqlbusQ')   
+                .its('status')
+                .should('equal', 200);
+            cy.get('@gqlbusQ').its('body')
+                .its('body')
+                .should('include',/^question/)
+                .should('include',/^answer1/)
+                .should('include',/^answer2/)
+                .should('include',/^score/);
+        });
+
+        it('Validate the gqloffQ call', () => {
+            cy.get('@gqloffQ')
+                .its('headers')
+                .its('content-type')
+                .should('include', 'application/json');
+            cy.get('@gqloffQ')   
+                .its('status')
+                .should('equal', 200);
+            cy.get('@gqloffQ').its('body')
+                .its('body')
+                .should('include',/^question/)
+                .should('include',/^answer1/)
+                .should('include',/^answer2/)
+                .should('include',/^score/);
+        });
+
+        it('Validate the gqlresQ call', () => {
+            cy.get('@gqlresQ')
+                .its('headers')
+                .its('content-type')
+                .should('include', 'application/json');
+            cy.get('@gqlresQ')   
+                .its('status')
+                .should('equal', 200);
+            cy.get('@gqlresQ').its('body')
+                .its('body')
+                .should('include',/^question/)
+                .should('include',/^answer1/)
+                .should('include',/^answer2/)
+                .should('include',/^score/);
+        });
+    });

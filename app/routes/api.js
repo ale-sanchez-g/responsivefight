@@ -1,16 +1,14 @@
 let request = require('request');
 let app_env = process.env['APP_ENV'];
-let heroApi, villainApi;
+let heroApi;
 
 switch (app_env) {
     case "local":
         heroApi = "http://0.0.0.0:3001/api/v2/";
-        villainApi = "http://0.0.0.0:3000/";
         console.log("configure local apis on 3000 and 3001");
         break;
     default:
         heroApi = "https://covid19superheroes.herokuapp.com/api/v2/";
-        villainApi = "https://supervillain.herokuapp.com/";
         console.log("production config");
 }
 
