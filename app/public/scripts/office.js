@@ -169,24 +169,3 @@ function addPoints (user, points) {
       }
     });
   }
-
-//Enable this once server side logic does answer checking
-// function submitAnswer (answer) {
-// //Jquery Ajax - Post the Answer
-// var data = [{ "response": answer}]
-// $.ajax({
-//     url: "https://responsivefight.herokuapp.com/api/officeAnswer",  
-//     type: "POST",
-//     dataType: "json",
-//     contentType: "application/json; charset=utf-8",    
-//     data: JSON.stringify(data),
-//     success: function(res){
-//       //parse response into json object
-//       var json = $.parseJSON(data);
-//     },
-//     error: function(xhr, ajaxOptions, thrownError) {
-//       //alert the user if something went wrong
-//        alert("Failed to retrieve response data! Message: " + xhr.statusText);
-//     }
-//   });
-// }

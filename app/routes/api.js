@@ -29,12 +29,6 @@ exports.office = function(req, res){
     getQuestion(routing, req, res, index);
 };
 
-exports.bus = function(req, res){
-    var index = req.query.index || 0;
-    let routing = heroApi + "bus";
-    getQuestion(routing, req, res, index);
-};
-
 exports.restaurant = function(req, res){
     var index = req.query.index || 0;
     var routing = heroApi + "restaurant";

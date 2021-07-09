@@ -30,7 +30,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.get('/', home.home);
 app.get('/api/officeQuestions', questions.office);
-app.get('/api/busQuestions', questions.bus);
 app.get('/api/restaurantQuestions', questions.restaurant);
 
 // GraphQL
@@ -38,7 +37,10 @@ app.get('/api/gqloffQ', questionState.gqloffice);
 app.get('/api/gqlbusQ', questionState.gqlbus);
 app.get('/api/gqlresQ', questionState.gqlrestaurant);
 app.get('/api/getflow', questionState.getFlow);
-app.post('/api/userstage', userState.userStage)
+app.post('/api/checkanswer', questionState.checkAnswer);
+
+app.post('/api/userstage', userState.userStage);
+app.get('/api/getstage', userState.getUserStage);
 
 let port =process.env.PORT || 8080;
 
