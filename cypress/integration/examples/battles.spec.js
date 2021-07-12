@@ -35,8 +35,10 @@ context('COVID19 Battles', () => {
 
     /// Due to new logic, we no longer record the correct answer.
     /// TODO: Need to upgrade to New cypress to better 
-    it.skip('Bus battle', () => {      
-      
+    it('Bus battle Correct Answer', () => {      
+      cy.intercept('GET', '/api/gqlbusQ?index=0', { fixture: 'mockquestion.json' })
+      cy.intercept('POST', '/api/checkanswer', { fixture: 'mockcorrect.json' })
+
       cy.get('#bus').click()
       cy.get('#bus_intro_modal')
       .should('be.visible')
@@ -61,18 +63,79 @@ context('COVID19 Battles', () => {
       cy.get('#bus_incorrect_modal')
       .should('not.be.visible')
       //E2E TEST: Selecting the correct answer will present the success modal
-      cy.window()
-      .then((window) => {
-        let correctAnswer = localStorage.getItem('busca')           
-        cy.log(correctAnswer)
-        console.log(correctAnswer); 
-        cy.contains(correctAnswer).click();
-      })            
+      cy.contains("yes").click();
       cy.get('#bus_correct_modal')
       .should('be.visible')
       cy.get('#close_correct_modal_btn').click()
     })
 
+    it('Bus battle Inorrect Answer', () => {      
+      cy.intercept('GET', '/api/gqlbusQ?index=0', { fixture: 'mockquestion.json' })
+      cy.intercept('POST', '/api/checkanswer', { fixture: 'mockincorrect.json' })
+
+      cy.get('#bus').click()
+      cy.get('#bus_intro_modal')
+      .should('be.visible')
+      cy.get('#bus_timer_start').click()
+      cy.get('#bus_intro_modal')
+      .should('be.hidden')      
+      //check all elements are visible on Page
+      cy.get('#img_bus')
+      .should('be.visible')
+      cy.get('#bus_progress')
+      .should('be.visible')      
+      cy.get('#bus_question_1')
+      .should('be.visible')
+      .contains('?')
+      cy.get('#bus_answer_1')
+      .should('be.visible')
+      cy.get('#bus_answer_2')
+      .should('be.visible')
+      //End - check all elements are visible on Page
+      
+      //TEST the incorrect Modal is not present
+      cy.get('#bus_incorrect_modal')
+      .should('not.be.visible')
+      //MOCK: Selecting the incorrect answer will present the incorrect modal
+      cy.contains("no").click();
+      cy.get('#bus_incorrect_modal')
+      .should('be.visible')
+      cy.contains("Try again").click();
+    })
+
+    it('Bus battle Timeout', () => {      
+      cy.get('#bus').click()
+      cy.get('#bus_intro_modal')
+      .should('be.visible')
+      cy.get('#bus_timer_start').click()
+      cy.get('#bus_intro_modal')
+      .should('be.hidden')      
+      //check all elements are visible on Page
+      cy.get('#img_bus')
+      .should('be.visible')
+      cy.get('#bus_progress')
+      .should('be.visible')      
+      cy.get('#bus_question_1')
+      .should('be.visible')
+      .contains('?')
+      cy.get('#bus_answer_1')
+      .should('be.visible')
+      cy.get('#bus_answer_2')
+      .should('be.visible')
+      //End - check all elements are visible on Page
+
+      //MOCK: Selecting the incorrect answer will present the incorrect modal go home
+      cy.wait(22001)
+      cy.get('#bus_out_of_time_modal')
+      .should('be.visible')
+      cy.get("#retry").click({force: true});
+
+      cy.wait(22001)
+      cy.get('#bus_out_of_time_modal')
+      .should('be.visible')
+      cy.contains("Return Home").click();
+      cy.url().should('include', '/covid') // => true
+    })
     it('Restaurant battle', () => {
 
       cy.get('#restaurant').click() 

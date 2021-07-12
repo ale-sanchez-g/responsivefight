@@ -120,4 +120,25 @@ describe("API Testing with Cypress", () => {
       .should("include", /^answer2/)
       .should("include", /^score/);
   });
+
+  it("Validate the checkanswer api", () => {
+    
+    let correctBody = { "stage": "test", "answer": "yes"};
+    let incorrectBody = { "stage": "test", "answer": "no"};
+
+    cy.request('POST', 'http://localhost:8080/api/checkanswer', correctBody).then(
+      (response) => {
+        // response.body is automatically serialized into JSON
+        expect(response.body.data.questions[0]).to.have.property('score', 1) // true
+      }
+    );
+
+    cy.request('POST', 'http://localhost:8080/api/checkanswer', incorrectBody).then(
+      (response) => {
+        // response.body is automatically serialized into JSON
+        expect(response.body.data.questions.length).to.eq(0) // true
+      }
+    );
+
+  });
 });
