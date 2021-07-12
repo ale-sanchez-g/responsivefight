@@ -60,6 +60,25 @@ function gqlFlow (routing, req, res, hasuraKey) {
       });
 }
 
+function evaluateAnswer (routing, req, res, hasuraKey) {
+  var options = {
+      'method': 'POST',
+      'url': routing + 'v1/graphql',
+      'headers': {
+        'x-hasura-admin-secret': `${hasuraKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: `query checkAnswer { questions(where: {id: {_eq: "${req.body.stage}"}, correctAnswer: {_eq: "${req.body.answer}"}}) { score } }`,
+        variables: {}
+      })
+    };
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      var locals = JSON.parse(response.body);
+      res.json(locals);
+    });
+}
 
 exports.gqloffice = function(req, res){
     var index = req.query.index || 0;
@@ -82,4 +101,9 @@ exports.gqlrestaurant = function(req, res){
 exports.getFlow = function(req, res){
     let hk = process.env['H_KEY'];
     gqlFlow(logic, req, res, hk);
+};
+
+exports.checkAnswer = function(req, res){
+  let hk = process.env['H_KEY'];
+  evaluateAnswer(logic, req, res, hk);
 };

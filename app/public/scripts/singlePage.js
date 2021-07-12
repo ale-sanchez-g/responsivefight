@@ -1,7 +1,7 @@
 // present the modal to user on pageload
 $( document ).ready(function() {
     var userName = localStorage.getItem("userName");
-    getUserStage(userName);
+    qgetUserStage(userName);
     $('#introModal').modal('show');
     startProgressBar();  
 });
@@ -9,13 +9,13 @@ $( document ).ready(function() {
 // Start the timer the modal to user on pageload
 $("#answer_1").click(function () {
     var buttonText = $('#answer_1').text();
-    evaluateAnswer(buttonText);
+    qevaluateAnswer(buttonText);
 });
 
 // Start the timer the modal to user on pageload
 $("#answer_2").click(function () {
     var buttonText = $('#answer_2').text();
-    evaluateAnswer(buttonText);
+    qevaluateAnswer(buttonText);
 });
 
 // Continue the journey
@@ -28,61 +28,64 @@ $("#continue").click(function () {
 });
 
 // Get user Stage from GraphQL
-function getUserStage (user) {
-var settings = {
-    "url": "https://covid19-logic.herokuapp.com/v1/graphql",
-    "method": "POST",
-    "timeout": 0,
-    "headers": {
-        "x-hasura-admin-secret": "57-Harry-Point",
-        "Content-Type": "application/json"
-    },
-    "data": JSON.stringify({
-        query: "query userStage { user_stage(where: {username: {_eq: \"" + user + "\"}}) { stage } }"
-    })
-    };
-
-$.ajax(settings).done(function (response) {
-    var stage = response.data.user_stage[0].stage;
-    localStorage.setItem("stage", stage);
-    console.log(stage);
-    fetchQuestion(stage);
-});
+function qgetUserStage (user) {
+  $.get({
+    url: `/api/getstage?user=${user}`,
+    success: function(res){
+      localStorage.setItem("stage", res.stage);
+      fetchQuestion(res.stage);
+    }
+  }).fail(function (jqXHR, textStatus, err) {
+      console.log("API reponse is " + jqXHR.status);
+      console.log(textStatus);
+      console.log(err);
+  });
 }
 
-// Get Question from GraphQL
-function fetchQuestion(stage) {
-    console.log("getting questions from GraphQL");
+//Checn Question Secure
+function qevaluateAnswer (btnText) {
+  var stage = localStorage.getItem("stage");
+  var uname = localStorage.getItem("userName");
+  $.post({
+    url: `/api/checkanswer`,
+    data: {"stage": stage, "answer": btnText},
+    success: function(response){
+      if (response.data.questions[0] != undefined ) {
+            
+        // Capture and set score
+        var points = response.data.questions[0].score;
+        var start_points = parseInt(localStorage.getItem("score"),10) || 0;
+        var score = start_points + points;
+        localStorage.setItem("score", score);
 
-    var settings = {
-        "url": "https://covid19-logic.herokuapp.com/v1/graphql",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "x-hasura-admin-secret": "57-Harry-Point",
-          "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-          query: "query getQuestion { questions(where: {id: {_eq: \"" + stage + "\"}}) { question answer1 answer2 score } }"
-        })
-      };
+        // Present modal
+        $('#correctModal').modal('show');
+        addPoints(uname,score);
 
-    $.ajax(settings).done(function (response) {
-      if ( response.data.questions[0] == undefined ) {
-        window.location.replace("/leaderboard");
-      } else {
+        // Move to next Stage
+        var flow = JSON.parse(localStorage.getItem("flow"));
+        var stg = localStorage.getItem("position")
+        var arry = stg.split("_");
+        var i = arry[1];
+        var new_stage = (parseInt(i, 10) + 1);
         
-        var question =  response.data.questions[0].question;
-        var answer_one =  response.data.questions[0].answer1;
-        var answer_two =  response.data.questions[0].answer2;
+        console.log(new_stage);
 
-        document.getElementById("question").textContent=question;
-        document.getElementById("answer_1").textContent=answer_one;
-        document.getElementById("answer_2").textContent=answer_two;
-
-      }
-
-    });
+        var stage = flow[`stage_${new_stage}`];
+        console.log(stage);
+        localStorage.setItem("stage", stage);
+        localStorage.setItem("position", `stage_${new_stage}`);            
+        
+    } else {
+        // Present modal
+        $('#incorrectModal').modal('show');
+    }
+    }
+  }).fail(function (jqXHR, textStatus, err) {
+      console.log("API reponse is " + jqXHR.status);
+      console.log(textStatus);
+      console.log(err);
+  });
 }
 
 // Push points to Villain Service
