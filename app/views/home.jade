@@ -27,7 +27,8 @@ row
         div.block
             h2.summary
                 | Tell me your warrior name
-            input.center(id="worrior_username" type="text" style="text-align:center;")
+            input.center(id="worrior_username" type="text" style="text-align:center;" maxlength='10')            
+            span.center(id="popup" style="text-align:center;") 
             br
             a.btn(style="background-color: #81a5db;" id="warrior") Create warrior
             a.btn(href="covid" style="background-color: #d54ff0; display: none" id="start") Start your journey

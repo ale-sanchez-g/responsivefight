@@ -7,6 +7,22 @@ $( document ).ready(function() {
     pingAPI("https://covid19superheroes.herokuapp.com/api/v2/bus");
     pingAPI("https://supervillain.herokuapp.com/v1/user");
     gqlFlow();
+
+    $("#worrior_username").keyup( function() {
+
+      if($("#worrior_username").val().length>5 && $("#worrior_username").val().length<10) {
+
+          $("#popup").fadeIn();
+          $("#popup").html("Only use 10 characters");
+
+      }
+      else {
+
+          $("#popup").fadeOut();
+
+      }
+
+  });
 });
 
 // Check the button text matches the correct answer

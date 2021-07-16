@@ -315,3 +315,12 @@ article {
     margin-right: auto;
   }
 }
+
+#popup {
+  color: whitesmoke;
+  background-color: black;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+}
