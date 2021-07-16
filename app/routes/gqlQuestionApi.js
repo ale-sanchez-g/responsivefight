@@ -80,22 +80,10 @@ function evaluateAnswer (routing, req, res, hasuraKey) {
     });
 }
 
-exports.gqloffice = function(req, res){
-    var index = req.query.index || 0;
-    let hk = process.env['H_KEY'];
-    postQuery(logic, req, res, index, "off", hk);
-};
-
 exports.gqlbus = function(req, res){
     var index = req.query.index || 0;
     let hk = process.env['H_KEY'];
     postQuery(logic, req, res, index, "bus", hk);
-};
-
-exports.gqlrestaurant = function(req, res){
-    var index = req.query.index || 0;
-    let hk = process.env['H_KEY'];
-    postQuery(logic, req, res, index, "res", hk);
 };
 
 exports.getFlow = function(req, res){
@@ -106,4 +94,12 @@ exports.getFlow = function(req, res){
 exports.checkAnswer = function(req, res){
   let hk = process.env['H_KEY'];
   evaluateAnswer(logic, req, res, hk);
+};
+
+//export fetchquestion
+exports.fetchquestion = function(req, res){
+  let hk = process.env['H_KEY'];
+  let index = req.query.index || 0;
+  let btlfld = req.query.btlfld || "bus";
+  postQuery(logic, req, res, index, btlfld, hk);
 };
