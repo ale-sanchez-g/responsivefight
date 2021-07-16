@@ -8,9 +8,6 @@ describe("API Testing with Cypress", () => {
     );
 
     cy.request("http://localhost:8080/api/gqlbusQ").as("gqlbusQ");
-    cy.request("http://localhost:8080/api/gqlresQ").as("gqlresQ");
-    cy.request("http://localhost:8080/api/gqloffQ").as("gqloffQ");
-
     cy.request("http://localhost:8080/version.json").as("version");
   });
 
@@ -91,34 +88,55 @@ describe("API Testing with Cypress", () => {
       .should("include", /^score/);
   });
 
-  it("Validate the gqloffQ call", () => {
+  it("Validate the gqloffice call, index 0", () => {
+    cy.request({
+      url: `http://localhost:8080/api/fetchquestion`,
+      qs: {
+        btlfld: "off_1",
+      }
+  }).as("gqloffQ");
+
     cy.get("@gqloffQ")
       .its("headers")
       .its("content-type")
       .should("include", "application/json");
     cy.get("@gqloffQ").its("status").should("equal", 200);
-    cy.get("@gqloffQ")
-      .its("body")
-      .its("body")
-      .should("include", /^question/)
-      .should("include", /^answer1/)
-      .should("include", /^answer2/)
-      .should("include", /^score/);
+    cy.get("@gqloffQ").then(
+      (response) => {
+        // response.body is automatically serialized into JSON
+        expect(response.body.id).to.contain("off") // true
+        expect(response.body.question).to.exist // true
+        expect(response.body.answer1).to.exist // true
+        expect(response.body.answer2).to.exist // true
+        expect(response.body.score).to.exist // true
+
+      }); 
   });
 
-  it("Validate the gqlresQ call", () => {
+  it("Validate the gqlresQ call, index 0", () => {
+    cy.request({
+      url: `http://localhost:8080/api/fetchquestion`,
+      qs: {
+        btlfld: "res",
+        index: 0,
+      }
+  }).as("gqlresQ");
+    
     cy.get("@gqlresQ")
       .its("headers")
       .its("content-type")
       .should("include", "application/json");
     cy.get("@gqlresQ").its("status").should("equal", 200);
-    cy.get("@gqlresQ")
-      .its("body")
-      .its("body")
-      .should("include", /^question/)
-      .should("include", /^answer1/)
-      .should("include", /^answer2/)
-      .should("include", /^score/);
+    cy.get("@gqlresQ").then(
+      (response) => {
+        // response.body is automatically serialized into JSON
+        expect(response.body.id).to.contain("res") // true
+        expect(response.body.question).to.exist // true
+        expect(response.body.answer1).to.exist // true
+        expect(response.body.answer2).to.exist // true
+        expect(response.body.score).to.exist // true
+
+      }); 
   });
 
   it("Validate the checkanswer api", () => {

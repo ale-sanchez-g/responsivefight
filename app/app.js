@@ -33,10 +33,9 @@ app.get('/api/officeQuestions', questions.office);
 app.get('/api/restaurantQuestions', questions.restaurant);
 
 // GraphQL
-app.get('/api/gqloffQ', questionState.gqloffice);
 app.get('/api/gqlbusQ', questionState.gqlbus);
-app.get('/api/gqlresQ', questionState.gqlrestaurant);
 app.get('/api/getflow', questionState.getFlow);
+app.get('/api/fetchquestion', questionState.fetchquestion);
 app.post('/api/checkanswer', questionState.checkAnswer);
 
 app.post('/api/userstage', userState.userStage);

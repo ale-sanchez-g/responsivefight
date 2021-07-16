@@ -27,6 +27,25 @@ $("#continue").click(function () {
     startProgressBar();  
 });
 
+// Fetch question
+function fetchQuestion(stage) {
+  if ( stage == "undefined" ) {
+    window.location.replace("/leaderboard");
+  };
+  $.get({
+    url: `/api/fetchquestion?btlfld=${stage}`,
+    success: function(res){
+        var question =  res.question;
+        var answer_one =  res.answer1;
+        var answer_two =  res.answer2;
+
+        document.getElementById("question").textContent=question;
+        document.getElementById("answer_1").textContent=answer_one;
+        document.getElementById("answer_2").textContent=answer_two;
+      }
+    });
+}
+
 // Get user Stage from GraphQL
 function qgetUserStage (user) {
   $.get({
@@ -107,58 +126,7 @@ function addPoints (user, points) {
            console.log("Failed update user score: " + xhr.statusText);
         }
       });
-}
-
-//Evaluate the answer and display appropiate modal using graphQL
-function evaluateAnswer(btnText) {
-    var stage = localStorage.getItem("stage");
-    var uname = localStorage.getItem("userName");
-    var settings = {
-        "url": "https://covid19-logic.herokuapp.com/v1/graphql",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "x-hasura-admin-secret": "57-Harry-Point",
-          "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            query: "query checkAnswer { questions(where: {id: {_eq: \"" + stage + "\"}, correctAnswer: {_eq: \"" + btnText + "\"}}) { score } }"
-        })
-      };
-
-    $.ajax(settings).done(function (response) {
-        if (response.data.questions[0] != undefined ) {
-            
-            // Capture and set score
-            var points = response.data.questions[0].score;
-            var start_points = parseInt(localStorage.getItem("score"),10) || 0;
-            var score = start_points + points;
-            localStorage.setItem("score", score);
-
-            // Present modal
-            $('#correctModal').modal('show');
-            addPoints(uname,score);
-
-            // Move to next Stage
-            var flow = JSON.parse(localStorage.getItem("flow"));
-            var stg = localStorage.getItem("position")
-            var arry = stg.split("_");
-            var i = arry[1];
-            var new_stage = (parseInt(i, 10) + 1);
-            
-            console.log(new_stage);
-
-            var stage = flow[`stage_${new_stage}`];
-            console.log(stage);
-            localStorage.setItem("stage", stage);
-            localStorage.setItem("position", `stage_${new_stage}`);            
-            
-        } else {
-            // Present modal
-            $('#incorrectModal').modal('show');
-        }
-    });
-}    
+} 
 
 // Update user stage
 function updateUserSatge(stage) {
