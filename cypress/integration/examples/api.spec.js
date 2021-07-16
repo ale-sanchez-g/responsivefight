@@ -121,7 +121,7 @@ describe("API Testing with Cypress", () => {
         index: 0,
       }
   }).as("gqlresQ");
-
+    
     cy.get("@gqlresQ")
       .its("headers")
       .its("content-type")
