@@ -28,7 +28,7 @@ context("COVID19 Battles", () => {
   /// Due to new logic, we no longer record the correct answer.
   /// TODO: Need to upgrade to New cypress to better
   it("Bus battle Correct Answer", () => {
-    cy.intercept("GET", "/api/gqlbusQ?index=0", {
+    cy.intercept("GET", "/api/fetchquestion?*", {
       fixture: "mockquestion.json",
     });
     cy.intercept("POST", "/api/checkanswer", { fixture: "mockcorrect.json" });
@@ -54,7 +54,7 @@ context("COVID19 Battles", () => {
   });
 
   it("Bus battle Inorrect Answer", () => {
-    cy.intercept("GET", "/api/gqlbusQ?index=0", {
+    cy.intercept("GET", "/api/fetchquestion?*", {
       fixture: "mockquestion.json",
     });
     cy.intercept("POST", "/api/checkanswer", { fixture: "mockincorrect.json" });
@@ -102,11 +102,37 @@ context("COVID19 Battles", () => {
     cy.contains("Return Home").click();
     cy.url().should("include", "/covid"); // => true
   });
-  it("Restaurant battle", () => {
+
+  it.skip("Office battle Correct Answer", () => {
+    cy.intercept("GET", "/api/fetchquestion?*", {
+      fixture: "mockquestion.json",
+    });
+    cy.intercept("POST", "/api/checkanswer", { fixture: "mockcorrect.json" });
+
+    cy.get("#office").click();
+    cy.get("#off_intro_modal").should("be.visible");
+    cy.contains("Start").click();
+    cy.get("#off_intro_modal").should("be.hidden");
+    //check all elements are visible on Page
+    cy.get("#img_off").should("be.visible");
+    cy.get("#off_progress").should("be.visible");
+    cy.get("#off_question_1").should("be.visible").contains("?");
+    cy.get("#off_answer_1").should("be.visible");
+    cy.get("#off_answer_2").should("be.visible");
+    //End - check all elements are visible on Page
+
+    //TEST the incorrect Modal is not present
+    cy.get("#off_incorrect_modal").should("not.be.visible");
+    //E2E TEST: Selecting the correct answer will present the success modal
+    cy.contains("yes").click();
+    cy.get("#off_correct_modal").should("be.visible");
+    cy.get("#close_correct_modal_btn").click();
+  });
+
+  it.skip("Restaurant battle", () => {
     cy.get("#restaurant").click();
     cy.get("#restaurant_intro_modal").should("be.visible");
     cy.get("#restaurant_timer_start").click();
-    cy.get("#restaurant_intro_modal").should("be.hidden");
     //check all elements are visible on Page
     cy.get("#img_restaurant").should("be.visible");
     cy.get("#restaurant_progress").should("be.visible");
