@@ -27,7 +27,6 @@ var buttonText2 = $('#bus_answer_2').text();
 qevaluateAnswer(buttonText2);       
 });
 
-
 //TODO:ENABLE BELOW ONCE API's ARE WORKING
 function getQnAData (){
   var bus_question   = $("#bus_question_1");
@@ -45,7 +44,7 @@ function getQnAData (){
 
   //Jquery Ajax - Fetch the questions
   $.ajax({
-          url: "/api/gqlbusQ?index=" + i,
+          url: "/api/fetchquestion?btlfld=bus&index=" + i,
           type: 'GET',
           //By using datatype we set what we receive and parse the response as a Json object to save us using something like 
           //var response = JSON.parse(response); Neat right?

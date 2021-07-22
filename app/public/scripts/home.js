@@ -4,7 +4,6 @@ $( document ).ready(function() {
     var userName = localStorage.getItem("userName");
     $('#welcome_text').append(`Choose your battle field ${userName}`);
     // Wake up required APIs
-    pingAPI("https://covid19superheroes.herokuapp.com/api/v2/bus");
     pingAPI("https://supervillain.herokuapp.com/v1/user");
     gqlFlow();
 
