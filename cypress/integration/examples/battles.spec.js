@@ -103,7 +103,7 @@ context("COVID19 Battles", () => {
     cy.url().should("include", "/covid"); // => true
   });
 
-  it.skip("Office battle Correct Answer", () => {
+  it("Office battle Correct Answer", () => {
     cy.intercept("GET", "/api/fetchquestion?*", {
       fixture: "mockquestion.json",
     });
@@ -114,46 +114,39 @@ context("COVID19 Battles", () => {
     cy.contains("Start").click();
     cy.get("#off_intro_modal").should("be.hidden");
     //check all elements are visible on Page
-    cy.get("#img_off").should("be.visible");
-    cy.get("#off_progress").should("be.visible");
-    cy.get("#off_question_1").should("be.visible").contains("?");
-    cy.get("#off_answer_1").should("be.visible");
-    cy.get("#off_answer_2").should("be.visible");
+    cy.get("#img_office").should("be.visible");
+    cy.get("#myProgress").should("be.visible");
+    cy.get("#office_question_1").should("be.visible").contains("?");
+    cy.get("#office_answer_1").should("be.visible");
+    cy.get("#office_answer_2").should("be.visible");
     //End - check all elements are visible on Page
 
-    //TEST the incorrect Modal is not present
-    cy.get("#off_incorrect_modal").should("not.be.visible");
     //E2E TEST: Selecting the correct answer will present the success modal
     cy.contains("yes").click();
     cy.get("#off_correct_modal").should("be.visible");
-    cy.get("#close_correct_modal_btn").click();
   });
 
-  it.skip("Restaurant battle", () => {
+  it.only("Restaurant battle", () => {
+    cy.intercept("GET", "/api/fetchquestion?*", {
+      fixture: "mockquestion.json",
+    });
+    cy.intercept("POST", "/api/checkanswer", { fixture: "mockcorrect.json" });
+
     cy.get("#restaurant").click();
     cy.get("#restaurant_intro_modal").should("be.visible");
-    cy.get("#restaurant_timer_start").click();
+    cy.contains("Start").click();
+    cy.get("#restaurant_intro_modal").should("be.hidden");
     //check all elements are visible on Page
     cy.get("#img_restaurant").should("be.visible");
-    cy.get("#restaurant_progress").should("be.visible");
-    cy.get("#restaurant_title").contains("At the Restaurant ");
-    cy.get("#restaurant_question_1").should("be.visible");
+    cy.get("#restaurant_bar").should("be.visible");
+    cy.get("#restaurant_question_1").should("be.visible").contains("?");
     cy.get("#restaurant_answer_1").should("be.visible");
     cy.get("#restaurant_answer_2").should("be.visible");
     //End - check all elements are visible on Page
-    //TODO:ENABLE ONCE RESTAURANT COOKIE IS SET
-    //TEST the incorrect Modal is not present
-    cy.get("#restaurant_incorrect_modal").should("not.be.visible");
+
     //E2E TEST: Selecting the correct answer will present the success modal
-    cy.wait(500); //for some reason we need to wait for the cookie to load
-    cy.window().then((window) => {
-      let correctAnswer = localStorage.getItem("busca");
-      cy.log(correctAnswer);
-      console.log(correctAnswer);
-      cy.contains(correctAnswer).click();
-    });
+    cy.contains("yes").click();
     cy.get("#restaurant_correct_modal").should("be.visible");
-    cy.get("#close_correct_modal_btn").click();
   });
 
   it("Single page battle Correct Answer", () => {

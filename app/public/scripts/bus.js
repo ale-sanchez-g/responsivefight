@@ -18,13 +18,13 @@ $( "#bus_timer_start" ).click(function() {
 
 // Check the button text matches the correct answer
 $( "#bus_answer_1" ).click(function() {
-var buttonText = $('#bus_answer_1').text();
-qevaluateAnswer(buttonText);      
+  var buttonText = $('#bus_answer_1').text();
+  qevaluateAnswer(buttonText);      
 });
 
 $( "#bus_answer_2" ).click(function() {   
-var buttonText2 = $('#bus_answer_2').text();
-qevaluateAnswer(buttonText2);       
+  var buttonText2 = $('#bus_answer_2').text();
+  qevaluateAnswer(buttonText2);       
 });
 
 //TODO:ENABLE BELOW ONCE API's ARE WORKING
