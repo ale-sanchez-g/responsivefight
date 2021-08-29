@@ -49,11 +49,24 @@ static_html.forEach(function(page){
     });
 });
 
-app.get('*', function(req, res){
-    fs.readFile(__dirname + `/public/404.html`, 'utf8', (err, text) => {
-        res.send(text, 404);
-    });
-});
+app.use(function(req, res, next) {
+    res.status(404);
+  
+    // respond with html page
+    if (req.accepts('html')) {
+      res.render('error', { url: req.url });
+      return;
+    }
+  
+    // respond with json
+    if (req.accepts('json')) {
+      res.json({ error: 'Not found' });
+      return;
+    }
+  
+    // default to plain-text. send()
+    res.type('txt').send('Not found');
+  });
 
 let server = app.listen(port, function () {
 
