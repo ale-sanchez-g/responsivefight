@@ -19,7 +19,7 @@ Currenlty the Application runs on an express server, and calls some rest APIs to
 Download this repo and run the below scripts:
 
 - `npm install`
-- `npm run`
+- `H_KEY={getKey} npm start`
 
 This will have the application running on port 8080 <http://localhost/8080> connecting to the production APIs
 
