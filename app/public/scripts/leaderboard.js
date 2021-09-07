@@ -6,7 +6,7 @@ $( document ).ready(function() {
 function getLeaderboard () {
     //Jquery Ajax - Post the Answer
     $.ajax({
-        url: "https://supervillain.herokuapp.com/v1/user",  
+        url: "/api/listusers",  
         type: "GET",
         dataType: "json",
         success: function(res){

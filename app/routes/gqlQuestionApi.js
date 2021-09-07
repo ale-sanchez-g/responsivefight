@@ -4,8 +4,8 @@ let logic;
 
 switch (app_env) {
     case "local":
-        logic = "http://0.0.0.0:8080/"
-        console.log("local hasure 8080");
+      logic = "https://covid19-logic.herokuapp.com/"
+      console.log("local hasure 3001");
         break;
     default:
         logic = "https://covid19-logic.herokuapp.com/"

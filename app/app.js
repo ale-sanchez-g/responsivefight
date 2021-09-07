@@ -7,7 +7,7 @@ let bodyParser = require('body-parser');
 let home = require('./routes/home');
 let questionState = require('./routes/gqlQuestionApi');
 let userState = require('./routes/gqlUserApi');
-
+let usrVillan = require('./routes/villanApi');
 
 let static_html = [
     "covid",
@@ -36,6 +36,11 @@ app.post('/api/checkanswer', questionState.checkAnswer);
 
 app.post('/api/userstage', userState.userStage);
 app.get('/api/getstage', userState.getUserStage);
+
+// BFF
+app.post('/api/adduser', usrVillan.createUsr);
+app.put('/api/updateuser', usrVillan.updateUsr);
+app.get('/api/listusers', usrVillan.listUsr);
 
 let port =process.env.PORT || 8080;
 
