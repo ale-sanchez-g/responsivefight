@@ -50,7 +50,7 @@ function createUser (user_name){
         username: user_name,
         score: 0
       }
-      $.post("https://supervillain.herokuapp.com/v1/user", jsonBody).fail(function (jqXHR, textStatus, err) {
+      $.post("/api/adduser", jsonBody).fail(function (jqXHR, textStatus, err) {
             console.log("API reponse is " + jqXHR.status);
             console.log(textStatus);
             console.log(err);

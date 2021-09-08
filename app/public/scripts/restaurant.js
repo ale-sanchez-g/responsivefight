@@ -89,7 +89,7 @@ function getQnAData() {
   var data = { username: user, score: points}
   console.log(data);
   $.ajax({
-      url: "https://supervillain.herokuapp.com/v1/user",  
+      url: "/api/updateuser",  
       type: "PUT",
       dataType: "json",
       contentType: "application/json; charset=utf-8",    
