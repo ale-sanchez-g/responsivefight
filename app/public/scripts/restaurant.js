@@ -92,7 +92,7 @@ function getQnAData() {
       url: "/api/updateuser",  
       type: "PUT",
       dataType: "json",
-      contentType: "application/json; charset=utf-8",    
+      contentType: "application/json;",    
       data: JSON.stringify(data),
       success: function(res){
         //parse response into json object

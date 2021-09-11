@@ -12,11 +12,7 @@ switch (app_env) {
     console.log("Villan config");
 }
 
-function createUser(routing, user_name, tkn, res) {
-  var jsonBody = {
-    username: user_name,
-    score: 0,
-  };
+function createUser(routing, payload, tkn, res) {
   var options = {
     method: "POST",
     url: routing + "v1/user",
@@ -24,7 +20,7 @@ function createUser(routing, user_name, tkn, res) {
       Authorization: `${tkn}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(jsonBody),
+    body: JSON.stringify(payload),
   };
   request(options, function (error, response) {
     if (error) throw new Error(error);
