@@ -44,7 +44,6 @@ $( "#warrior" ).click(function() {
 
   });
 
-///TODO:ENABLE BELOW ONCE API's ARE WORKING
 function createUser (user_name){
     var jsonBody = {
         username: user_name,
