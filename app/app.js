@@ -39,7 +39,7 @@ app.get('/api/getstage', userState.getUserStage);
 
 // BFF
 app.post('/api/adduser', usrVillan.createUsr);
-app.put('/api/updateuser', usrVillan.updateUsr);
+app.post('/api/updateuser', usrVillan.updateUsr);
 app.get('/api/listusers', usrVillan.listUsr);
 
 let port =process.env.PORT || 8080;

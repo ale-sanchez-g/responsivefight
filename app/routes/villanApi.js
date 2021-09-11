@@ -30,6 +30,7 @@ function createUser(routing, payload, tkn, res) {
 }
 
 function updateUser(routing, payload, tkn, res) {
+  console.log(payload);
   var options = {
     method: "PUT",
     url: routing + "v1/user",
@@ -41,8 +42,7 @@ function updateUser(routing, payload, tkn, res) {
   };
   request(options, function (error, response) {
     if (error) throw new Error(error);
-    var locals = JSON.parse(response.body);
-    res.json(locals);
+    res.status(200).send("User updated");
   });
 }
 
