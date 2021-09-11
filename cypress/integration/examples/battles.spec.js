@@ -126,7 +126,7 @@ context("COVID19 Battles", () => {
     cy.get("#off_correct_modal").should("be.visible");
   });
 
-  it.only("Restaurant battle", () => {
+  it("Restaurant battle", () => {
     cy.intercept("GET", "/api/fetchquestion?*", {
       fixture: "mockquestion.json",
     });
