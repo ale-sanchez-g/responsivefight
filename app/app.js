@@ -53,9 +53,8 @@ static_html.forEach(function(page){
         });
     });
 });
-
-app.use(function(req, res, next) {
-    res.status(404);
+app.get('/404', (req, res) => {
+  res.status(404);
   
     // respond with html page
     if (req.accepts('html')) {
@@ -72,6 +71,10 @@ app.use(function(req, res, next) {
     // default to plain-text. send()
     res.type('txt').send('Not found');
   });
+
+app.get('*', (req, res) => {
+  res.redirect('/404');  
+});
 
 let server = app.listen(port, function () {
 
