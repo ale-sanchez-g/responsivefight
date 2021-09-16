@@ -100,6 +100,13 @@ div.doubleblock {
 }
 .btn {
     color: #f1f1f1;
+    width: 100%;
+}
+.btn-secondary {
+    background-color: green;
+    color: white;
+    margin-bottom: 3px;
+    text-align: center;
 }
 .option-label {
     text-align: center;
@@ -111,9 +118,6 @@ div.doubleblock {
   text-align: center;
   font-size: large;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-.btn {
-    width: 100%;
 }
 .footer-text {
     text-align: center;
@@ -182,13 +186,6 @@ div.doubleblock {
   background-color: #4CAF50;
 }
 /* End Restaurant Progress Bar */
-
-/* Bootstrap answers buttons stacked side by side  */
-.btn-office {
-  display: inline-block;
-  background-color: #d54ff0;
-}
-/* End Bootstrap answers buttons stacked side by side  */
 
 /* Bootstrap for inputs  */
 input {
