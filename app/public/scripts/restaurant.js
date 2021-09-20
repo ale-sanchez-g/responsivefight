@@ -76,10 +76,10 @@ function getQnAData() {
     // Handle error here
 
     restaurant_question.append("You have completed this battleground");
-    restaurant_answer_one.append("Check your score");
+    restaurant_answer_one.append("Go to the leaderboard and check your score.");
     document.getElementById("restaurant_answer_1").href = "leaderboard";
-    document.getElementById("restaurant_answer_2_button").style.display =
-      "none";
+    document.getElementById("restaurant_wrap_1").style = "background-color: green;";
+    document.getElementById("restaurant_answer_2").style.display = "none";
     console.log("API reponse is " + jqXHR.status);
   });
 }
