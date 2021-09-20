@@ -74,9 +74,10 @@ function getQnAData() {
   }).fail(function (jqXHR, textStatus, error) {
     // Handle error here
     office_question.append("You have completed this battleground");
-    office_answer_one.append("Check your score");
+    office_answer_one.append("Go to the leaderboard and check your score.");
     document.getElementById("office_answer_1").href = "leaderboard";
-    document.getElementById("office_answer_2_button").style.display = "none";
+    document.getElementById("office_wrap_1").style = "background-color: green;";
+    document.getElementById("office_answer_2").style.display = "none";
     console.log("API reponse is " + jqXHR.status);
   });
 }
