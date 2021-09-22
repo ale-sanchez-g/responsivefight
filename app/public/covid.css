@@ -119,6 +119,10 @@ div.doubleblock {
   font-size: large;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.summarytext {
+  width:100%;
+  padding: 30px;
+}
 .footer-text {
     text-align: center;
 }
@@ -288,6 +292,7 @@ article {
 }
 .thumbnail {
   width: 50%;
+  height: 100%;
 }
 
 .left {

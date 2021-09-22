@@ -3,16 +3,19 @@ $(document).ready(function () {
   var userName = localStorage.getItem("userName");
   qgetUserStage(userName);
   $("#introModal").modal("show");
-  startProgressBar();
 });
 
 // Start the timer the modal to user on pageload
+$("#start").click(function () {
+  $("#answer_1").focus();
+  startProgressBar();
+});
+
 $("#answer_1").click(function () {
   var buttonText = $("#answer_1").text();
   qevaluateAnswer(buttonText);
 });
 
-// Start the timer the modal to user on pageload
 $("#answer_2").click(function () {
   var buttonText = $("#answer_2").text();
   qevaluateAnswer(buttonText);
