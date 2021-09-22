@@ -8,7 +8,6 @@ $(document).ready(function () {
 // Start the timer the modal to user on pageload
 $("#start").click(function () {
   $("#answer_1").focus();
-  startProgressBar();
 });
 
 $("#answer_1").click(function () {
@@ -27,7 +26,6 @@ $("#continue").click(function () {
   updateUserSatge(stage);
   fetchQuestion(stage);
   document.getElementById("bar").style.visibility = "visible";
-  startProgressBar();
 });
 
 // Fetch question
@@ -145,42 +143,4 @@ function updateUserSatge(stage) {
   $.ajax(settings).done(function (response) {
     console.log(response);
   });
-}
-
-function startProgressBar() {
-  var i = 0;
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("bar");
-    var width = 1;
-    var id = setInterval(frame, 220);
-    var ary = ["#4CAF50", "#FFFF00", "#FF0000"];
-    function frame() {
-      if (width >= 100 || $("#correctModal").is(":visible")) {
-        clearInterval(id);
-        i = 0;
-        //hide bar
-        document.getElementById("bar").style.visibility = "hidden";
-        //show the modal only if the correct answer modal is not already on screen,
-        if (!$("#correctModal").is(":visible")) {
-          // Present modal
-          $("#incorrectModal").modal("show");
-        }
-      } else {
-        width++;
-        elem.style.width = width + "%";
-        switch (elem.style.width) {
-          case "40%":
-            document.getElementById("bar").style.background = "#FFFF00";
-            break;
-          case "75%":
-            document.getElementById("bar").style.background = "#FF0000";
-            break;
-          case "100%":
-            document.getElementById("bar").style.visibility = "hidden";
-            break;
-        }
-      }
-    }
-  }
 }
