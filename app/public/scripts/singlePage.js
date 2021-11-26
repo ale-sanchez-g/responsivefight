@@ -49,8 +49,9 @@ function fetchQuestion(stage) {
 
 // Get user Stage from GraphQL
 function qgetUserStage(user) {
-  $.get({
-    url: `/api/getstage?user=${user}`,
+  $.post({
+    url: `/api/getstage`,
+    data: { username: user },
     success: function (res) {
       localStorage.setItem("stage", res.stage);
       fetchQuestion(res.stage);
