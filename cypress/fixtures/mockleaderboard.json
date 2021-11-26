@@ -1,0 +1,6 @@
+[
+  { "username": "string", "score": 0 },
+  { "username": "this is a very long text", "score": 1 },
+  { "username": "12345", "score": 2 },
+  { "username": "!@#$%^", "score": 3 }
+]
