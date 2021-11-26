@@ -57,7 +57,7 @@ exports.userStage = function(req, res){
   };
 
 exports.getUserStage = function (req, res){
-  var uname = req.query.user || 'guest';
+  var uname = req.body.username || 'guest';
   let hk = process.env['H_KEY'];
   getUserStage(logic, req, res, uname, hk)
 };

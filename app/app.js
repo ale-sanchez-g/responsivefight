@@ -35,7 +35,7 @@ app.get('/api/fetchquestion', questionState.fetchquestion);
 app.post('/api/checkanswer', questionState.checkAnswer);
 
 app.post('/api/userstage', userState.userStage);
-app.get('/api/getstage', userState.getUserStage);
+app.post('/api/getstage', userState.getUserStage);
 
 // BFF
 app.post('/api/adduser', usrVillan.createUsr);
