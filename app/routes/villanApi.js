@@ -4,8 +4,8 @@ let villan;
 
 switch (app_env) {
   case "local":
-    villan = "http://0.0.0.0:3000/";
-    console.log("local hasure 3000");
+    villan = "https://42c41323-9108-490e-8536-0275a3d1fb2f.mock.pstmn.io/";
+    console.log("Postman Mock");
     break;
   default:
     villan = "https://supervillain.herokuapp.com/";

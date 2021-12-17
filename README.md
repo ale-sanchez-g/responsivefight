@@ -5,7 +5,7 @@ Responsive is an application that renders plain HTML and also some PUG.
 Currenlty the Application runs on an express server, and calls some rest APIs to gather some information.
 
 ## Badges
-[![Run Status](https://api.shippable.com/projects/5e83cded63e1b90007e8ad3e/badge?branch=master)](https://app.shippable.com/github/ale-sanchez-g/responsivefight/dashboard/insights) [![Cypress Run](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)]()
+[![Cypress Run](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)]()
 
 ## Requirements
 
@@ -19,7 +19,10 @@ Currenlty the Application runs on an express server, and calls some rest APIs to
 Download this repo and run the below scripts:
 
 - `npm install`
-- `H_KEY={getKey} npm start`
+- `H_KEY={getKey} JWT={getJWT} npm start`
+
+Run localy pointing to Villan stub - will still point to hasura api (//TODO: Mock Hasura API)
+- `H_KEY={getKey} APP_ENV=local npm start`
 
 This will have the application running on port 8080 <http://localhost/8080> connecting to the production APIs
 
