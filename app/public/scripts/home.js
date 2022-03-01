@@ -9,7 +9,7 @@ $( document ).ready(function() {
 
     $("#worrior_username").keyup( function() {
 
-      if($("#worrior_username").val().length>5 && $("#worrior_username").val().length<10) {
+      if($("#worrior_username").val().length>5) {
 
           $("#popup").fadeIn();
           $("#popup").html("Only use 10 characters");
@@ -37,7 +37,8 @@ $( "#warrior" ).click(function() {
     // Handles obsolete elements
     document.getElementById("warrior").style.display = "none";
     document.getElementById("worrior_username").style.display = "none";
-   
+    document.getElementById("popup").style.display = "none";
+
     // Show new elements
     document.getElementById("start").innerHTML = `Start your journey ${uname}`;
     document.getElementById("start").style.display = "inline-block";
@@ -104,3 +105,31 @@ function gqluserStage (user_name) {
       console.log(err);
   }); 
 }
+
+$( "#rego" ).click(function() {
+    // Show new elements
+    document.getElementById("regomodal").style.display = "inline-block";
+});
+
+$( "#close" ).click(function() {
+    // Show new elements
+    document.getElementById("regomodal").style.display = "none";
+    document.getElementById("loginmodal").style.display = "none";
+
+});
+
+$( "#login" ).click(function() {
+  // Show new elements
+  document.getElementById("loginmodal").style.display = "inline-block";
+});
+
+//WIP
+
+$( "#signupbtn" ).click(function() {
+  // Show new elements
+  document.getElementById("regomodal").style.display = "none";
+  let uname = document.getElementById('uname').value
+  alert(`WIP // Still bulding this feature.`);
+
+  document.getElementById("loginmodal").style.display = "inline-block";
+});
