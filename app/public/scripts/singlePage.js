@@ -5,7 +5,6 @@ $(document).ready(function () {
   $("#introModal").modal("show");
 });
 
-// Start the timer the modal to user on pageload
 $("#start").click(function () {
   $("#answer_1").focus();
 });
@@ -39,10 +38,12 @@ function fetchQuestion(stage) {
       var question = res.question;
       var answer_one = res.answer1;
       var answer_two = res.answer2;
+      var img = res.img;
 
       document.getElementById("question").textContent = question;
       document.getElementById("answer_1").textContent = answer_one;
       document.getElementById("answer_2").textContent = answer_two;
+      document.getElementById("dyno_img").src = img;
     },
   });
 }
