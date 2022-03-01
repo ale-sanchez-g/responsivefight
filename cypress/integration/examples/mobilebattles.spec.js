@@ -6,7 +6,7 @@ context("COVID19 Mobile Battles", () => {
     cy.visit("http://localhost:8080");
 
     let uname = Math.random().toString(20).substr(2, 6);
-
+    cy.get("#login").click();
     // Create Warrior
     cy.get("#worrior_username").type(uname);
     cy.wait(1000); // this wait is needed to synch the page

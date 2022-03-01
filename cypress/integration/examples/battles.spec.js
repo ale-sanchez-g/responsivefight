@@ -5,6 +5,7 @@ context("COVID19 Battles", () => {
     cy.visit("http://localhost:8080");
     //cy.visit('https://responsivefight.herokuapp.com')
     let uname = Math.random().toString(20).substr(2, 6);
+    cy.get("#login").click();
 
     // Create Warrior
     cy.get("#worrior_username").type(uname);
