@@ -114,7 +114,6 @@ context("COVID19 Mobile Battles", () => {
     cy.contains("Start").click();
     cy.get("#introModal").should("be.hidden");
     //check all elements are visible on Page
-    cy.get("#progress").should("be.visible");
     cy.get("#question").should("be.visible").contains("?");
     cy.get("#answer_1").should("be.visible");
     cy.get("#answer_2").should("be.visible");
