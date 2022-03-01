@@ -1,7 +1,8 @@
 {
   "video": false,
   "numTestsKeptInMemory": 0,
-  "screenshotOnRunFailure": false,
+  "screenshotOnRunFailure": true,
+  "screenshotsFolder": "screenshots",
   "reporter": "junit",
   "reporterOptions": {
     "mochaFile": "shippable/testresults/test-output-[hash].xml",

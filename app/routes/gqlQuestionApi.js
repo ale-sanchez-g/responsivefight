@@ -28,6 +28,7 @@ function postQuery (routing, req, res, index, btlfld, hasuraKey) {
           answer2
           question
           score
+          img
         }
       }`,
           variables: {}
