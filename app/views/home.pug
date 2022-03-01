@@ -22,21 +22,49 @@ row
                     .item.active
                         img.centered.responsive(src="/img/gamePrinciple.png" alt="WHO announcement")
 
-row
-    div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
-        div.block
-            h2.summary
-                | Tell me your warrior name
-            input.center(id="worrior_username" type="text" style="text-align:center;" maxlength='10')            
-            span.center(id="popup" style="text-align:center;") 
-            br
-            a.btn(style="background-color: #81a5db;" id="warrior") Create warrior
-            a.btn(href="covid" style="background-color: #d54ff0; display: none" id="start") Start your journey
-
 row 
     div.col-sm-12.col-md-offset-1.d-none.d-md-block.col-md-10.col.col-lg-10
         div.block
-            p.summary
-                | you can visit <a href="https://github.com/users/ale-sanchez-g/projects/1">this project</a> for more information
+            a.btn(id="rego" style="background-color: #81a5db;")  Register
+            p
+            a.btn(id="login" style="background-color: #11a5db;")  Login
+            div.modal(id="id01")
+                <form class="modal-content">
+                    <div class="container">
+                    h1 Sign Up
+                    p
+                        | Please fill in this form to create an account.
+                    
+                    label(for="email")
+                        | Email
+                    br    
+                    input.center(style="width: 150px;" type="text" placeholder="Enter Email" name="email" required)
+                    p
+                    label(for="psw")
+                        | Password
+                    br    
+                    input.center(style="width: 150px;" type="password" placeholder="Enter Password" name="psw" required)
+                    p
+                    label(for="psw-repeat")
+                        | Repeat Password
+                    br    
+                    input.center(style="width: 150px;" type="password" placeholder="Repeat Password" name="psw-repeat" required)
+                    p
+                    label(for="rememberme")
+                        | Remember me
+                    br    
+                    input(style="margin-bottom:15px" type="checkbox" checked="checked" name="rememberme")
+                    
+                    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
+                    <div class="clearfix">
+                        <button style="width: 250px;" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                        <button style="width: 250px;" type="submit" class="signupbtn">Sign Up</button>
+                    </div>
+                    </div>
+                </form>
+            p
+            p.summary
+                | Please visit <a href="https://github.com/users/ale-sanchez-g/projects/1">this project</a> for more information
+            
 script(type="application/javascript", src="scripts/home.js")

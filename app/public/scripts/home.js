@@ -104,3 +104,14 @@ function gqluserStage (user_name) {
       console.log(err);
   }); 
 }
+
+// WIP
+$( "#rego" ).click(function() {
+    // Show new elements
+    document.getElementById("id01").style.display = "inline-block";
+});
+
+$( "#close" ).click(function() {
+    // Show new elements
+    document.getElementById("id01").style.display = "none";
+});
