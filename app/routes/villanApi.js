@@ -3,8 +3,12 @@ let app_env = process.env["APP_ENV"];
 let villan;
 
 switch (app_env) {
+  case "locale2e":
+    villan = "http://localhost:3000/";
+    console.log("Postman Mock");
+    break;
   case "local":
-    villan = "https://42c41323-9108-490e-8536-0275a3d1fb2f.mock.pstmn.io/";
+    villan = "https://449e0253-8487-4369-b051-38a24d9b555f.mock.pstmn.io/";
     console.log("Postman Mock");
     break;
   default:
@@ -40,7 +44,7 @@ function updateUser(routing, payload, tkn, res) {
     },
     body: JSON.stringify(payload),
   };
-  request(options, function (error, response) {
+  request(options, function (error) {
     if (error) throw new Error(error);
     res.status(200).send("User updated");
   });
@@ -62,6 +66,36 @@ function listUsers(routing, tkn, res) {
   });
 }
 
+function registerUser(routing, payload, tkn, res) {
+  if (payload.username === undefined || payload.password === undefined) {
+    res.status(400).send({"error": "ERROR400 - Bad Request"});
+  } else {
+    var options = {
+      method: "POST",
+      url: routing + "auth/user/register",
+      headers: {
+        Authorization: `${tkn}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      if (response.statusCode === 200) {
+        res.status(200).send("User created");
+      } else {
+        var bodyResponse = JSON.parse(response.body);
+        res.status(400).send(bodyResponse); //Need to update response from villan service
+      }
+    });
+  }
+}
+
+exports.registerUsr = function (req, res) {
+  let token = process.env["JWT"];
+  //req.body {"username": "xxx", "password": "xxx"}
+  registerUser(villan, req.body, token, res);
+};
 
 exports.createUsr = function (req, res) {
   let token = process.env["JWT"];
