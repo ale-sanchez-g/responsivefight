@@ -31,5 +31,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: screenshots
-        path: ${{ env.artifactPath }}/screeenshots/
+        path: ~/screenshots/
         if-no-files-found: ignore
