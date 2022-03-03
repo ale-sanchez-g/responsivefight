@@ -109,7 +109,7 @@ describe("API Testing with Cypress", () => {
       method: "POST",
       url: "http://localhost:8080/api/registeruser",
       body: incorrectBody,
-      failOnStatusCode: false
+      failOnStatusCode: false,
     }).then((response) => {
       expect(response.status).to.eq(400);
     });
