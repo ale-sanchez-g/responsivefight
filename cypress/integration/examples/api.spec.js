@@ -71,7 +71,7 @@ describe("API Testing with Cypress", () => {
     });
   });
 
-  it("Validate the checkanswer api", () => {
+  it.skip("Validate the checkanswer api", () => {
     let correctBody = { stage: "test", answer: "yes" };
     let incorrectBody = { stage: "test", answer: "no" };
 
@@ -105,15 +105,14 @@ describe("API Testing with Cypress", () => {
       expect(response.status).to.eq(200);
     });
 
-    // // Current Cypress issue with cy.request unable to validate on headlessmode
-    // cy.request({
-    //   method: "POST",
-    //   url: "http://localhost:8080/api/registeruser",
-    //   body: incorrectBody,
-    //   failOnStatusCode: false,
-    // }).then((response) => {
-    //   expect(response.status).to.eq(400);
-    // });
+    cy.request({
+      method: "POST",
+      url: "http://localhost:8080/api/registeruser",
+      body: incorrectBody,
+      failOnStatusCode: false,
+    }).then((response) => {
+      expect(response.status).to.eq(400);
+    });
 
   });
 });

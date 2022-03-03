@@ -38,4 +38,4 @@ jobs:
       uses: EnricoMi/publish-unit-test-result-action@v1
       if: always()
       with:
-        files: shippable/testresults/*.xml
+        files: ${{ github.workspace }}/shippable/testresults/*.xml
