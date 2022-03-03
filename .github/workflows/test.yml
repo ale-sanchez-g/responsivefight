@@ -26,7 +26,9 @@ jobs:
     - run: NODE_ENV=production JWT=${{ secrets.JWT }} H_KEY=${{ secrets.H_KEY }} npm start & >> app.log & sleep 10
     - run: npm run test
     
-    - uses: actions/upload-artifact@v2
+    - name: Publish screenshots
+      if: failure()
+      uses: actions/upload-artifact@v2
       with:
         name: screenshots
         path: ${{ env.artifactPath }}/screeenshots/
