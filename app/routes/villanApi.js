@@ -91,6 +91,31 @@ function registerUser(routing, payload, tkn, res) {
   }
 }
 
+function loginUsr(routing, payload, tkn, res) {
+  if (payload.username === undefined || payload.password === undefined) {
+    res.status(400).send({"error": "ERROR400 - Bad Request"});
+  } else {
+    var options = {
+      method: "POST",
+      url: routing + "auth/user/login",
+      headers: {
+        Authorization: `${tkn}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      if (response.statusCode === 200) {
+        res.status(200).send("User logged in");
+      } else {
+        var bodyResponse = JSON.parse(response.body);
+        res.status(400).send(bodyResponse); //Need to update response from villan service
+      }
+    });
+  }
+}
+
 exports.registerUsr = function (req, res) {
   let token = process.env["JWT"];
   //req.body {"username": "xxx", "password": "xxx"}
@@ -111,3 +136,8 @@ exports.listUsr = function (req, res) {
   let token = process.env["JWT"];
   listUsers(villan, token, res);
 };
+
+exports.loginUsr = function (req, res) {
+  let token = process.env["JWT"];
+  loginUsr(villan, req.body, token, res);
+}
