@@ -33,22 +33,24 @@ row
                     div.container
                         h1 Sign Up
                         p
-                            | Please fill in this form to create an account.
-                        
+                            | Please fill in this form to create an account.                        
                         label(for="uname")
                             | User Name
                         br    
-                        input.center(style="width: 150px;" type="text" placeholder="Enter User Name" name="uname" id="uname" required)
+                        input.center(style="width: 150px;" type="text" placeholder="Enter User Name" name="uname" id="uname" maxlength='10' required)
                         p
                         label(for="psw")
                             | Password
                         br    
-                        input.center(style="width: 150px;" type="password" placeholder="Enter Password" name="psw" required)
+                        input.center(style="width: 150px;" type="password" placeholder="Enter Password" name="psw" id="pwd" required)
                         p
                         label(for="psw-repeat")
                             | Repeat Password
                         br    
-                        input.center(style="width: 150px;" type="password" placeholder="Repeat Password" name="psw-repeat" required)
+                        input.center(style="width: 150px;" type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required)
+                        p
+                        span(id="popup" style="background-color: red; text-align:center; width: 90%; display:none;")
+                            | Passwords do not match
 
                         div.clearfix
                             <button style="width: 250px;" type="button" onclick="document.getElementById('regomodal').style.display='none'" class="cancelbtn">Cancel</button>
@@ -58,7 +60,7 @@ row
                     div.modal-content
                         div.container
                             h1 Login with your warrior name
-                            span(id="popup" style="text-align:center; width: 90%;") 
+                            span(id="login_popup" style="background-color: red; text-align:center; width: 90%; display:none;") 
                             br
                             input.center(id="worrior_username" type="text" style="text-align:center; width: 50%" maxlength='10')            
                             p
