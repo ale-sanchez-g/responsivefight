@@ -42,6 +42,7 @@ app.post('/api/adduser', usrVillan.createUsr);
 app.post('/api/updateuser', usrVillan.updateUsr);
 app.get('/api/listusers', usrVillan.listUsr);
 app.post('/api/registeruser', usrVillan.registerUsr);
+app.post('/api/login', usrVillan.loginUsr);
 
 let port =process.env.PORT || 8080;
 

@@ -93,6 +93,7 @@ describe("API Testing with Cypress", () => {
       expect(response.body.data.questions.length).to.eq(0); // true
     });
   });
+
   it("Register User", () => {
     let uname = Math.random().toString(20).substr(2, 6);
     let correctBody = { username: uname, password: "pwd" };
@@ -109,6 +110,30 @@ describe("API Testing with Cypress", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8080/api/registeruser",
+      body: incorrectBody,
+      failOnStatusCode: false,
+    }).then((response) => {
+      expect(response.status).to.eq(400);
+    });
+
+  });
+
+  it("Login User", () => {
+    let uname = Math.random().toString(20).substr(2, 6);
+    let correctBody = { username: "test", password: "pwd" };
+    let incorrectBody = '';
+
+    cy.request(
+      "POST",
+      "http://localhost:8080/api/login",
+      correctBody
+    ).then((response) => {
+      expect(response.status).to.eq(200);
+    });
+
+    cy.request({
+      method: "POST",
+      url: "http://localhost:8080/api/login",
       body: incorrectBody,
       failOnStatusCode: false,
     }).then((response) => {
