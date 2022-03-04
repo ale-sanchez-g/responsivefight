@@ -41,6 +41,7 @@ app.post('/api/getstage', userState.getUserStage);
 app.post('/api/adduser', usrVillan.createUsr);
 app.post('/api/updateuser', usrVillan.updateUsr);
 app.get('/api/listusers', usrVillan.listUsr);
+app.post('/api/registeruser', usrVillan.registerUsr);
 
 let port =process.env.PORT || 8080;
 

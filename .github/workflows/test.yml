@@ -25,3 +25,17 @@ jobs:
     - run: npm install
     - run: NODE_ENV=production JWT=${{ secrets.JWT }} H_KEY=${{ secrets.H_KEY }} npm start & >> app.log & sleep 10
     - run: npm run test
+    
+    - name: Publish screenshots
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: screenshots
+        path: ${{ github.workspace }}/screenshots/examples/**/*.png
+        if-no-files-found: ignore
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files: ${{ github.workspace }}/shippable/testresults/*.xml
