@@ -5,6 +5,20 @@ context("COVID19 Battles", () => {
     cy.visit("http://localhost:8080");
   });
 
+  it("Register new user", () => {
+    cy.intercept("POST", "/api/registeruser", {
+      statusCode: 200,
+      body: "User created"
+    });
+
+    cy.get("#rego").click();
+    cy.get("#uname").type("test_user");
+    cy.get("#pwd").type("test_password");
+    cy.get("#psw-repeat").type("test_password");
+    cy.get("#signupbtn").click();
+    cy.get("#login").should("be.visible");
+  });
+
   it("10 digit username", () => {
     cy.get("#login").click();
     // Create Warrior
