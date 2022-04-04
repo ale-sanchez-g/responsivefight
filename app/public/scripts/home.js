@@ -77,8 +77,6 @@ $("#signupbtn").on("click", function () {
     document.getElementById("popup").innerHTML = "Passwords do not match";
   }
 
-  alert(`WIP // Still bulding this feature.`);
-
 });
 
 function createUser(user_name) {
