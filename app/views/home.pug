@@ -60,11 +60,20 @@ row
                     div.modal-content
                         div.container
                             h1 Login with your warrior name
-                            span(id="login_popup" style="background-color: red; text-align:center; width: 90%; display:none;") 
                             br
-                            input.center(id="worrior_username" type="text" style="text-align:center; width: 50%" maxlength='10')            
+                            label(for="uname" id="unamelabel")
+                                | User Name
+                            br 
+                            input.center(id="worrior_username" type="text" style="text-align:center; width: 50%" maxlength='10')
+                            br
+                            label(for="pwd" id="pwdlabel")
+                                | Password
+                            br 
+                            input.center(id="worrior_pwd" type="password" style="text-align:center; width: 50%" maxlength='10')                        
+                            br
+                            span(id="login_popup" style="background-color: red; text-align:center; width: 90%; display:none;") 
                             p
-                            a.btn(style="background-color: #81a5db; width: 90%;" id="warrior") Create warrior
+                            a.btn(style="background-color: #81a5db; width: 90%;" id="warrior") Login warrior
                             a.btn(href="covid" style="background-color: #d54ff0; width: 90%; display: none" id="start") Start your journey
                             br        
                             a.btn(style="background-color: red; width: 90%;" id="close") Cancel
