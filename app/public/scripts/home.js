@@ -20,22 +20,13 @@ $(function () {
 
 // Check the button text matches the correct answer
 $("#warrior").on("click", function () {
-  let uname = document.getElementById("worrior_username").value || "guest";
-  createUser(uname);
-  gqluserStage(uname);
+  let uname = document.getElementById("worrior_username").value;
+  let pwd = document.getElementById("worrior_pwd").value;
+  bffLogin(uname, pwd);
 
   console.log("user '" + uname + "' has been created");
   localStorage.setItem("userName", uname);
   localStorage.setItem("score", 0);
-
-  // Handles obsolete elements
-  document.getElementById("warrior").style.display = "none";
-  document.getElementById("worrior_username").style.display = "none";
-  document.getElementById("popup").style.display = "none";
-
-  // Show new elements
-  document.getElementById("start").innerHTML = `Start your journey ${uname}`;
-  document.getElementById("start").style.display = "inline-block";
 });
 
 $("#rego").on("click", function () {
@@ -84,6 +75,7 @@ function createUser(user_name) {
     username: user_name,
     score: 0,
   };
+
   $.post("/api/adduser", jsonBody).fail(function (jqXHR, textStatus, err) {
     console.log("API reponse is " + jqXHR.status);
     console.log(textStatus);
@@ -160,5 +152,36 @@ function bffRegister(user_name, pwd) {
     console.log(jqXHR.responseText);
     document.getElementById("popup").style.display = "inline-block";
     document.getElementById("popup").innerHTML = "User already exists";
+  });
+}
+
+function bffLogin(user_name, pwd) {
+  var jsonBody = {
+    username: user_name,
+    password: pwd,
+  };
+  $.post({
+    url: "/api/login",
+    data: jsonBody,
+    success: function (res) {
+      console.log(res);
+      // Handles obsolete elements
+      document.getElementById("warrior").style.display = "none";
+      document.getElementById("worrior_username").style.display = "none";
+      document.getElementById("worrior_pwd").style.display = "none";
+      document.getElementById("unamelabel").style.display = "none";
+      document.getElementById("pwdlabel").style.display = "none";
+      document.getElementById("login_popup").style.display = "none";
+
+      // Show new elements
+      document.getElementById("start").innerHTML = `Start your journey ${user_name}`;
+      document.getElementById("start").style.display = "inline-block";
+    },
+  }).fail(function (jqXHR, textStatus, err) {
+    console.log("API reponse is " + jqXHR.status);
+    console.log(textStatus);
+    console.log(err);
+    document.getElementById("login_popup").style.display = "inline-block";
+    document.getElementById("login_popup").innerHTML = "Wrong username or password";
   });
 }

@@ -5,14 +5,16 @@ context("COVID19 Mobile Battles", () => {
     cy.viewport("iphone-6");
     cy.visit("http://localhost:8080");
 
-    let uname = Math.random().toString(20).substr(2, 6);
+    // let uname = Math.random().toString(20).substr(2, 6);
     cy.get("#login").click();
+
     // Create Warrior
-    cy.get("#worrior_username").type(uname);
+    cy.get("#worrior_username").type("test");
+    cy.get("#worrior_pwd").type("pwd");
     cy.wait(1000); // this wait is needed to synch the page
     cy.get("#warrior").click();
     cy.wait(1000); // this wait is needed to synch the page
-    cy.contains(uname).click();
+    cy.contains("test").click();
   });
 
   it("User can choose from different battlefields", () => {

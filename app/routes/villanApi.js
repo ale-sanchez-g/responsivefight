@@ -5,7 +5,7 @@ let villan;
 switch (app_env) {
   case "locale2e":
     villan = "http://localhost:3000/";
-    console.log("Postman Mock");
+    console.log("Local villan");
     break;
   case "local":
     villan = "https://449e0253-8487-4369-b051-38a24d9b555f.mock.pstmn.io/";

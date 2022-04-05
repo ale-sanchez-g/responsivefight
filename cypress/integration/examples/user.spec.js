@@ -23,6 +23,7 @@ context("COVID19 Battles", () => {
     cy.get("#login").click();
     // Create Warrior
     cy.get("#worrior_username").type("1234567890");
+    cy.get("#worrior_pwd").type("pwd");
     cy.wait(1000); // this wait is needed to synch the page
     cy.get("#warrior").click();
     cy.wait(1000); // this wait is needed to synch the page
@@ -33,6 +34,7 @@ context("COVID19 Battles", () => {
     cy.get("#login").click();
     // Create Warrior
     cy.get("#worrior_username").type("12345678901");
+    cy.get("#worrior_pwd").type("pwd");
     cy.wait(1000); // this wait is needed to synch the page
     cy.get("#warrior").click();
     cy.wait(1000); // this wait is needed to synch the page
@@ -51,6 +53,7 @@ context("COVID19 Battles", () => {
     cy.get("#login").click();
     // Create Warrior
     cy.get("#worrior_username").type("%5c");
+    cy.get("#worrior_pwd").type("pwd");
     cy.wait(1000); // this wait is needed to synch the page
     cy.get("#warrior").click();
     cy.wait(1000); // this wait is needed to synch the page
