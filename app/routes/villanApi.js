@@ -8,7 +8,7 @@ switch (app_env) {
     console.log("Local villan");
     break;
   case "local":
-    villan = "https://449e0253-8487-4369-b051-38a24d9b555f.mock.pstmn.io/";
+    villan = "https://449e9dd6-4fc4-48fe-9c57-96febcea4993.mock.pstmn.io/";
     console.log("Postman Mock");
     break;
   default:

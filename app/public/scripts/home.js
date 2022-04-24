@@ -3,9 +3,8 @@ $(function () {
   localStorage.setItem("new", true);
   var userName = localStorage.getItem("userName");
   $("#welcome_text").append(`Choose your battle field ${userName}`);
-  // Wake up required APIs
-  pingAPI("https://supervillain.herokuapp.com/v1/user");
-  gqlFlow();
+  pingAPI("https://supervillain.herokuapp.com/health");   // Wake up required API
+  gqlFlow(); // Get game flow TODO: Create a random selection of the game flow 
 
   $("#worrior_username").keyup(function () {
     if ($("#worrior_username").val().length > 5) {
@@ -23,10 +22,16 @@ $("#warrior").on("click", function () {
   let uname = document.getElementById("worrior_username").value;
   let pwd = document.getElementById("worrior_pwd").value;
   bffLogin(uname, pwd);
+  let logged = document.getElementById("login").value;
+  
+  if (logged === true) {
+    gqluserStage(uname);
+  }
 
   console.log("user '" + uname + "' has been created");
   localStorage.setItem("userName", uname);
-  localStorage.setItem("score", 0);
+
+  // localStorage.setItem("score", 0);
 });
 
 $("#rego").on("click", function () {
@@ -176,6 +181,7 @@ function bffLogin(user_name, pwd) {
       // Show new elements
       document.getElementById("start").innerHTML = `Start your journey ${user_name}`;
       document.getElementById("start").style.display = "inline-block";
+      localStorage.setItem("login", true);
     },
   }).fail(function (jqXHR, textStatus, err) {
     console.log("API reponse is " + jqXHR.status);
