@@ -1,5 +1,5 @@
 #Grab the latest alpine image
-FROM node:lts-alpine
+FROM node:17-alpine
 
 # Add our code
 ADD . /
