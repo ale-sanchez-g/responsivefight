@@ -2,7 +2,7 @@
 
 str='
 {
-    "version": "$BUILD_NUMBER",
+    "version": "V61",
     "branch": "$BRANCH",
     "commitId": "$COMMIT"
 }'
