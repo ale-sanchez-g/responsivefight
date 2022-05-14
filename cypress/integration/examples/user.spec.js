@@ -41,14 +41,6 @@ context("COVID19 Battles", () => {
     cy.contains("1234567890");
   });
 
-  it("6 digit username warning", () => {
-    cy.get("#login").click();
-    // Create Warrior    
-    cy.get("#worrior_username").type("123456");
-    cy.wait(1000); // this wait is needed to synch the page
-    cy.contains("Only use 10 characters");
-  });
-
   it("%5c username", () => {
     cy.get("#login").click();
     // Create Warrior

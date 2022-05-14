@@ -28,6 +28,8 @@ $("#close").on("click", function () {
   // Show new elements
   localStorage.clear();
   localStorage.setItem("new", true);
+  document.getElementById("worrior_username").value = '';
+  document.getElementById("worrior_pwd").value = '';
   document.getElementById("regomodal").style.display = "none";
   document.getElementById("loginmodal").style.display = "none";
 });
