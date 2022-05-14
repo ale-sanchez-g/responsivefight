@@ -2,9 +2,8 @@
 
 str='
 {
-    "version": "63",
-    "branch": "master",
-    "commitId": "7e8e315563dd4f7c289f255338fe59b2bc5fa102"
+    "version": "64",
+    "branch": "master"
 }'
 
 echo "${str/'$BUILD_NUMBER'/$BUILD_NUMBER}" > app/public/version.json
