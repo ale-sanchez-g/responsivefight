@@ -5,16 +5,6 @@ $(function () {
   $("#welcome_text").append(`Choose your battle field ${userName}`);
   pingAPI("https://supervillain.herokuapp.com/health");   // Wake up required API
   gqlFlow(); // Get game flow TODO: Create a random selection of the game flow 
-
-  $("#worrior_username").keyup(function () {
-    if ($("#worrior_username").val().length > 5) {
-      document.getElementById("login_popup").style.display = "inline-block";
-      $("#login_popup").fadeIn();
-      $("#login_popup").html("Only use 10 characters");
-    } else {
-      $("#login_popup").fadeOut();
-    }
-  });
 });
 
 // Check the button text matches the correct answer
@@ -36,6 +26,8 @@ $("#rego").on("click", function () {
 
 $("#close").on("click", function () {
   // Show new elements
+  localStorage.clear();
+  localStorage.setItem("new", true);
   document.getElementById("regomodal").style.display = "none";
   document.getElementById("loginmodal").style.display = "none";
 });
@@ -173,6 +165,7 @@ function bffLogin(user_name, pwd) {
       document.getElementById("unamelabel").style.display = "none";
       document.getElementById("pwdlabel").style.display = "none";
       document.getElementById("login_popup").style.display = "none";
+      document.getElementById("close").style.display = "none";
 
       // Show new elements
       document.getElementById("start").innerHTML = `Start your journey ${user_name}`;
