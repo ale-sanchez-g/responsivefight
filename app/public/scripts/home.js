@@ -22,11 +22,6 @@ $("#warrior").on("click", function () {
   let uname = document.getElementById("worrior_username").value;
   let pwd = document.getElementById("worrior_pwd").value;
   bffLogin(uname, pwd);
-  let logged = document.getElementById("login").value;
-  
-  if (logged === true) {
-    gqluserStage(uname);
-  }
 
   console.log("user '" + uname + "' has been created");
   localStorage.setItem("userName", uname);
@@ -68,6 +63,7 @@ $("#signupbtn").on("click", function () {
 
   if (pwd === rePwd) {
     bffRegister(uname, pwd);
+    gqluserStage(uname);
   } else {
     document.getElementById("popup").style.display = "inline-block";
     document.getElementById("popup").innerHTML = "Passwords do not match";
@@ -181,7 +177,6 @@ function bffLogin(user_name, pwd) {
       // Show new elements
       document.getElementById("start").innerHTML = `Start your journey ${user_name}`;
       document.getElementById("start").style.display = "inline-block";
-      localStorage.setItem("login", true);
     },
   }).fail(function (jqXHR, textStatus, err) {
     console.log("API reponse is " + jqXHR.status);
