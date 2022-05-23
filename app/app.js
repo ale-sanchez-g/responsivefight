@@ -11,9 +11,6 @@ let usrVillan = require('./routes/villanApi');
 
 let static_html = [
     "covid",
-    "office",
-    "bus",
-    "restaurant",
     "leaderboard",
     "news"
 ]
