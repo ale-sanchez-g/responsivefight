@@ -4,6 +4,6 @@ $( document ).ready(function() {
     if (userName == undefined || n == undefined ) {
         window.location.replace("/");
     } else {
-        $('#welcome_text').append(`Choose your battle field ${userName}`);
+        $('#welcome_text').append(`Welcome ${userName}`);
     }
 });
