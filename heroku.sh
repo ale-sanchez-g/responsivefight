@@ -1,3 +1,4 @@
+heroku container:login
 export APP_NAME=responsivefight
 rm -rf node_modules
 docker build -t registry.heroku.com/$APP_NAME/web .
