@@ -107,13 +107,30 @@ function loginUsr(routing, payload, tkn, res) {
     request(options, function (error, response) {
       if (error) throw new Error(error);
       if (response.statusCode === 200) {
-        res.status(200).send("User logged in");
+        var bodyResponse = JSON.parse(response.body);
+        res.status(200).send(bodyResponse);
       } else {
         var bodyResponse = JSON.parse(response.body);
         res.status(400).send(bodyResponse); //Need to update response from villan service
       }
     });
   }
+}
+
+function userdetails(routing, usr, tkn, res) {
+  var options = {
+    method: "GET",
+    url: routing + "v1/user/" + usr,
+    headers: {
+      Authorization: `${tkn}`,
+      "Content-Type": "application/json",
+    },
+  };
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    var locals = JSON.parse(response.body);
+    res.json(locals);
+  });
 }
 
 exports.registerUsr = function (req, res) {
@@ -140,4 +157,8 @@ exports.listUsr = function (req, res) {
 exports.loginUsr = function (req, res) {
   let token = process.env["JWT"];
   loginUsr(villan, req.body, token, res);
+}
+
+exports.UserDetails = function (req, res) {
+  userdetails(villan, req.query.username, req.query.tkn, res);
 }

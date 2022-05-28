@@ -59,22 +59,24 @@ row
             div.modal(id="loginmodal")
                     div.modal-content
                         div.container
-                            h1 Login with your warrior name
+                            h1(id="login_title", style="text-align:center;") Login with your warrior name
                             br
                             label(for="uname" id="unamelabel")
                                 | User Name
                             br 
                             input.center(id="worrior_username" type="text" style="text-align:center; width: 50%" maxlength='10')
+                            h3(id='user_txt', display:none;)
                             br
                             label(for="pwd" id="pwdlabel")
                                 | Password
                             br 
                             input.center(id="worrior_pwd" type="password" style="text-align:center; width: 50%" maxlength='10')                        
+                            h3(id='user_score', display:none;)
                             br
                             span(id="login_popup" style="background-color: red; text-align:center; width: 90%; display:none;") 
                             p
                             a.btn(style="background-color: #81a5db; width: 90%;" id="warrior") Login warrior
-                            a.btn(href="covid" style="background-color: #d54ff0; width: 90%; display: none" id="start") Start your journey
+                            a.btn(href="covid" style="background-color: #d54ff0; width: 90%; display: none" id="start") Start game
                             br        
                             a.btn(style="background-color: red; width: 90%;" id="close") Cancel
             p
