@@ -14,7 +14,7 @@ context("COVID19 Mobile Battles", () => {
     cy.wait(1000); // this wait is needed to synch the page
     cy.get("#warrior").click();
     cy.wait(1000); // this wait is needed to synch the page
-    cy.contains("test").click();
+    cy.get("#start").click();
   });
 
   it("Single page battle Correct Answer", () => {
