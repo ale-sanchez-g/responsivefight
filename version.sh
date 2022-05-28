@@ -2,7 +2,7 @@
 
 str='
 {
-    "version": "65",
+    "version": "67",
     "branch": "master"
 }'
 

@@ -3,8 +3,8 @@ $(function () {
   localStorage.setItem("new", true);
   var userName = localStorage.getItem("userName");
   $("#welcome_text").append(`Choose your battle field ${userName}`);
-  pingAPI("https://supervillain.herokuapp.com/health");   // Wake up required API
-  gqlFlow(); // Get game flow TODO: Create a random selection of the game flow 
+  pingAPI("https://supervillain.herokuapp.com/health"); // Wake up required API
+  gqlFlow(); // Get game flow TODO: Create a random selection of the game flow
 });
 
 // Check the button text matches the correct answer
@@ -12,10 +12,8 @@ $("#warrior").on("click", function () {
   let uname = document.getElementById("worrior_username").value;
   let pwd = document.getElementById("worrior_pwd").value;
   bffLogin(uname, pwd);
-
   console.log("user '" + uname + "' has been created");
   localStorage.setItem("userName", uname);
-
   // localStorage.setItem("score", 0);
 });
 
@@ -28,8 +26,8 @@ $("#close").on("click", function () {
   // Show new elements
   localStorage.clear();
   localStorage.setItem("new", true);
-  document.getElementById("worrior_username").value = '';
-  document.getElementById("worrior_pwd").value = '';
+  document.getElementById("worrior_username").value = "";
+  document.getElementById("worrior_pwd").value = "";
   document.getElementById("regomodal").style.display = "none";
   document.getElementById("loginmodal").style.display = "none";
 });
@@ -45,7 +43,8 @@ $("#pwd").on("click", function () {
   let uname = document.getElementById("uname").value;
   if (uname.length > 10 || uname.length < 1) {
     document.getElementById("popup").style.display = "inline-block";
-    document.getElementById("popup").innerHTML = "Username must be between 1 and 10 characters";
+    document.getElementById("popup").innerHTML =
+      "Username must be between 1 and 10 characters";
   }
 });
 
@@ -62,7 +61,6 @@ $("#signupbtn").on("click", function () {
     document.getElementById("popup").style.display = "inline-block";
     document.getElementById("popup").innerHTML = "Passwords do not match";
   }
-
 });
 
 function createUser(user_name) {
@@ -108,6 +106,34 @@ function gqlFlow() {
   });
 }
 
+function userPing() {
+  $.get({
+    url: "/api/userdetails",
+    data: {
+      username: localStorage.getItem("userName"),
+      tkn: localStorage.getItem("userSession"),
+    },
+    success: function (res) {
+      if (res.length === 0) {
+        document.getElementById("login_title").innerHTML = "Welcome to the game";
+        document.getElementById("user_txt").style.display = "inline-block";
+        document.getElementById("user_txt").innerHTML = localStorage.getItem('userName');
+      } else {
+        document.getElementById("login_title").innerHTML = "Continue your Journey";
+        document.getElementById("user_txt").style.display = "inline-block";
+        document.getElementById("user_txt").innerHTML = res[0].username;
+        document.getElementById("user_score").style.display = "inline-block";
+        document.getElementById("user_score").innerHTML = "Current Score:" + res[0].score;
+      }
+      console.log(JSON.stringify(res));
+   },
+  }).fail(function (jqXHR, textStatus, err) {
+    console.log("API reponse is " + jqXHR.status);
+    console.log(textStatus);
+    console.log(err);
+  });
+}
+
 function gqluserStage(user_name) {
   var flow = JSON.parse(localStorage.getItem("flow"));
   var jsonBody = {
@@ -139,7 +165,8 @@ function bffRegister(user_name, pwd) {
       console.log(res);
       document.getElementById("regomodal").style.display = "none";
       document.getElementById("loginmodal").style.display = "inline-block";
-      document.getElementById("worrior_username").defaultValue = jsonBody.username;
+      document.getElementById("worrior_username").defaultValue =
+        jsonBody.username;
     },
   }).fail(function (jqXHR, textStatus, err) {
     console.log("API reponse is " + jqXHR.status);
@@ -160,6 +187,7 @@ function bffLogin(user_name, pwd) {
     data: jsonBody,
     success: function (res) {
       console.log(res);
+      localStorage.setItem("userSession", res.token);
       // Handles obsolete elements
       document.getElementById("warrior").style.display = "none";
       document.getElementById("worrior_username").style.display = "none";
@@ -169,8 +197,10 @@ function bffLogin(user_name, pwd) {
       document.getElementById("login_popup").style.display = "none";
       document.getElementById("close").style.display = "none";
 
+      // Get User Details
+      userPing();
+
       // Show new elements
-      document.getElementById("start").innerHTML = `Start your journey ${user_name}`;
       document.getElementById("start").style.display = "inline-block";
     },
   }).fail(function (jqXHR, textStatus, err) {
@@ -178,6 +208,7 @@ function bffLogin(user_name, pwd) {
     console.log(textStatus);
     console.log(err);
     document.getElementById("login_popup").style.display = "inline-block";
-    document.getElementById("login_popup").innerHTML = "Wrong username or password";
+    document.getElementById("login_popup").innerHTML =
+      "Wrong username or password";
   });
 }

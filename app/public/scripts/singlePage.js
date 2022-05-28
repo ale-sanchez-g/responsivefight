@@ -24,7 +24,6 @@ $("#continue").click(function () {
   var stage = localStorage.getItem("stage");
   updateUserSatge(stage);
   fetchQuestion(stage);
-  document.getElementById("bar").style.visibility = "visible";
 });
 
 // Fetch question
