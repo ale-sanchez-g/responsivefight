@@ -114,11 +114,17 @@ function userPing() {
       tkn: localStorage.getItem("userSession"),
     },
     success: function (res) {
-      document.getElementById("login_title").innerHTML = "Continue your Journey";
-      document.getElementById("user_txt").style.display = "inline-block";
-      document.getElementById("user_txt").innerHTML = res[0].username;
-      document.getElementById("user_score").style.display = "inline-block";
-      document.getElementById("user_score").innerHTML = "Current Score:" + res[0].score;
+      if (res.length === 0) {
+        document.getElementById("login_title").innerHTML = "Welcome to the game";
+        document.getElementById("user_txt").style.display = "inline-block";
+        document.getElementById("user_txt").innerHTML = localStorage.getItem('userName');
+      } else {
+        document.getElementById("login_title").innerHTML = "Continue your Journey";
+        document.getElementById("user_txt").style.display = "inline-block";
+        document.getElementById("user_txt").innerHTML = res[0].username;
+        document.getElementById("user_score").style.display = "inline-block";
+        document.getElementById("user_score").innerHTML = "Current Score:" + res[0].score;
+      }
       console.log(JSON.stringify(res));
    },
   }).fail(function (jqXHR, textStatus, err) {
