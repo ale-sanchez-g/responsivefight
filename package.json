@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/ale-sanchez-g/responsivefight#readme",
   "devDependencies": {
+    "@playwright/test": "^1.27.1",
     "cypress": "^9.0.0"
   }
 }
