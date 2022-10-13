@@ -18,4 +18,9 @@ test.describe('Example test', () => {
 
   });
 
+  test('Ensure 404 Page is ok', async ({ page }) => {
+    await page.goto('http://127.0.0.1:8080/404');
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+
+  });
 });
