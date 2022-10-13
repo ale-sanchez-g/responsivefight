@@ -354,3 +354,6 @@ MigrationBackup/
 videos/
 cypress/videos/
 cypres/screenshots/
+/test-results/
+/playwright-report/
+/playwright/.cache/
