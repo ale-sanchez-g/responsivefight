@@ -20,7 +20,7 @@
     "caniuse-lite": "^1.0.30001312",
     "cookie-parser": "^1.4.5",
     "debug": "^4.1.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "heroku": "^7.33.3",
     "morgan": "^1.10.0",
     "pug": "^3.0.2",
