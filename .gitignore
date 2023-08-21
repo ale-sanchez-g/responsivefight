@@ -354,3 +354,7 @@ MigrationBackup/
 videos/
 cypress/videos/
 cypres/screenshots/
+
+# Secrets
+
+.env

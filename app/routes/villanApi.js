@@ -3,7 +3,7 @@ let app_env = process.env["APP_ENV"];
 let villan;
 
 switch (app_env) {
-  case "locale2e":
+  case "e2elocal":
     villan = "http://localhost:3000/";
     console.log("Local villan");
     break;
@@ -12,7 +12,7 @@ switch (app_env) {
     console.log("Postman Mock");
     break;
   default:
-    villan = "https://supervillain.herokuapp.com/";
+    villan = "https://supervillan-81ce46d107ff.herokuapp.com/";
     console.log("Villan config");
 }
 
@@ -68,7 +68,7 @@ function listUsers(routing, tkn, res) {
 
 function registerUser(routing, payload, tkn, res) {
   if (payload.username === undefined || payload.password === undefined) {
-    res.status(400).send({"error": "ERROR400 - Bad Request"});
+    res.status(400).send({ error: "ERROR400 - Bad Request" });
   } else {
     var options = {
       method: "POST",
@@ -93,7 +93,7 @@ function registerUser(routing, payload, tkn, res) {
 
 function loginUsr(routing, payload, tkn, res) {
   if (payload.username === undefined || payload.password === undefined) {
-    res.status(400).send({"error": "ERROR400 - Bad Request"});
+    res.status(400).send({ error: "ERROR400 - Bad Request" });
   } else {
     var options = {
       method: "POST",
@@ -157,8 +157,8 @@ exports.listUsr = function (req, res) {
 exports.loginUsr = function (req, res) {
   let token = process.env["JWT"];
   loginUsr(villan, req.body, token, res);
-}
+};
 
 exports.UserDetails = function (req, res) {
   userdetails(villan, req.query.username, req.query.tkn, res);
-}
+};

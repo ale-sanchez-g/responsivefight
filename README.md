@@ -5,6 +5,7 @@ Responsive is an application that renders plain HTML and also some PUG.
 Currenlty the Application runs on an express server, and calls some rest APIs to gather some information.
 
 ## Badges
+
 [![Cypress Run](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)]()
 
 ## Requirements
@@ -22,6 +23,7 @@ Download this repo and run the below scripts:
 - `H_KEY={getKey} JWT={getJWT} npm start`
 
 Run localy pointing to Villan stub - will still point to hasura api (//TODO: Mock Hasura API)
+
 - `H_KEY={getKey} APP_ENV=local npm start`
 
 This will have the application running on port 8080 <http://localhost/8080> connecting to the production APIs
@@ -41,6 +43,6 @@ You can refer to the shippable.yml file for the details
 Run application with docker
 
 ```
-docker build --build-arg H_KEY=<Hasure_secret> -t testresponsivefight:latest .
-docker run -p 8080:8080 testresponsivefight
+docker build --build-arg H_KEY=${Hasure_secret} --build-arg DT_PAAS_TOKEN=${DT_PAAS_TOKEN} -t testresponsivefight:arm . -f Dockerfile.m2
+docker run -p 8080:8080 testresponsivefight:arm
 ```

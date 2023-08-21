@@ -3,7 +3,6 @@ $(function () {
   localStorage.setItem("new", true);
   var userName = localStorage.getItem("userName");
   $("#welcome_text").append(`Choose your battle field ${userName}`);
-  pingAPI("https://supervillain.herokuapp.com/health"); // Wake up required API
   gqlFlow(); // Get game flow TODO: Create a random selection of the game flow
 });
 
