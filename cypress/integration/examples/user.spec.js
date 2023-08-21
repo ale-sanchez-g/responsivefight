@@ -20,6 +20,9 @@ context("COVID19 Battles", () => {
   });
 
   it("10 digit username", () => {
+    cy.intercept("POST", "/api/login", { fixture: "logincorrect.json" }).as("login");
+    cy.intercept("GET", "/api/userdetails*", { fixture: "usercorrect.json" }).as("userdetails");
+
     cy.get("#login").click();
     // Create Warrior
     cy.get("#worrior_username").type("1234567890");
@@ -31,6 +34,9 @@ context("COVID19 Battles", () => {
   });
 
   it("11 digit username", () => {
+    cy.intercept("POST", "/api/login", { fixture: "logincorrect.json" }).as("login");
+    cy.intercept("GET", "/api/userdetails*", { fixture: "usercorrect.json" }).as("userdetails");
+
     cy.get("#login").click();
     // Create Warrior
     cy.get("#worrior_username").type("12345678901");
@@ -42,6 +48,9 @@ context("COVID19 Battles", () => {
   });
 
   it("%5c username", () => {
+    cy.intercept("POST", "/api/login", { fixture: "logincorrect.json" }).as("login");
+    cy.intercept("GET", "/api/userdetails*", [{"username":"%5c","score":100}]).as("userdetails");
+
     cy.get("#login").click();
     // Create Warrior
     cy.get("#worrior_username").type("%5c");

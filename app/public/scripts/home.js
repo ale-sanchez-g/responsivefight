@@ -30,6 +30,12 @@ $("#close").on("click", function () {
   document.getElementById("worrior_pwd").value = "";
   document.getElementById("regomodal").style.display = "none";
   document.getElementById("loginmodal").style.display = "none";
+
+  // Registration
+  document.getElementById("uname").value = "";
+  document.getElementById("pwd").value = "";
+  document.getElementById("psw-repeat").value = "";
+
 });
 
 $("#login").on("click", function () {
