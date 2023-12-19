@@ -9,20 +9,19 @@ Currenlty the Application runs on an express server, and calls some rest APIs to
 
 ## Requirements
 
-- node 10.x or above
+- node
 - Docker
 - Heroku account
-- Shippable account
 
 ## Start
 
 Download this repo and run the below scripts:
 
 - `npm install`
-- `H_KEY={getKey} JWT={getJWT} npm start`
+- `JWT=${JWT} npm start`
 
 Run localy pointing to Villan stub - will still point to hasura api (//TODO: Mock Hasura API)
-- `H_KEY={getKey} APP_ENV=local npm start`
+- `APP_ENV=local npm start`
 
 This will have the application running on port 8080 <http://localhost/8080> connecting to the production APIs
 

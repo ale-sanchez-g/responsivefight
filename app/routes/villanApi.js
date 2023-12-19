@@ -3,16 +3,12 @@ let app_env = process.env["APP_ENV"];
 let villan;
 
 switch (app_env) {
-  case "locale2e":
-    villan = "http://localhost:3000/";
-    console.log("Local villan");
-    break;
   case "local":
     villan = "https://449e9dd6-4fc4-48fe-9c57-96febcea4993.mock.pstmn.io/";
     console.log("Postman Mock");
     break;
   default:
-    villan = "https://supervillain.herokuapp.com/";
+    villan = "https://supervillan-81ce46d107ff.herokuapp.com/";
     console.log("Villan config");
 }
 

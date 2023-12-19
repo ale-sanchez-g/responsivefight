@@ -1,5 +1,5 @@
 #Grab the latest alpine image
-FROM node:17-alpine
+FROM node:21-alpine
 
 # Add our code
 ADD . /
