@@ -5,8 +5,6 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 let home = require('./routes/home');
-// let questionState = require('./routes/gqlQuestionApi');
-// let userState = require('./routes/gqlUserApi');
 let usrVillan = require('./routes/villanApi');
 
 let static_html = [
@@ -25,14 +23,6 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.get('/', home.home);
-
-// GraphQL
-// app.get('/api/getflow', questionState.getFlow);
-// app.get('/api/fetchquestion', questionState.fetchquestion);
-// app.post('/api/checkanswer', questionState.checkAnswer);
-
-// app.post('/api/userstage', userState.userStage);
-// app.post('/api/getstage', userState.getUserStage);
 
 // BFF
 app.post('/api/adduser', usrVillan.createUsr);

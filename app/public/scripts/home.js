@@ -3,8 +3,6 @@ $(function () {
   localStorage.setItem("new", true);
   var userName = localStorage.getItem("userName");
   $("#welcome_text").append(`Choose your battle field ${userName}`);
-  // pingAPI("https://supervillain.herokuapp.com/health"); // Wake up required API
-  // gqlFlow(); // Get game flow TODO: Create a random selection of the game flow
 });
 
 // Check the button text matches the correct answer
@@ -56,7 +54,6 @@ $("#signupbtn").on("click", function () {
 
   if (pwd === rePwd) {
     bffRegister(uname, pwd);
-    // gqluserStage(uname);
   } else {
     document.getElementById("popup").style.display = "inline-block";
     document.getElementById("popup").innerHTML = "Passwords do not match";
@@ -92,20 +89,6 @@ function pingAPI(uri) {
 
 //--- BFF calls below ---//
 
-// function gqlFlow() {
-//   $.get({
-//     url: "/api/getflow",
-//     success: function (res) {
-//       localStorage.setItem("flow", JSON.stringify(res));
-//       localStorage.setItem("position", "stage_1");
-//     },
-//   }).fail(function (jqXHR, textStatus, err) {
-//     console.log("API reponse is " + jqXHR.status);
-//     console.log(textStatus);
-//     console.log(err);
-//   });
-// }
-
 function userPing() {
   $.get({
     url: "/api/userdetails",
@@ -133,25 +116,6 @@ function userPing() {
     console.log(err);
   });
 }
-
-// function gqluserStage(user_name) {
-//   var flow = JSON.parse(localStorage.getItem("flow"));
-//   var jsonBody = {
-//     username: user_name,
-//     stage: flow.stage_1,
-//   };
-//   $.post({
-//     url: "/api/userstage",
-//     data: jsonBody,
-//     success: function (res) {
-//       console.log(res);
-//     },
-//   }).fail(function (jqXHR, textStatus, err) {
-//     console.log("API reponse is " + jqXHR.status);
-//     console.log(textStatus);
-//     console.log(err);
-//   });
-// }
 
 function bffRegister(user_name, pwd) {
   var jsonBody = {
